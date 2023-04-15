@@ -1,9 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ColorTheme } from 'src/app/classes/color-theme.class';
-import { CookieService } from 'ngx-cookie-service';
 
-const COLOR_THEME_COOKIE_KEY = 'color-theme';
+const COLOR_THEME_COOKIE_KEY = 'jmuzina-portfolio-color-theme';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +26,7 @@ export class ThemeService {
 
     link.href = `${theme.code}.css`;
 
-    this._cks.set(COLOR_THEME_COOKIE_KEY, theme.code);
+    localStorage.setItem(COLOR_THEME_COOKIE_KEY, theme.code);
     this._activeTheme = theme;
   }
 
@@ -48,7 +47,7 @@ export class ThemeService {
   private loadInitialColorTheme(): void {
     if (this._activeTheme) throw new Error('Cannot load color theme from cookie after it has already been loaded.');
 
-    const cookieVal = this._cks.get(COLOR_THEME_COOKIE_KEY);
+    const cookieVal = localStorage.getItem(COLOR_THEME_COOKIE_KEY);
 
     // Dark theme is default, as it should be :)
     const themeToSet: ColorTheme = this.themes.find((theme: ColorTheme) => theme.code === cookieVal) || this.darkTheme;
@@ -58,7 +57,7 @@ export class ThemeService {
     this.activeTheme = themeToSet;
   }
 
-  constructor(@Inject(DOCUMENT) private document: Document, private _cks: CookieService) {
+  constructor(@Inject(DOCUMENT) private document: Document) {
     this.loadInitialColorTheme();
   }
 }
