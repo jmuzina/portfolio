@@ -9,7 +9,7 @@
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 0.1em;
   border-top: 0.05em solid var(--surface-400);
   background-color: var(--surface-50);
