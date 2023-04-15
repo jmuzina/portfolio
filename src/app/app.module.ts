@@ -5,13 +5,14 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './modules/core/core.module';
-
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 @NgModule({
   declarations: [
     AppComponent,
   ],
   imports: [
     AppRoutingModule,
+    ConfirmDialogModule,
     SharedModule,
     BrowserModule,
     BrowserAnimationsModule,

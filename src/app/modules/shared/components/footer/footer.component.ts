@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NavigationService } from 'src/app/services/navigation.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'jm-footer',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
+  public dev = !environment.production;
 
+  public devDisclaimerOpen = false;
+
+  constructor(public nvs: NavigationService) {}
 }

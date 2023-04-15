@@ -1,3 +1,17 @@
+<p-dialog [(visible)]="devDisclaimerOpen" header="Development Disclaimer">
+  <div class="dev-disclaimer-nav-content">
+    <span class="disclaimer-message">You are currently viewing the development build, which may be unfinished or buggy.</span>
+    <a pButton class="prod-nav-btn p-button p-button-raised p-button-primary" [href]="nvs.prodSite.address" (click)="nvs.prodSite.open()" label="Return to production site"></a>
+  </div>
+</p-dialog>
+
 <div class="footer-container">
-  <jm-social-icons></jm-social-icons>
+  <div class="dev-build-disclaimer-container" *ngIf="dev">
+    <button pButton class="disclaimer-icon p-button p-button-text" icon="pi pi-exclamation-triangle"
+      (click)="devDisclaimerOpen = true" [disabled]="devDisclaimerOpen" label="Development build"></button>
+
+  </div>
+  <div class="social-icons-container">
+    <jm-social-icons></jm-social-icons>
+  </div>
 </div>

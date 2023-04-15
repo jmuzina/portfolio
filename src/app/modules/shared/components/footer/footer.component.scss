@@ -9,8 +9,41 @@
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0.1em;
   border-top: 0.05em solid var(--surface-400);
   background-color: var(--surface-50);
+
+  .dev-build-disclaimer-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+    margin-right: auto;
+    padding-left: 5px;
+    gap: 8px;
+
+    .disclaimer-icon {
+      text-align: center;
+      height: 100%;
+      color: var(--yellow-300);
+    }
+  }
+
+  .social-icons-container {
+    max-width: 150px;
+    align-self: flex-end;
+  }
+}
+
+.dev-disclaimer-nav-content {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  gap: 1.5em;
+
+  .prod-nav-btn {
+    text-decoration: none;
+  }
 }
