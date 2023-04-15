@@ -1,3 +1,3 @@
 <div class="social-icons-container">
-  <a *ngFor="let site of sites" pButton class="site-link p-button p-button-text" [icon]="site.icon || ''" [pTooltip]="site.label" [href]="site.address"></a>
+  <a *ngFor="let site of nvs.externalSites" pButton class="site-link p-button p-button-text {{site.styleClass}}" [icon]="site.icon || ''" [pTooltip]="site.label" (click)="nvs.onClickSocialIcon(site)" [href]="site.address"></a>
 </div>

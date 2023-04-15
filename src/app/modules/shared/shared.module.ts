@@ -10,6 +10,7 @@ import { RepeatingDotsComponent } from './components/repeating-dots/repeating-do
 import { ColorThemeTogglerComponent } from './components/color-theme-toggler/color-theme-toggler.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MenubarModule } from 'primeng/menubar';
+import { DialogModule } from 'primeng/dialog';
 import { TooltipModule } from 'primeng/tooltip';
 import { FooterComponent } from './components/footer/footer.component';
 import { SocialIconsComponent } from './components/social-icons/social-icons.component';
@@ -35,6 +36,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ToastModule,
     TooltipModule,
     MenubarModule,
+    DialogModule,
   ],
   exports: [
     ButtonModule,
