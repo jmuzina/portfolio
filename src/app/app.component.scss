@@ -1,4 +1,5 @@
 $header-height: 60px;
+$footer-height: 50px;
 
 :host {
   width: 100%;
@@ -16,11 +17,18 @@ $header-height: 60px;
   jm-header {
     width: 100%;
     height: $header-height;
+    position: sticky;
+    top: 0;
+  }
+
+  jm-footer {
+    width: 100%;
+    height: $footer-height;
   }
 
   .page-contents {
     width: 100%;
-    height: calc(100% - $header-height);
+    height: calc(100% - $header-height - $footer-height);
   }
 
 /*   jm-color-theme-toggler {

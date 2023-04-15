@@ -11,6 +11,8 @@ import { ColorThemeTogglerComponent } from './components/color-theme-toggler/col
 import { HeaderComponent } from './components/header/header.component';
 import { MenubarModule } from 'primeng/menubar';
 import { TooltipModule } from 'primeng/tooltip';
+import { FooterComponent } from './components/footer/footer.component';
+import { SocialIconsComponent } from './components/social-icons/social-icons.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { TooltipModule } from 'primeng/tooltip';
     RepeatingDotsComponent,
     ColorThemeTogglerComponent,
     HeaderComponent,
+    FooterComponent,
+    SocialIconsComponent,
   ],
   imports: [
     CommonModule,
@@ -39,6 +43,7 @@ import { TooltipModule } from 'primeng/tooltip';
     LoadingSpinnerComponent,
     ColorThemeTogglerComponent,
     HeaderComponent,
+    FooterComponent,
   ],
 })
 export class SharedModule { }
