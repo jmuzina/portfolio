@@ -2,7 +2,7 @@ name: Deploy portfolio
 
 on:
   push:
-    branches: ['cicd_cfg']
+    branches: ['main']
 
 jobs:
   deploy:
