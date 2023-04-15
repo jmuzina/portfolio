@@ -36,3 +36,4 @@ jobs:
           target: ${{ secrets.DEPLOY_PATH }}
           tar_tmp_path: /home/${{ secrets.DEPLOY_USERNAME }}
           rm: true
+          timeout: 60s
