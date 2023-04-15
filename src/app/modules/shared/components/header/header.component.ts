@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'jm-header',
@@ -8,6 +9,6 @@ import { MenuItem } from 'primeng/api';
 })
 export class HeaderComponent {
   public items: MenuItem[] = [
-    { label:'Home', routerLink:'/', icon: 'pi pi-home' },
+    { label:environment.appTitle, routerLink:'/', icon: 'pi pi-home' },
   ];
 }
