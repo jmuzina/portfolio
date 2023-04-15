@@ -13,6 +13,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { TooltipModule } from 'primeng/tooltip';
 import { FooterComponent } from './components/footer/footer.component';
 import { SocialIconsComponent } from './components/social-icons/social-icons.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SocialIconsComponent } from './components/social-icons/social-icons.com
     HeaderComponent,
     FooterComponent,
     SocialIconsComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     CommonModule,

@@ -5,6 +5,8 @@
 
 :host ::ng-deep .app-header {
   .p-menubar {
+    background-color: var(--surface-border);
+    border-bottom: 0.05em solid var(--surface-400);
     border-radius: 0;
     .p-menuitem-link-active {
       background-color: var(--blue-800);

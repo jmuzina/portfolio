@@ -11,5 +11,6 @@
   flex-flow: row nowrap;
   justify-content: flex-end;
   padding: 0.1em;
-  background-color: var(--surface-c);
+  border-top: 0.05em solid var(--surface-400);
+  background-color: var(--surface-50);
 }
