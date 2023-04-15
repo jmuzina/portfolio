@@ -2,7 +2,7 @@ name: Deploy portfolio to Development
 
 on:
   push:
-    branches: ['dev', 'ci/dev_env']
+    branches: ['dev']
 
 jobs:
   deploy:
