@@ -1,0 +1,8 @@
+<div class="loading-container">
+  <!-- <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> -->
+  <p-progressSpinner></p-progressSpinner>
+  <div *ngIf="showMessage" class="loading-message-container">
+    <span class="loading-message">{{message}}</span>
+    <jm-repeating-dots *ngIf="useDots"></jm-repeating-dots>
+  </div>
+</div>

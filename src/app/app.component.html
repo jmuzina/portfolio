@@ -1,0 +1,11 @@
+
+<p-toast></p-toast>
+<div class="app-container">
+  <jm-header></jm-header>
+  <div class="page-contents">
+    <router-outlet *ngIf="!loading; else appLoading"></router-outlet>
+    <ng-template #appLoading>
+      <jm-loading-spinner [showMessage]="false" [useDots]="false"></jm-loading-spinner>
+    </ng-template>
+  </div>
+</div>
