@@ -6,14 +6,14 @@ const routes: Routes = [
   {
     path: '',
     pathMatch:'full',
-    redirectTo: 'coming-soon',
-    //loadChildren: () => import('./modules/splash/splash.module').then(m => m.SplashModule),
+    //redirectTo: 'coming-soon',
+    loadChildren: () => import('./modules/splash/splash.module').then(m => m.SplashModule),
   },
-  {
+  /*   {
     path: 'coming-soon',
     pathMatch:'full',
     loadChildren: () => import('./modules/staging/staging.module').then(m => m.StagingModule),
-  },
+  }, */
   {
     path: '**',
     component:PageNotFoundComponent,
