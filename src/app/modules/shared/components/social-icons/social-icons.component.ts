@@ -9,7 +9,8 @@ import { ExternalSitePresence } from 'src/app/classes/external-site-presence.cla
 
 export class SocialIconsComponent {
   public sites: ExternalSitePresence[] = [
-    new ExternalSitePresence({ label:'GitHub', address:'https://github.com/jmuzina', icon:'pi pi-github' }),
-    new ExternalSitePresence({ label:'LinkedIn', address:'https://www.linkedin.com/in/joe-muzina-7b0603164', icon:'pi pi-linkedin' }),
+    new ExternalSitePresence({ label: 'Portfolio (Development build)', address: 'https://dev.jmuzina.io', icon: 'pi pi-cog' }),
+    new ExternalSitePresence({ label: 'GitHub', address: 'https://github.com/jmuzina', icon: 'pi pi-github' }),
+    new ExternalSitePresence({ label: 'LinkedIn', address: 'https://www.linkedin.com/in/joe-muzina-7b0603164', icon: 'pi pi-linkedin' }),
   ];
 }
