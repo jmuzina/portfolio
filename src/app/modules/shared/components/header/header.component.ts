@@ -8,6 +8,6 @@ import { MenuItem } from 'primeng/api';
 })
 export class HeaderComponent {
   public items: MenuItem[] = [
-    { label:'Home', routerLink:'/' },
+    { label:'Home', routerLink:'/', icon: 'pi pi-home' },
   ];
 }
