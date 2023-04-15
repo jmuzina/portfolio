@@ -1,5 +1,10 @@
 # Portfolio
 
+![Production build status](https://github.com/jmuzina/portfolio/actions/workflows/prod.yml/badge.svg)
+![Development build status](https://github.com/jmuzina/portfolio/actions/workflows/dev.yml/badge.svg) 
+
+---------------
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
 
 ## Development server
