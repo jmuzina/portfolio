@@ -15,7 +15,8 @@ import { TooltipModule } from 'primeng/tooltip';
 import { FooterComponent } from './components/footer/footer.component';
 import { SocialIconsComponent } from './components/social-icons/social-icons.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
+import { MatomoOptOutComponent } from './components/matomo-opt-out/matomo-opt-out.component';
+import { SelectButtonModule } from 'primeng/selectbutton';
 @NgModule({
   declarations: [
     LoadingSpinnerComponent,
@@ -25,6 +26,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FooterComponent,
     SocialIconsComponent,
     PageNotFoundComponent,
+    MatomoOptOutComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HttpClientModule,
     ProgressSpinnerModule,
     ToastModule,
+    SelectButtonModule,
     TooltipModule,
     MenubarModule,
     DialogModule,
@@ -43,6 +46,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatomoOptOutComponent,
     ToastModule,
     LoadingSpinnerComponent,
     ColorThemeTogglerComponent,
