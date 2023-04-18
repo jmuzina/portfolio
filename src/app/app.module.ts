@@ -6,6 +6,10 @@ import { SharedModule } from './modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './modules/core/core.module';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { NgxMatomoTrackerModule } from '@ngx-matomo/tracker';
+import { NgxMatomoRouterModule } from '@ngx-matomo/router';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +21,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule.forRoot(),
+    NgxMatomoRouterModule,
+    NgxMatomoTrackerModule.forRoot({ trackerUrl: 'https://matomo.jmuzina.io', siteId: environment.matomoSiteID || '', scriptUrl: 'https://matomo.jmuzina.io/matomo_env.js' }),
   ],
   providers: [],
   bootstrap: [AppComponent],

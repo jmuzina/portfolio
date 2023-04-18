@@ -8,7 +8,9 @@ import { Component, Input } from '@angular/core';
 export class LoadingSpinnerComponent {
   @Input() message = 'Loading';
 
-  @Input() showMessage = true;
+  @Input() showMessage = false;
 
   @Input() useDots = false;
+
+  @Input() height = '7em';
 }

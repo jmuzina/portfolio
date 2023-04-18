@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  appTitle: 'Portfolio (DEV)',
+  appTitle: 'Portfolio (Local Dev)',
+  matomoSiteID: null,
 };

@@ -9,7 +9,7 @@ export class NavigationService {
   public devSite: ExternalSitePresence = new ExternalSitePresence({
     label: 'Portfolio (Development build)',
     address: 'https://dev.jmuzina.io',
-    icon: 'pi pi-cog',
+    icon: 'pi pi-wrench',
     confirmNavigation: {
       header:'Open development build?',
       message: 'Are you sure you want to open the development build?<br><br>The development build is a work-in-progress and not as polished as the main build.',
@@ -19,9 +19,9 @@ export class NavigationService {
   });
 
   public prodSite: ExternalSitePresence = new ExternalSitePresence({
-    label: 'Portfolio (Production build)',
+    label: 'Main site',
     address: 'https://jmuzina.io',
-    icon: 'pi pi-cog',
+    icon: 'pi pi-server',
   });
 
   public externalSites: ExternalSitePresence[] = [

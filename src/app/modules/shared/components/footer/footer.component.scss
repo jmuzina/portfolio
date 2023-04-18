@@ -14,13 +14,19 @@
   border-top: 0.05em solid var(--surface-400);
   background-color: var(--surface-50);
 
+  .footer-left {
+    display: flex;
+    flex: 1;
+    margin-right: auto;
+  }
+
   .dev-build-disclaimer-container {
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
+    align-self: flex-start;
     align-items: center;
-    flex: 1;
-    margin-right: auto;
+
     padding-left: 5px;
     gap: 8px;
 
@@ -32,7 +38,6 @@
   }
 
   .social-icons-container {
-    max-width: 150px;
     align-self: flex-end;
   }
 }

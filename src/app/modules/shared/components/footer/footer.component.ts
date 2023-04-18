@@ -12,5 +12,7 @@ export class FooterComponent {
 
   public devDisclaimerOpen = false;
 
+  public trackingPopupOpen = false;
+
   constructor(public nvs: NavigationService) {}
 }
