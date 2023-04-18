@@ -1,7 +1,7 @@
 <p-dialog class="matomo-opt-out-dialog" [(visible)]="popupOpen" header="Data collection opt-out">
   <div *ngIf="!loading; else optStateLoading" class="opt-out-container">
     <div class="opt-btn-row">
-      <label for="opt-out">Usage metrics:</label>
+      <label class="opt-out-label" for="opt-out">Usage metrics:</label>
       <p-selectButton name="opt-out" id="opt-out" [options]="stateOptions" [ngModel]="selected.value"
         (onChange)="handleChange($event.value)" optionLabel="label" optionValue="value"
         [disabled]="loading"></p-selectButton>
