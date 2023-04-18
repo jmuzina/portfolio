@@ -11,11 +11,11 @@
   <div class="footer-left">
     <div class="dev-build-disclaimer-container" *ngIf="dev">
       <button pButton class="disclaimer-icon p-button p-button-text" icon="pi pi-exclamation-triangle"
-        (click)="devDisclaimerOpen = true" [disabled]="devDisclaimerOpen" label="Beta Build"></button>
+        (click)="devDisclaimerOpen = true" [disabled]="devDisclaimerOpen" label="WIP"></button>
     </div>
     <jm-matomo-opt-out></jm-matomo-opt-out>
   </div>
-  <div class="social-icons-container">
+  <div class="social-icons-wrapper">
     <jm-social-icons></jm-social-icons>
   </div>
 </div>

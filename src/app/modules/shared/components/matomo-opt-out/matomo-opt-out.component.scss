@@ -1,4 +1,4 @@
-.opt-out-container {
+::ng-deep .opt-out-container {
   width: 100%;
 
   display: flex;
@@ -6,21 +6,25 @@
 
   .opt-state-message {}
 
+  @media screen and (min-width:601px) {
+    .opt-btn-row {
+      flex-flow: row nowrap;
+    }
+  }
+
+  @media screen and (max-width:600px) {
+    .opt-btn-row {
+      flex-flow: column nowrap;
+    }
+  }
+
   .opt-btn-row {
     margin-bottom: 1.3em;
     padding-top: 0.5em;
     display: flex;
-    flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
     width: 100%;
   }
-}
 
-
-::ng-deep p-dialog.matomo-opt-out-dialog {
-  .p-dialog {
-    max-width: 600px;
-    max-height: 500px;
-  }
 }

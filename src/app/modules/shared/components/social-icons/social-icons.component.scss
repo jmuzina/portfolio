@@ -1,3 +1,9 @@
 .site-link {
   text-decoration: none;
 }
+
+.social-icons-container {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+}
