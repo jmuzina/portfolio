@@ -1,4 +1,4 @@
-name: Production
+name: jmuzina.io
 
 on:
   push:
