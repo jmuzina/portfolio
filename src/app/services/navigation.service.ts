@@ -26,7 +26,7 @@ export class NavigationService {
 
   public externalSites: ExternalSitePresence[] = [
     new ExternalSitePresence({ label: 'GitHub', address: 'https://github.com/jmuzina', icon: 'pi pi-github' }),
-    new ExternalSitePresence({ label: 'LinkedIn', address: 'https://www.linkedin.com/in/joe-muzina-7b0603164', icon: 'pi pi-linkedin' }),
+    new ExternalSitePresence({ label: 'LinkedIn', address: 'https://www.linkedin.com/in/julie-muzina-7b0603164', icon: 'pi pi-linkedin' }),
   ];
 
   private getOtherEnvironment(): ExternalSitePresence {
