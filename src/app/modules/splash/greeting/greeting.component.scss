@@ -5,9 +5,16 @@
   align-items: center;
   gap: 2rem;
 
-  .my-picture img {
-    border-radius: 2rem;
-    width: 400px;
+    img.my-picture {
+      max-height: 400px;
+      width: auto;
+      border-radius: 2rem;
+
+      @media screen and (max-width: 450px) {
+        max-height: none;
+        height: auto;
+        width: 90%;
+      }
   }
 
   .greeting-text {
@@ -20,7 +27,12 @@
       align-items: center;
     }
 
-    h1, h2, h3, h4, p, span {
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    span {
       text-align: center;
     }
 
