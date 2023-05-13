@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch:'full',
-    redirectTo: 'coming-soon',
+    //redirectTo: 'coming-soon',
     loadChildren: () => import('./modules/splash/splash.module').then(m => m.SplashModule),
   },
   /*   {
