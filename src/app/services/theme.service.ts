@@ -26,7 +26,7 @@ export class ThemeService {
     const supportingLink = this.themeLink('app-theme-supporting');
     if (!primaryLink || !supportingLink) throw new Error('Could not find theme link DOM nodes!');
 
-    primaryLink.href = `color-theme/${theme.code}.css`;
+    primaryLink.href = `assets/css/color-themes/${theme.code}.css`;
     supportingLink.href = `${theme.supportingCode}.css`;
 
     localStorage.setItem(COLOR_THEME_COOKIE_KEY, theme.code);
