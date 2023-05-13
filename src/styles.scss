@@ -14,3 +14,25 @@ body {
 * {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.fade {
+  transition: all 2s ease;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.rot-45 {
+  transform:rotate(45deg);
+}
+
+.section-header {
+  font-size: 1.8em;
+  text-align: center;
+  font-weight: 500;
+}

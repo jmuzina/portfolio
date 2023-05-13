@@ -44,10 +44,12 @@
 }
 
 .dev-disclaimer-nav-content {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  gap: 1.5em;
+  .disclaimer-content {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    gap: 1.5em;
+  }
 
   .prod-nav-btn {
     text-decoration: none;

@@ -1,0 +1,26 @@
+<p-table class="p-datatable-striped" [value]="attributedResources" [tableStyle]="{ 'width': '100%' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Item</th>
+            <th>Author</th>
+            <th>Usage</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-resource>
+        <tr>
+            <td>
+              <a *ngIf="resource.label.link; else resourcePlainText" [href]="resource.label.link">{{resource.label.text}}</a>
+              <ng-template #resourcePlainText>
+                <span>{{resource.label.text}}</span>
+              </ng-template>
+            </td>
+            <td>
+              <a *ngIf="resource.author.link; else resourcePlainText" [href]="resource.author.link">{{resource.author.text}}</a>
+              <ng-template #resourcePlainText>
+                <span>{{resource.author.text}}</span>
+              </ng-template>
+            </td>
+            <td>{{resource.usage}}</td>
+        </tr>
+    </ng-template>
+</p-table>
