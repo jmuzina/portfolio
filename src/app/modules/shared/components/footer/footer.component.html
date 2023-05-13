@@ -1,6 +1,6 @@
-<p-dialog [(visible)]="attributionVisible" header="Attribution">
+<!-- <p-dialog [(visible)]="attributionVisible" header="Attribution">
   <jm-attribution></jm-attribution>
-</p-dialog>
+</p-dialog> -->
 <p-dialog *ngIf="shouldShowWIPDisclaimer" [(visible)]="devDisclaimerOpen" header="Development Disclaimer">
   <div class="dev-disclaimer-nav-content">
     <div *ngIf="dev; else prodWIPDisclaimer" id="dev-disclaimer" class="disclaimer-content">
@@ -23,8 +23,8 @@
       <button pButton class="disclaimer-icon p-button p-button-text" icon="pi pi-exclamation-triangle"
         (click)="devDisclaimerOpen = true" [disabled]="devDisclaimerOpen" label="WIP"></button>
     </div>
-    <button pButton class="attribution-button p-button p-button-text" icon="pi pi-info-circle" pTooltip="Attribution"
-      [disabled]="attributionVisible" (click)="attributionVisible = true"></button>
+   <!--  <button pButton class="attribution-button p-button p-button-text" icon="pi pi-info-circle" pTooltip="Attribution"
+      [disabled]="attributionVisible" (click)="attributionVisible = true"></button> -->
     <jm-matomo-opt-out></jm-matomo-opt-out>
   </div>
   <div class="social-icons-wrapper">

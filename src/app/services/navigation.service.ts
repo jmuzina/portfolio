@@ -50,6 +50,7 @@ export class NavigationService {
   }
 
   constructor(private _router: Router, private _cfs: ConfirmationService) {
-    this.addEnvironmentSwitcher();
+    if (environment.development)
+      this.addEnvironmentSwitcher();
   }
 }
