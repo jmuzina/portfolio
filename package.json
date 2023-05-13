@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^16.0.1",
     "@angular/platform-browser-dynamic": "^16.0.1",
     "@angular/router": "^16.0.1",
+    "@fortawesome/fontawesome-free": "^6.4.0",
     "@ngx-matomo/router": "^4.1.0",
     "@ngx-matomo/tracker": "^4.1.0",
     "primeicons": "^6.0.1",

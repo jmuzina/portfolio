@@ -30,6 +30,7 @@ export class NavigationService {
   ];
 
   private getOtherEnvironment(): ExternalSitePresence {
+
     if (!environment.production) return this.prodSite;
     return this.devSite;
   }

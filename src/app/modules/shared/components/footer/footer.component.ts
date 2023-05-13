@@ -14,5 +14,9 @@ export class FooterComponent {
 
   public trackingPopupOpen = false;
 
+  public attributionVisible = false;
+
+  public shouldShowWIPDisclaimer = true;
+
   constructor(public nvs: NavigationService) {}
 }

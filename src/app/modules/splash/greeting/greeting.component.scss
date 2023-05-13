@@ -1,0 +1,34 @@
+:host ::ng-deep .greeting-row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  .my-picture img {
+    border-radius: 2rem;
+    width: 400px;
+  }
+
+  .greeting-text {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    @media screen and (max-width:1305px) {
+      align-items: center;
+    }
+
+    h1, h2, h3, h4, p, span {
+      text-align: center;
+    }
+
+    .salutation {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      gap: 0.6em;
+    }
+  }
+}

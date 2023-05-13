@@ -19,6 +19,7 @@ $footer-height: 50px;
     height: $header-height;
     position: sticky;
     top: 0;
+    z-index: 100;
   }
 
   jm-footer {
@@ -29,13 +30,7 @@ $footer-height: 50px;
   .page-contents {
     width: 100%;
     height: calc(100% - $header-height - $footer-height);
+    overflow: auto;
+    //padding: 0 2rem
   }
-
-/*   jm-color-theme-toggler {
-    position: absolute;
-    bottom: 1em;
-    right: 1em;
-    height: 150px;
-    width: 150px;
-  } */
 }

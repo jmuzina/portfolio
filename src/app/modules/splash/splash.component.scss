@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.splash-sections {
+  width: 100%;
+
+  > div.splash-section{
+    width: 100%;
+    padding: 1em 0 1em 0;
+  }
+  > div.splash-section:nth-child(even) {
+    background-color: var(--surface-f);
+  }
+}
