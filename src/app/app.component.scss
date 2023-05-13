@@ -30,7 +30,8 @@ $footer-height: 50px;
   .page-contents {
     width: 100%;
     height: calc(100% - $header-height - $footer-height);
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     //padding: 0 2rem
   }
 }
