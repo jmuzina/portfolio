@@ -27,7 +27,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/color-theme"
             ],
             "styles": [
               "src/styles.scss",
@@ -36,14 +37,15 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               {
                 "input": "node_modules/primeng/resources/themes/lara-dark-purple/theme.css",
-                "bundleName": "lara-dark-purple",
+                "bundleName": "primeng-lara-dark-purple",
                 "inject": false
               },
               {
                 "input": "node_modules/primeng/resources/themes/lara-light-purple/theme.css",
-                "bundleName": "lara-light-purple",
+                "bundleName": "primeng-lara-light-purple",
                 "inject": false
               }
+
             ],
             "scripts": []
           },

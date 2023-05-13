@@ -8,9 +8,9 @@ const COLOR_THEME_COOKIE_KEY = 'jmuzina-portfolio-color-theme';
   providedIn: 'root',
 })
 export class ThemeService {
-  public lightTheme: ColorTheme =  { code: 'lara-light-purple', label: 'Light Purple', icon: 'pi pi-sun' };
+  public lightTheme: ColorTheme =  { code: 'light-purple', supportingCode: 'primeng-lara-light-purple', label: 'Light Purple', icon: 'pi pi-sun' };
 
-  public darkTheme: ColorTheme = { code: 'lara-dark-purple', label: 'Dark Purple', icon: 'pi pi-moon' };
+  public darkTheme: ColorTheme = { code: 'dark-purple', supportingCode: 'primeng-lara-dark-purple', label: 'Dark Purple', icon: 'pi pi-moon' };
 
   public get themes(): ColorTheme[] { return [this.lightTheme, this.darkTheme];}
 
@@ -21,17 +21,20 @@ export class ThemeService {
   private set activeTheme(theme: ColorTheme) {
     if (this._activeTheme && theme && this._activeTheme.code === theme.code) return;
 
-    const link = this.themeLink;
-    if (!link) throw new Error('Could not find theme link DOM node!');
+    const primaryLink = this.themeLink();
 
-    link.href = `${theme.code}.css`;
+    const supportingLink = this.themeLink('app-theme-supporting');
+    if (!primaryLink || !supportingLink) throw new Error('Could not find theme link DOM nodes!');
+
+    primaryLink.href = `color-theme/${theme.code}.css`;
+    supportingLink.href = `${theme.supportingCode}.css`;
 
     localStorage.setItem(COLOR_THEME_COOKIE_KEY, theme.code);
     this._activeTheme = theme;
   }
 
-  private get themeLink(): HTMLLinkElement {
-    return this.document.getElementById('app-theme') as HTMLLinkElement;
+  private themeLink(id = 'app-theme-primary'): HTMLLinkElement {
+    return this.document.getElementById(id) as HTMLLinkElement;
   }
 
   public get darkMode(): boolean { return this._activeTheme && this._activeTheme.code === this.darkTheme.code;}
