@@ -3,6 +3,10 @@
   height: 100%;
 }
 
+:host ::ng-deep p-menubarsub {
+  width: 100%;
+}
+
 :host ::ng-deep .app-header {
   .p-menubar {
     background-color: var(--surface-border);

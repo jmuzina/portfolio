@@ -17,6 +17,8 @@ import { SocialIconsComponent } from './components/social-icons/social-icons.com
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MatomoOptOutComponent } from './components/matomo-opt-out/matomo-opt-out.component';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { AttributionComponent } from './components/attribution/attribution.component';
+import { TableModule } from 'primeng/table';
 @NgModule({
   declarations: [
     LoadingSpinnerComponent,
@@ -27,6 +29,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     SocialIconsComponent,
     PageNotFoundComponent,
     MatomoOptOutComponent,
+    AttributionComponent,
   ],
   imports: [
     CommonModule,
@@ -39,6 +42,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     SelectButtonModule,
     TooltipModule,
     MenubarModule,
+    TableModule,
     DialogModule,
   ],
   exports: [
@@ -50,6 +54,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
     ToastModule,
     LoadingSpinnerComponent,
     ColorThemeTogglerComponent,
+    AttributionComponent,
     HeaderComponent,
     FooterComponent,
   ],
