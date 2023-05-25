@@ -8,9 +8,9 @@ describe('MatomoOptOutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MatomoOptOutComponent ]
+      declarations: [ MatomoOptOutComponent ],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(MatomoOptOutComponent);
     component = fixture.componentInstance;

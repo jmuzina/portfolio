@@ -8,9 +8,9 @@ describe('SocialIconsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SocialIconsComponent ]
+      declarations: [ SocialIconsComponent ],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SocialIconsComponent);
     component = fixture.componentInstance;

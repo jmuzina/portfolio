@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationService } from 'src/app/services/navigation.service';
+import { ExternalSitesService } from 'src/app/services/external-sites.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -18,5 +18,5 @@ export class FooterComponent {
 
   public shouldShowWIPDisclaimer = true;
 
-  constructor(public nvs: NavigationService) {}
+  constructor(public exss: ExternalSitesService) {}
 }

@@ -7,7 +7,7 @@ import { SkillsComponent } from './skills/skills.component';
 import { ImageModule } from 'primeng/image';
 import { SkillCardComponent } from './skills/skill-card/skill-card.component';
 import { GalleriaModule } from 'primeng/galleria';
-
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { GalleriaModule } from 'primeng/galleria';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     SplashRoutingModule,
     ImageModule,
     GalleriaModule,

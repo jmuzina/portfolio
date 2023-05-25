@@ -1,17 +1,35 @@
 <!-- <p-dialog [(visible)]="attributionVisible" header="Attribution">
   <jm-attribution></jm-attribution>
 </p-dialog> -->
-<p-dialog *ngIf="shouldShowWIPDisclaimer" [(visible)]="devDisclaimerOpen" header="Development Disclaimer">
+<p-dialog
+  *ngIf="shouldShowWIPDisclaimer"
+  [(visible)]="devDisclaimerOpen"
+  header="Development Disclaimer"
+>
   <div class="dev-disclaimer-nav-content">
-    <div *ngIf="dev; else prodWIPDisclaimer" id="dev-disclaimer" class="disclaimer-content">
-      <span class="disclaimer-message">You are currently viewing the development build, which may be unfinished or
-        buggy.</span>
-      <a pButton class="prod-nav-btn p-button p-button-raised p-button-primary" [href]="nvs.prodSite.address"
-        (click)="nvs.prodSite.open()" label="Return to production site"></a>
+    <div
+      *ngIf="dev; else prodWIPDisclaimer"
+      id="dev-disclaimer"
+      class="disclaimer-content"
+    >
+      <span class="disclaimer-message"
+        >You are currently viewing the development build, which may be
+        unfinished or buggy.</span
+      >
+      <a
+        pButton
+        class="prod-nav-btn p-button p-button-raised p-button-primary"
+        [href]="exss.prodSite.address"
+        (click)="exss.prodSite.open()"
+        label="Return to production site"
+      ></a>
     </div>
     <ng-template #prodWIPDisclaimer>
       <div id="prod-disclaimer" class="disclaimer-content">
-        <span class="disclaimer-message">This portfolio is a work in progress. Come back later to see what changes!</span>
+        <span class="disclaimer-message"
+          >This portfolio is a work in progress. Come back later to see what
+          changes!</span
+        >
       </div>
     </ng-template>
   </div>
@@ -20,10 +38,16 @@
 <div class="footer-container">
   <div class="footer-left">
     <div class="dev-build-disclaimer-container" *ngIf="shouldShowWIPDisclaimer">
-      <button pButton class="disclaimer-icon p-button p-button-text" icon="pi pi-exclamation-triangle"
-        (click)="devDisclaimerOpen = true" [disabled]="devDisclaimerOpen" label="WIP"></button>
+      <button
+        pButton
+        class="disclaimer-icon p-button p-button-text"
+        icon="pi pi-exclamation-triangle"
+        (click)="devDisclaimerOpen = true"
+        [disabled]="devDisclaimerOpen"
+        label="WIP"
+      ></button>
     </div>
-   <!--  <button pButton class="attribution-button p-button p-button-text" icon="pi pi-info-circle" pTooltip="Attribution"
+    <!--  <button pButton class="attribution-button p-button p-button-text" icon="pi pi-info-circle" pTooltip="Attribution"
       [disabled]="attributionVisible" (click)="attributionVisible = true"></button> -->
     <jm-matomo-opt-out></jm-matomo-opt-out>
   </div>

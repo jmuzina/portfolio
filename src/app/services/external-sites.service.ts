@@ -4,17 +4,18 @@ import { ExternalSitePresence } from '../classes/external-site-presence.class';
 import { environment } from 'src/environments/environment';
 import { ConfirmationService } from 'primeng/api';
 
-@Injectable({ providedIn:'root' })
-export class NavigationService {
+@Injectable({ providedIn: 'root' })
+export class ExternalSitesService {
   public devSite: ExternalSitePresence = new ExternalSitePresence({
     label: 'Portfolio (Development build)',
     address: 'https://dev.jmuzina.io',
     icon: 'pi pi-wrench',
     confirmNavigation: {
-      header:'Open development build?',
-      message: 'Are you sure you want to open the development build?<br><br>The development build is a work-in-progress and not as polished as the main build.',
+      header: 'Open development build?',
+      message:
+        'Are you sure you want to open the development build?<br><br>The development build is a work-in-progress and not as polished as the main build.',
       acceptLabel: 'I want to see the latest version!',
-      rejectLabel: 'I\'ll stick with the main site.',
+      rejectLabel: "I'll stick with the main site.",
     },
   });
 
@@ -25,8 +26,16 @@ export class NavigationService {
   });
 
   public externalSites: ExternalSitePresence[] = [
-    new ExternalSitePresence({ label: 'GitHub', address: 'https://github.com/jmuzina', icon: 'pi pi-github' }),
-    new ExternalSitePresence({ label: 'LinkedIn', address: 'https://www.linkedin.com/in/julie-muzina-7b0603164', icon: 'pi pi-linkedin' }),
+    new ExternalSitePresence({
+      label: 'GitHub',
+      address: 'https://github.com/jmuzina',
+      icon: 'pi pi-github',
+    }),
+    new ExternalSitePresence({
+      label: 'LinkedIn',
+      address: 'https://www.linkedin.com/in/julie-muzina-7b0603164',
+      icon: 'pi pi-linkedin',
+    }),
   ];
 
   private getOtherEnvironment(): ExternalSitePresence {
@@ -34,7 +43,7 @@ export class NavigationService {
     return this.devSite;
   }
 
-  private addEnvironmentSwitcher() : void {
+  private addEnvironmentSwitcher(): void {
     const otherEnv = this.getOtherEnvironment();
     if (!otherEnv) throw new Error('Could not detect alternate environment!');
 
@@ -50,7 +59,6 @@ export class NavigationService {
   }
 
   constructor(private _router: Router, private _cfs: ConfirmationService) {
-    if (environment.development)
-      this.addEnvironmentSwitcher();
+    if (environment.development) this.addEnvironmentSwitcher();
   }
 }
