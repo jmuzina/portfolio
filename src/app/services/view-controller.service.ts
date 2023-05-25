@@ -35,14 +35,14 @@ export class ViewControllerService {
         }),
       ],
     }),
-    new RouterNavigationItem({
+    /*     new RouterNavigationItem({
       key: 'resume',
       label: 'Resume',
       icon: 'pi pi-file',
       routerLink: '/resume',
       shouldDisable: () => true,
       tooltip: 'Coming soon...',
-    }),
+    }), */
     new RouterNavigationItem({
       key: 'coming-soon',
       label: 'Portfolio is still under construction. More to come soon...',
@@ -54,7 +54,7 @@ export class ViewControllerService {
 
   public static updateItems(): void {
     ViewControllerService.menuItems = ViewControllerService.navItems.map(
-      (navItem: NavigationItem) => navItem.toMenuItem(),
+      (navItem: NavigationItem) => navItem.toMenuItem()
     );
   }
 
