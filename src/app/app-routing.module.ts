@@ -5,17 +5,22 @@ import { PageNotFoundComponent } from './modules/shared/page-not-found/page-not-
 const routes: Routes = [
   {
     path: '',
-    pathMatch:'full',
-    //redirectTo: 'coming-soon',
-    loadChildren: () => import('./modules/splash/splash.module').then(m => m.SplashModule),
+    pathMatch: 'full',
+    redirectTo: 'home',
   },
-  /*   {
-    path: 'coming-soon',
-    loadChildren: () => import('./modules/staging/staging.module').then(m => m.StagingModule),
-  }, */
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./modules/splash/splash.module').then((m) => m.SplashModule),
+  },
+  {
+    path: 'resume',
+    loadChildren: () =>
+      import('./modules/resume/resume.module').then((m) => m.ResumeModule),
+  },
   {
     path: '**',
-    component:PageNotFoundComponent,
+    component: PageNotFoundComponent,
   },
 ];
 
@@ -23,4 +28,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

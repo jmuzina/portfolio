@@ -1,15 +1,10 @@
 {
   "root": true,
   "extends": ["airbnb-typescript/base"],
-  "ignorePatterns": [
-    "projects/**/*",
-    "src/index.html"
-  ],
+  "ignorePatterns": ["projects/**/*", "src/index.html"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "plugins": ["import"],
       "parserOptions": {
         "project": ["tsconfig.json"]
@@ -39,13 +34,12 @@
         ],
         "linebreak-style": ["error", "unix"],
         "@typescript-eslint/no-explicit-any": "off",
-        "no-async-promise-executor": "off"
+        "no-async-promise-executor": "off",
+        "@typescript-eslint/no-useless-constructor": "off"
       }
     },
     {
-      "files": [
-        "*.component.html"
-      ],
+      "files": ["*.component.html"],
       "parserOptions": {
         "project": "./tsconfig.app.json",
         "ecmaVersion": 2020,
