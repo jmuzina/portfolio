@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FadeIn } from 'src/app/constants/animation.constants';
+import { FadeIn } from 'src/app/constants/animation';
 
 @Component({
   selector: 'jm-splash',
