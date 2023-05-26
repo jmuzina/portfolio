@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { ColorTheme } from 'src/app/classes/color-theme.class';
+import { ColorTheme } from 'src/app/classes/ColorTheme';
 
 const COLOR_THEME_COOKIE_KEY = 'jmuzina-portfolio-color-theme';
 

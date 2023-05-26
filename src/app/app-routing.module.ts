@@ -13,11 +13,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/splash/splash.module').then((m) => m.SplashModule),
   },
-  {
+  /*   {
     path: 'resume',
     loadChildren: () =>
       import('./modules/resume/resume.module').then((m) => m.ResumeModule),
-  },
+  }, */
   {
     path: '**',
     component: PageNotFoundComponent,

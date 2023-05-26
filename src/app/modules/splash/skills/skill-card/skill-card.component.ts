@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Skill } from 'src/app/classes/skill.class';
+import { Skill } from 'src/app/classes/Skill';
 
 @Component({
   selector: 'jm-skill-card',

@@ -1,4 +1,4 @@
 export interface IICon {
-  iconCode: string;
+  class: string;
   style?: any;
 }
