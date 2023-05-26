@@ -1,6 +1,6 @@
 <div class="skill-card-container w-100 h-100">
-  <span class="skill-name">{{skill.label}} ({{skill.duration}})</span>
-  <p-image imageClass="skill-image" *ngIf="skill.image" [src]="skill.image"></p-image>
-  <i *ngIf="skill.icon" class="skill-icon {{skill.icon.iconCode}}" [ngStyle]="skill.icon.style || {}"></i>
+  <span class="skill-name">{{skill.label}} ({{skill.duration.lastTimeStr}})</span>
+  <p-image  *ngIf="skill.picture?.image?.file?.address" imageClass="skill-image" [src]="skill.picture?.image?.file?.address || ''" [alt]="skill.picture?.image?.alt_text || ''"></p-image>
+  <i *ngIf="skill.picture?.icon?.class" class="skill-icon {{skill.picture?.icon?.class}}" [ngStyle]="skill.picture?.icon?.style || {}"></i>
   <span class="skill-description">{{skill.description}}</span>
 </div>

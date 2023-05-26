@@ -5,4 +5,5 @@ export const environment = {
   appTitle: 'Portfolio (DEV)',
   matomoSiteID: '2',
   appUrl: 'https://dev.jmuzina.io',
+  graphQLEndpoint: 'https://api.jmuzina.io/v1/graphql',
 };

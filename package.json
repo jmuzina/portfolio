@@ -22,6 +22,7 @@
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@ngx-matomo/router": "^4.1.0",
     "@ngx-matomo/tracker": "^4.1.0",
+    "json-to-graphql-query": "^2.2.5",
     "primeicons": "^6.0.1",
     "primeng": "^16.0.0-rc.1",
     "rxjs": "~7.8.1",

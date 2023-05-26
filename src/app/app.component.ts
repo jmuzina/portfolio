@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemeService } from 'src/app/services/theme.service';
+import { InitializerService } from './services/initializer.service';
+import { ToastService } from './services/toast.service';
 
 @Component({
   selector: 'jm-root',
@@ -9,18 +10,26 @@ import { ThemeService } from 'src/app/services/theme.service';
 export class AppComponent implements OnInit {
   public loading = true;
 
-  private _fakeLoadingDelay = 500;
+  private async initializeApp() {
+    try {
+      await this._init.initialize();
+    } catch (err) {
+      console.error(err);
+      this._tsts.error({
+        summary: 'App initialization failed',
+        detail: 'Something went wrong while initializing the portfolio.',
+      });
+    } finally {
+      this.loading = false;
+    }
+  }
 
   ngOnInit(): void {
-    this.fakeLoading();
+    this.initializeApp();
   }
 
-  private fakeLoading() : void {
-    this.loading = true;
-    setTimeout(() => {
-      this.loading = false;
-    }, this._fakeLoadingDelay);
-  }
-
-  constructor(public ths: ThemeService) { }
+  constructor(
+    private _init: InitializerService,
+    private _tsts: ToastService,
+  ) { }
 }

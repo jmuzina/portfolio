@@ -3,7 +3,7 @@ import {
   ExternalLinkNavigationItem,
   NavigationItem,
   RouterNavigationItem,
-} from '../classes/nav-item.class';
+} from '../classes/NavItem';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
@@ -35,14 +35,14 @@ export class ViewControllerService {
         }),
       ],
     }),
-    new RouterNavigationItem({
+    /*     new RouterNavigationItem({
       key: 'resume',
       label: 'Resume',
       icon: 'pi pi-file',
       routerLink: '/resume',
-      shouldDisable: () => true,
       tooltip: 'Coming soon...',
-    }),
+      shouldDisable: () => false,
+    }), */
     new RouterNavigationItem({
       key: 'coming-soon',
       label: 'Portfolio is still under construction. More to come soon...',

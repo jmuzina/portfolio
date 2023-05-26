@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IAttributedResource } from 'src/app/interfaces/attributed-resource.interface';
+import { IAttributedResource } from 'src/app/interfaces/AttributedResource';
 
 
 @Component({
