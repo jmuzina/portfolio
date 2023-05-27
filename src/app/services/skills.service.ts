@@ -18,6 +18,10 @@ export class SkillsService extends GenericService {
             { sort_order: new EnumType('asc') },
             { label: new EnumType('asc') },
           ],
+          where: {
+            highlighted: { _eq: true },
+            description: { _is_null: false },
+          },
         },
         label: true,
         description: true,
