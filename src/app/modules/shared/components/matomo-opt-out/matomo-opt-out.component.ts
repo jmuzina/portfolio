@@ -5,8 +5,8 @@ import { ToastService } from 'src/app/services/toast.service';
 type TOnOff = 'on' | 'off';
 
 interface IOptOutState {
-  label: string
-  value: TOnOff
+  label: string;
+  value: TOnOff;
 }
 
 @Component({
@@ -29,7 +29,6 @@ export class MatomoOptOutComponent implements OnInit {
 
   public stateOptions: IOptOutState[] = [this._on, this._off];
 
-
   handleChange(state: TOnOff) {
     if (state === 'off') {
       this.tracker.optUserOut();
@@ -45,16 +44,15 @@ export class MatomoOptOutComponent implements OnInit {
       this.loading = true;
       this.optedOut = await this.tracker.isUserOptedOut();
       this.selected = this.optedOut ? this._off : this._on;
-
     } catch (err: any) {
       console.error(err);
-      this._tsts.error({ detail:err.message });
+      this._tsts.error({ detail: err.message });
     } finally {
       this.loading = false;
     }
   }
 
-  public get optStateMessage() : string {
+  public get optStateMessage(): string {
     if (this.optedOut) {
       return 'You are currently opted out of usage metrics tracking. I will not receive or store any of your usage data.';
     }
@@ -65,5 +63,8 @@ export class MatomoOptOutComponent implements OnInit {
     this.refreshState();
   }
 
-  constructor(private readonly tracker: MatomoTracker, private _tsts: ToastService) {}
+  constructor(
+    private readonly tracker: MatomoTracker,
+    private _tsts: ToastService
+  ) {}
 }

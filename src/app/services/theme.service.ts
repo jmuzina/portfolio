@@ -67,15 +67,14 @@ export class ThemeService {
   private loadInitialColorTheme(): void {
     if (this._activeTheme)
       throw new Error(
-        'Cannot load color theme from cookie after it has already been loaded.',
+        'Cannot load color theme from cookie after it has already been loaded.'
       );
 
     const cookieVal = localStorage.getItem(COLOR_THEME_COOKIE_KEY);
 
-    // Dark theme is default, as it should be :)
     const themeToSet: ColorTheme =
       this.themes.find((theme: ColorTheme) => theme.code === cookieVal) ||
-      this.darkTheme;
+      this.lightTheme;
 
     if (!themeToSet) throw new Error('Could not find a color theme to use.');
 
