@@ -12,17 +12,9 @@ export class AppComponent implements OnInit {
   public loading = true;
 
   private async initializeApp() {
-    try {
-      await this._init.initialize();
-    } catch (err) {
-      console.error(err);
-      this._tsts.error({
-        summary: 'App initialization failed',
-        detail: 'Something went wrong while initializing the portfolio.',
-      });
-    } finally {
+    this.inits.initialize().finally(() => {
       this.loading = false;
-    }
+    });
   }
 
   ngOnInit(): void {
@@ -30,8 +22,8 @@ export class AppComponent implements OnInit {
   }
 
   constructor(
-    private _init: InitializerService,
+    public inits: InitializerService,
     private _tsts: ToastService,
-    public mnts: MaintenanceService
+    public mnts: MaintenanceService,
   ) {}
 }

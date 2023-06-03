@@ -1,13 +1,14 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ColorTheme } from 'src/app/classes/ColorTheme';
+import { GenericService } from './generic.service';
 
 const COLOR_THEME_COOKIE_KEY = 'jmuzina-portfolio-color-theme';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ThemeService {
+export class ThemeService extends GenericService {
   public lightTheme: ColorTheme = {
     code: 'light-purple',
     supportingCode: 'primeng-lara-light-purple',
@@ -72,17 +73,21 @@ export class ThemeService {
 
     const cookieVal = localStorage.getItem(COLOR_THEME_COOKIE_KEY);
 
-    // Dark theme is default, as it should be :)
     const themeToSet: ColorTheme =
       this.themes.find((theme: ColorTheme) => theme.code === cookieVal) ||
-      this.darkTheme;
+      this.lightTheme;
 
     if (!themeToSet) throw new Error('Could not find a color theme to use.');
 
     this.activeTheme = themeToSet;
   }
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
+  public override initialize(): Promise<any> {
     this.loadInitialColorTheme();
+    return super.initialize();
+  }
+
+  constructor(@Inject(DOCUMENT) private document: Document) {
+    super();
   }
 }
