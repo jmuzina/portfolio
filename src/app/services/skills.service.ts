@@ -67,8 +67,9 @@ export class SkillsService extends GenericService {
     return classifications;
   }
 
-  public override async onInitialized(): Promise<void> {
+  public override async initialize(): Promise<void> {
     this.classifications = await this.fetchSkillClassifications();
+    return super.initialize();
   }
 
   constructor(private _gqls: GraphQLService) {

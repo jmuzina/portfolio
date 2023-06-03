@@ -70,6 +70,10 @@ export class ViewControllerService {
     ViewControllerService.updateItems();
   }
 
+  public refresh(): void {
+    window.location.reload();
+  }
+
   constructor(public routerRef: Router) {
     ViewControllerService.router = routerRef;
     ViewControllerService.updateItems();

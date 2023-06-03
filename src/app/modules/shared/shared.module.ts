@@ -57,6 +57,7 @@ import { MaintenanceMessageComponent } from './components/maintenance-message/ma
     LoadingSpinnerComponent,
     ColorThemeTogglerComponent,
     AttributionComponent,
+    PageNotFoundComponent,
     HeaderComponent,
     MaintenanceMessageComponent,
     FooterComponent,

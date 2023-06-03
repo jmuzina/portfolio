@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ViewControllerService } from 'src/app/services/view-controller.service';
 
 @Component({
@@ -6,9 +6,13 @@ import { ViewControllerService } from 'src/app/services/view-controller.service'
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   public get items() {
     return ViewControllerService.menuItems;
+  }
+
+  ngOnInit(): void {
+    ViewControllerService.updateItems();
   }
 
   constructor(public vcs: ViewControllerService) {}
