@@ -1,5 +1,17 @@
-<p-menubar class="app-header" [model]="items">
-  <ng-template pTemplate="end">
-    <jm-color-theme-toggler></jm-color-theme-toggler>
+<p-menubar class="app-header">
+  <ng-template pTemplate="start">
+    <div class="nav-start-wrapper">
+      <button
+        pButton
+        class="p-button p-button-text"
+        icon="pi pi-bars"
+        (click)="vcs.sidebarCollapsed = !vcs.sidebarCollapsed"
+      ></button>
+      <img
+        src="../../../../../assets/images/me.jpeg"
+        class="brand-img circular-img"
+      />
+      <span class="app-name">{{ env.appTitle }}</span>
+    </div>
   </ng-template>
 </p-menubar>

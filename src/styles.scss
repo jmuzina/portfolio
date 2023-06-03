@@ -8,11 +8,13 @@ html {
   --highlighted-nav-item-background: #a17bf8;
   --highlighted-nav-item-text: #f1ebff;
   --section-alternate-background: #0b0712;
+  --sidebar-color: #0e1f36;
 }
 .light-purple-theme {
   --highlighted-nav-item-background: #7337ff;
   --highlighted-nav-item-text: #f1ebff;
   --section-alternate-background: #e2deeb;
+  --sidebar-color: #f2edff;
 }
 
 body {
@@ -53,4 +55,8 @@ body {
   text-align: center;
   font-weight: 300;
   color: var(--text-color-secondary);
+}
+
+.circular-img {
+  border-radius: 200px;
 }

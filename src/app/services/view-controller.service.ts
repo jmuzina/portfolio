@@ -1,81 +1,78 @@
 import { Injectable } from '@angular/core';
-import {
-  ExternalLinkNavigationItem,
-  NavigationItem,
-  RouterNavigationItem,
-} from '../classes/NavItem';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { GenericService } from './generic.service';
+
+const SIDEBAR_COLLAPSE_KEY = 'jmuzina-portfolio-sidebar-collapsed';
 
 @Injectable({ providedIn: 'root' })
-export class ViewControllerService {
-  public static menuItems: MenuItem[] = [];
-
-  public static router: Router;
-
-  public static navItems: NavigationItem[] = [
-    new RouterNavigationItem({
-      key: 'home',
+export class ViewControllerService extends GenericService {
+  public menuItems: MenuItem[] = [
+    {
       label: environment.appTitle,
       routerLink: '/home',
       icon: 'pi pi-home',
-    }),
-    new NavigationItem({
-      key: 'apps',
+    },
+    {
       label: 'Apps',
       icon: 'item-right-side fa fa-light fa-circle-nodes',
-      children: [
-        new ExternalLinkNavigationItem({
-          key: 'gpxvis',
+      items: [
+        {
           label: 'GPX Visualizer',
           icon: 'fa fa-light fa-bicycle',
           tooltip: 'View and save visualizations of your Strava exercises',
-          href: 'https://gpxvis.com',
-        }),
+          command: () => {
+            window.open('https://gpxvis.com');
+          },
+        },
       ],
-    }),
-    /*     new RouterNavigationItem({
-      key: 'resume',
-      label: 'Resume',
-      icon: 'pi pi-file',
-      routerLink: '/resume',
-      tooltip: 'Coming soon...',
-      shouldDisable: () => false,
-    }), */
-    new RouterNavigationItem({
-      key: 'under-maintenance',
-      label: 'Portfolio is still under construction. More to come soon...',
-      icon: 'pi pi-cog',
-      shouldDisable: () => true,
-      routerLink: '/under-maintenance',
-    }),
+    },
   ];
 
-  public static updateItems(): void {
-    ViewControllerService.menuItems = ViewControllerService.navItems.map(
-      (navItem: NavigationItem) => navItem.toMenuItem(),
-    );
+  private _sidebarCollapsed = true;
+
+  public get sidebarCollapsed(): boolean {
+    return this._sidebarCollapsed;
   }
 
-  public static selectItem(itemToSelect: NavigationItem): void {
-    itemToSelect.updateDisabled();
-    if (itemToSelect.disabled) return;
-    ViewControllerService.navItems
-      .filter((item) => item.key !== itemToSelect.key)
-      .forEach((item) => {
-        item.active = false;
-      });
-    itemToSelect.active = true;
-    ViewControllerService.updateItems();
+  public set sidebarCollapsed(state: boolean) {
+    this._sidebarCollapsed = state;
+    localStorage.setItem(
+      SIDEBAR_COLLAPSE_KEY,
+      JSON.stringify(this._sidebarCollapsed)
+    );
   }
 
   public refresh(): void {
     window.location.reload();
   }
 
-  constructor(public routerRef: Router) {
-    ViewControllerService.router = routerRef;
-    ViewControllerService.updateItems();
+  public sidebarInitialize(): void {
+    const storedValue = localStorage.getItem(SIDEBAR_COLLAPSE_KEY);
+    if (!storedValue?.length) return;
+
+    let initiallyCollapsed = false;
+
+    switch (storedValue) {
+      case 'false':
+        initiallyCollapsed = false;
+        break;
+      case 'true':
+      default:
+        initiallyCollapsed = true;
+        break;
+    }
+
+    this.sidebarCollapsed = initiallyCollapsed;
+  }
+
+  public override initialize(): Promise<any> {
+    this.sidebarInitialize();
+    return super.initialize();
+  }
+
+  constructor(public router: Router) {
+    super();
   }
 }

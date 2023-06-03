@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InitializerService } from './services/initializer.service';
 import { ToastService } from './services/toast.service';
 import { MaintenanceService } from './services/maintenance.service';
+import { ViewControllerService } from './services/view-controller.service';
 
 @Component({
   selector: 'jm-root',
@@ -25,5 +26,6 @@ export class AppComponent implements OnInit {
     public inits: InitializerService,
     private _tsts: ToastService,
     public mnts: MaintenanceService,
+    public vcs: ViewControllerService
   ) {}
 }

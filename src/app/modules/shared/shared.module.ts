@@ -20,6 +20,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { AttributionComponent } from './components/attribution/attribution.component';
 import { TableModule } from 'primeng/table';
 import { MaintenanceMessageComponent } from './components/maintenance-message/maintenance-message.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 @NgModule({
   declarations: [
     LoadingSpinnerComponent,
@@ -32,6 +33,7 @@ import { MaintenanceMessageComponent } from './components/maintenance-message/ma
     MatomoOptOutComponent,
     AttributionComponent,
     MaintenanceMessageComponent,
+    SidebarComponent,
   ],
   imports: [
     CommonModule,
@@ -59,6 +61,7 @@ import { MaintenanceMessageComponent } from './components/maintenance-message/ma
     AttributionComponent,
     PageNotFoundComponent,
     HeaderComponent,
+    SidebarComponent,
     MaintenanceMessageComponent,
     FooterComponent,
   ],
