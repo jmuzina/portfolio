@@ -1,6 +1,5 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { Injectable } from '@angular/core';
-import { Skill, SkillClassification } from '../classes/Skill';
+import { SkillClassification } from '../classes/Skill';
 import { GenericService } from './generic.service';
 import { GraphQLService } from './graphql.service';
 import { EnumType, jsonToGraphQLQuery } from 'json-to-graphql-query';
@@ -70,7 +69,6 @@ export class SkillsService extends GenericService {
 
   public override async onInitialized(): Promise<void> {
     this.classifications = await this.fetchSkillClassifications();
-    console.log(this.classifications);
   }
 
   constructor(private _gqls: GraphQLService) {

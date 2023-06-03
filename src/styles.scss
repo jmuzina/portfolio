@@ -4,6 +4,17 @@ html {
   overflow: hidden;
 }
 
+.dark-purple-theme {
+  --highlighted-nav-item-background: #a17bf8;
+  --highlighted-nav-item-text: #f1ebff;
+  --section-alternate-background: #0b0712;
+}
+.light-purple-theme {
+  --highlighted-nav-item-background: #7337ff;
+  --highlighted-nav-item-text: #f1ebff;
+  --section-alternate-background: #e2deeb;
+}
+
 body {
   margin: 0;
   height: 100%;
