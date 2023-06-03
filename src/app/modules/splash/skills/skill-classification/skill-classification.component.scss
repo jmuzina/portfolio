@@ -1,0 +1,36 @@
+$skill-item-width: 115px;
+
+.classification-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8em;
+  .classification-name-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4em;
+    .classification-name {
+      font-size: 1.7rem;
+      text-align: center;
+    }
+    .classification-icon {
+      font-size: 1.7rem;
+    }
+  }
+  .classification-name-wrapper:after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 75%;
+    padding-top: 0.2em;
+    border-bottom: 1px solid var(--primary-color);
+  }
+  .related-skills-container {
+    display: grid;
+    grid-template-columns: $skill-item-width $skill-item-width;
+    gap: 1.3em;
+  }
+}

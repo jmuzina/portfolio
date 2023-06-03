@@ -1,0 +1,15 @@
+<div *ngIf="classification?.skills?.length" class="classification-wrapper">
+  <div class="classification-name-wrapper">
+    <span class="classification-name">{{ classification.label }}</span>
+    <i
+      *ngIf="classification?.picture?.icon?.class"
+      [class]="'classification-icon ' + classification.picture?.icon?.class"
+    ></i>
+  </div>
+  <div class="related-skills-container">
+    <jm-skill-item
+      *ngFor="let skill of classification.skills"
+      [skill]="skill"
+    ></jm-skill-item>
+  </div>
+</div>

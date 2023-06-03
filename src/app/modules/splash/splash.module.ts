@@ -5,16 +5,18 @@ import { SplashRoutingModule } from './splash-routing.module';
 import { GreetingComponent } from './greeting/greeting.component';
 import { SkillsComponent } from './skills/skills.component';
 import { ImageModule } from 'primeng/image';
-import { SkillCardComponent } from './skills/skill-card/skill-card.component';
 import { GalleriaModule } from 'primeng/galleria';
 import { SharedModule } from '../shared/shared.module';
+import { SkillClassificationComponent } from './skills/skill-classification/skill-classification.component';
+import { SkillItemComponent } from './skills/skill-classification/skill-item/skill-item.component';
 
 @NgModule({
   declarations: [
     SplashComponent,
     GreetingComponent,
     SkillsComponent,
-    SkillCardComponent,
+    SkillClassificationComponent,
+    SkillItemComponent,
   ],
   imports: [
     CommonModule,
@@ -24,4 +26,4 @@ import { SharedModule } from '../shared/shared.module';
     GalleriaModule,
   ],
 })
-export class SplashModule { }
+export class SplashModule {}
