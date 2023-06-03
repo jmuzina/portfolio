@@ -57,11 +57,11 @@ export class SkillsService extends GenericService {
             },
           },
         },
-      })
+      }),
     );
     const classifications: SkillClassification[] =
       queryResult.classifications.map(
-        (classificationRec: any) => new SkillClassification(classificationRec)
+        (classificationRec: any) => new SkillClassification(classificationRec),
       );
 
     return classifications;

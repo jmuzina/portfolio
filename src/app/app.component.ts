@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InitializerService } from './services/initializer.service';
 import { ToastService } from './services/toast.service';
+import { MaintenanceService } from './services/maintenance.service';
 
 @Component({
   selector: 'jm-root',
@@ -31,5 +32,6 @@ export class AppComponent implements OnInit {
   constructor(
     private _init: InitializerService,
     private _tsts: ToastService,
-  ) { }
+    public mnts: MaintenanceService
+  ) {}
 }

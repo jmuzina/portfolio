@@ -67,7 +67,7 @@ export class ThemeService {
   private loadInitialColorTheme(): void {
     if (this._activeTheme)
       throw new Error(
-        'Cannot load color theme from cookie after it has already been loaded.'
+        'Cannot load color theme from cookie after it has already been loaded.',
       );
 
     const cookieVal = localStorage.getItem(COLOR_THEME_COOKIE_KEY);

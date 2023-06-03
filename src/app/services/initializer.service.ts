@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { GenericService } from './generic.service';
 import { SkillsService } from './skills.service';
 import { ToastService } from './toast.service';
+import { MaintenanceService } from './maintenance.service';
 
 @Injectable({ providedIn: 'root' })
 export class InitializerService extends GenericService {
@@ -9,7 +10,9 @@ export class InitializerService extends GenericService {
     return new Promise<void>(async (resolve, reject) => {
       try {
         await Promise.all(
-          [this._sks].map((service: GenericService) => service.initialize())
+          [this._sks, this._mnts].map((service: GenericService) =>
+            service.initialize(),
+          ),
         );
         resolve();
       } catch (err) {
@@ -26,7 +29,11 @@ export class InitializerService extends GenericService {
     return super.initialize();
   }
 
-  constructor(private _tsts: ToastService, private _sks: SkillsService) {
+  constructor(
+    private _tsts: ToastService,
+    private _sks: SkillsService,
+    private _mnts: MaintenanceService,
+  ) {
     super();
   }
 }
