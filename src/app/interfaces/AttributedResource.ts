@@ -1,4 +1,4 @@
-import { ITextLinkOptional } from './text-link-optional.interface';
+import { ITextLinkOptional } from './TextLinkOptional';
 
 export interface IAttributedResource {
   label: ITextLinkOptional

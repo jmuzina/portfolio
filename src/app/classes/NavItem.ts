@@ -1,5 +1,5 @@
 import { MenuItem } from 'primeng/api';
-import { ConditionalClassList } from './conditional-class-list.class';
+import { ConditionalClassList } from './ConditionalClassList';
 import {
   CommandNavigationItemOpts,
   ExternalLinkNavigationItemOpts,
@@ -7,7 +7,7 @@ import {
   RouterNavigationItemOpts,
 } from '../types/nav-item.type';
 import { ViewControllerService } from '../services/view-controller.service';
-import { assignEntriesToObject } from '../util/ctor.util';
+import { assignEntriesToObject } from '../util/ctor';
 
 export class NavigationItem {
   public key!: string;

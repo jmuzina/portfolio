@@ -1,5 +1,5 @@
-import { ConditionalClassList } from '../classes/conditional-class-list.class';
-import { NavigationItem } from '../classes/nav-item.class';
+import { ConditionalClassList } from '../classes/ConditionalClassList';
+import { NavigationItem } from '../classes/NavItem';
 
 export type NavigationItemOpts = {
   key: string;

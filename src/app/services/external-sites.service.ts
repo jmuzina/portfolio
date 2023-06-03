@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ExternalSitePresence } from '../classes/external-site-presence.class';
+import { ExternalSitePresence } from '../classes/ExternalSitePresence';
 import { environment } from 'src/environments/environment';
 import { ConfirmationService } from 'primeng/api';
 
