@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { GenericService } from './generic.service';
 import { SkillsService } from './skills.service';
 import { ToastService } from './toast.service';
-import { EmployerService } from './Employer.service';
 
 @Injectable({ providedIn: 'root' })
 export class InitializerService extends GenericService {
@@ -27,11 +26,7 @@ export class InitializerService extends GenericService {
     return super.initialize();
   }
 
-  constructor(
-    private _tsts: ToastService,
-    private _sks: SkillsService,
-    private _emps: EmployerService
-  ) {
+  constructor(private _tsts: ToastService, private _sks: SkillsService) {
     super();
   }
 }
