@@ -1,4 +1,5 @@
 $skill-item-width: 115px;
+$skill-item-height: 200px;
 
 .classification-wrapper {
   display: flex;
@@ -31,6 +32,11 @@ $skill-item-width: 115px;
   .related-skills-container {
     display: grid;
     grid-template-columns: $skill-item-width $skill-item-width;
+    grid-template-rows: repeat(auto-fill, minmax($skill-item-height, 1fr));
     gap: 1.3em;
+    jm-skill-item {
+      height: $skill-item-height;
+      width: $skill-item-width;
+    }
   }
 }
