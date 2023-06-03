@@ -19,6 +19,7 @@ import { MatomoOptOutComponent } from './components/matomo-opt-out/matomo-opt-ou
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { AttributionComponent } from './components/attribution/attribution.component';
 import { TableModule } from 'primeng/table';
+import { MaintenanceMessageComponent } from './components/maintenance-message/maintenance-message.component';
 @NgModule({
   declarations: [
     LoadingSpinnerComponent,
@@ -30,6 +31,7 @@ import { TableModule } from 'primeng/table';
     PageNotFoundComponent,
     MatomoOptOutComponent,
     AttributionComponent,
+    MaintenanceMessageComponent,
   ],
   imports: [
     CommonModule,
@@ -56,7 +58,8 @@ import { TableModule } from 'primeng/table';
     ColorThemeTogglerComponent,
     AttributionComponent,
     HeaderComponent,
+    MaintenanceMessageComponent,
     FooterComponent,
   ],
 })
-export class SharedModule { }
+export class SharedModule {}

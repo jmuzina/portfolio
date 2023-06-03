@@ -4,6 +4,17 @@ html {
   overflow: hidden;
 }
 
+.dark-purple-theme {
+  --highlighted-nav-item-background: #a17bf8;
+  --highlighted-nav-item-text: #f1ebff;
+  --section-alternate-background: #0b0712;
+}
+.light-purple-theme {
+  --highlighted-nav-item-background: #7337ff;
+  --highlighted-nav-item-text: #f1ebff;
+  --section-alternate-background: #e2deeb;
+}
+
 body {
   margin: 0;
   height: 100%;
@@ -12,7 +23,7 @@ body {
 }
 
 * {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .fade {
@@ -28,11 +39,18 @@ body {
 }
 
 .rot-45 {
-  transform:rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .section-header {
   font-size: 1.8em;
   text-align: center;
   font-weight: 500;
+}
+
+.section-subheader {
+  font-size: 1.4em;
+  text-align: center;
+  font-weight: 300;
+  color: var(--text-color-secondary);
 }
