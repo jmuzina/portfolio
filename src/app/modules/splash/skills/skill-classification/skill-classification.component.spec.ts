@@ -8,7 +8,7 @@ describe('SkillClassificationComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SkillClassificationComponent]
+      declarations: [SkillClassificationComponent],
     });
     fixture = TestBed.createComponent(SkillClassificationComponent);
     component = fixture.componentInstance;
