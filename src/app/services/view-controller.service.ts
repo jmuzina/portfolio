@@ -44,11 +44,11 @@ export class ViewControllerService {
       shouldDisable: () => false,
     }), */
     new RouterNavigationItem({
-      key: 'coming-soon',
+      key: 'under-maintenance',
       label: 'Portfolio is still under construction. More to come soon...',
       icon: 'pi pi-cog',
       shouldDisable: () => true,
-      routerLink: '/coming-soon',
+      routerLink: '/under-maintenance',
     }),
   ];
 
