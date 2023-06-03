@@ -65,6 +65,6 @@ export class MatomoOptOutComponent implements OnInit {
 
   constructor(
     private readonly tracker: MatomoTracker,
-    private _tsts: ToastService
+    private _tsts: ToastService,
   ) {}
 }

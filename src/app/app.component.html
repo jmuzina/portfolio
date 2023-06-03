@@ -2,20 +2,26 @@
 <p-confirmDialog></p-confirmDialog>
 <div class="app-container">
   <jm-header></jm-header>
-  <div *ngIf="!mnts.activeMaintenanceEvent" class="page-contents">
-    <router-outlet *ngIf="!loading; else appLoading"></router-outlet>
+  <div class="page-contents">
+    <ng-container *ngIf="!loading; else appLoading">
+      <router-outlet
+        *ngIf="!mnts.activeMaintenanceEvent && !inits.initializationError"
+      ></router-outlet>
+      <jm-page-not-found
+        *ngIf="inits.initializationError && !mnts.activeMaintenanceEvent"
+      ></jm-page-not-found>
+
+      <jm-maintenance-message
+        *ngIf="mnts.activeMaintenanceEvent"
+        [event]="mnts.activeMaintenanceEvent"
+      ></jm-maintenance-message>
+    </ng-container>
     <ng-template #appLoading>
       <jm-loading-spinner
         [showMessage]="false"
         [useDots]="false"
       ></jm-loading-spinner>
     </ng-template>
+    <jm-footer></jm-footer>
   </div>
-
-  <jm-maintenance-message
-    *ngIf="mnts.activeMaintenanceEvent"
-    [event]="mnts.activeMaintenanceEvent"
-  ></jm-maintenance-message>
-
-  <jm-footer></jm-footer>
 </div>

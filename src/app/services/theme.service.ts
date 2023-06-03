@@ -1,13 +1,14 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ColorTheme } from 'src/app/classes/ColorTheme';
+import { GenericService } from './generic.service';
 
 const COLOR_THEME_COOKIE_KEY = 'jmuzina-portfolio-color-theme';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ThemeService {
+export class ThemeService extends GenericService {
   public lightTheme: ColorTheme = {
     code: 'light-purple',
     supportingCode: 'primeng-lara-light-purple',
@@ -67,7 +68,7 @@ export class ThemeService {
   private loadInitialColorTheme(): void {
     if (this._activeTheme)
       throw new Error(
-        'Cannot load color theme from cookie after it has already been loaded.'
+        'Cannot load color theme from cookie after it has already been loaded.',
       );
 
     const cookieVal = localStorage.getItem(COLOR_THEME_COOKIE_KEY);
@@ -81,7 +82,12 @@ export class ThemeService {
     this.activeTheme = themeToSet;
   }
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
+  public override initialize(): Promise<any> {
     this.loadInitialColorTheme();
+    return super.initialize();
+  }
+
+  constructor(@Inject(DOCUMENT) private document: Document) {
+    super();
   }
 }

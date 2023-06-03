@@ -1,16 +1,26 @@
 <div class="pnf-wrapper">
   <div class="pnf-container">
-    <span class="pnf-404">Page not found</span>
+    <span class="pnf-404"
+      >{{ !inits.initializationError ? "Page not found" : "Error" }}
+    </span>
     <div class="pnf-image-container">
       <img
         class="pnf-image"
-        src="../../../../assets/images/page-not-found.jpg"
-        alt="I'm giving her all she's got, Captain, but that page can't be found!"
+        [src]="
+          inits.initializationError
+            ? err.image.file.address
+            : pnf.image.file.address
+        "
+        [alt]="
+          inits.initializationError ? err.image.alt_text : pnf.image.alt_text
+        "
       />
     </div>
-    <span class="pnf-message"
-      >We're sorry, but we couldn't locate that page.</span
-    >
+    <span class="pnf-message">{{
+      !inits.initializationError
+        ? "I'm sorry, but I couldn't locate that page."
+        : "An error has occurred: " + inits.initializationError.message
+    }}</span>
     <div class="pnf-actions">
       <button
         pButton
@@ -21,12 +31,22 @@
         pTooltip="Go back to where you came from. It's (probably) safe there!"
       ></button>
       <button
+        *ngIf="!inits.initializationError"
         pButton
         class="pnf-gohome p-button p-button-raised p-button-primary"
         label="Home"
         icon="pi pi-home"
         (click)="exss.goHome()"
         pTooltip="Go to the homepage."
+      ></button>
+      <button
+        *ngIf="inits.initializationError"
+        pButton
+        class="pnf-refresh p-button p-button-raised p-button-primary"
+        label="Refresh"
+        icon="pi pi-refresh"
+        (click)="vcs.refresh()"
+        pTooltip="Refresh the page"
       ></button>
     </div>
   </div>
