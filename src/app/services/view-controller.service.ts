@@ -54,7 +54,7 @@ export class ViewControllerService {
 
   public static updateItems(): void {
     ViewControllerService.menuItems = ViewControllerService.navItems.map(
-      (navItem: NavigationItem) => navItem.toMenuItem()
+      (navItem: NavigationItem) => navItem.toMenuItem(),
     );
   }
 
@@ -68,6 +68,10 @@ export class ViewControllerService {
       });
     itemToSelect.active = true;
     ViewControllerService.updateItems();
+  }
+
+  public refresh(): void {
+    window.location.reload();
   }
 
   constructor(public routerRef: Router) {

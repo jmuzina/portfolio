@@ -7,7 +7,5 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./color-theme-toggler.component.scss'],
 })
 export class ColorThemeTogglerComponent {
-  constructor(public ths: ThemeService) {
-    //ths.activeTheme
-  }
+  constructor(public ths: ThemeService) {}
 }

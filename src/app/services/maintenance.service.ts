@@ -38,19 +38,20 @@ export class MaintenanceService extends GenericService {
             message: true,
           },
         },
-      })
+      }),
     );
 
     const events: MaintenanceEvent[] = queryResult.maintEvents.map(
-      (evtRec: any) => new MaintenanceEvent(evtRec)
+      (evtRec: any) => new MaintenanceEvent(evtRec),
     );
     const result: MaintenanceEvent = events[0];
 
     return result;
   }
 
-  public override async onInitialized(): Promise<any> {
+  public override async initialize(): Promise<any> {
     this.activeMaintenanceEvent = await this.getActiveMaintenanceEvent();
+    return super.initialize();
   }
 
   constructor(private _gqls: GraphQLService) {
