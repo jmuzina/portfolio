@@ -54,6 +54,7 @@ import { MaintenanceMessageComponent } from './components/maintenance-message/ma
     ReactiveFormsModule,
     MatomoOptOutComponent,
     ToastModule,
+    TooltipModule,
     LoadingSpinnerComponent,
     ColorThemeTogglerComponent,
     AttributionComponent,
