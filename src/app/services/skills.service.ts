@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SkillClassification } from '../classes/Skill';
+import { Skill, SkillClassification } from '../classes/Skill';
 import { GenericService } from './generic.service';
 import { GraphQLService } from './graphql.service';
 import { EnumType, jsonToGraphQLQuery } from 'json-to-graphql-query';
@@ -7,6 +7,8 @@ import { EnumType, jsonToGraphQLQuery } from 'json-to-graphql-query';
 @Injectable({ providedIn: 'root' })
 export class SkillsService extends GenericService {
   public classifications: SkillClassification[] = [];
+
+  public skills: Skill[] = [];
 
   public async fetchSkillClassifications(): Promise<SkillClassification[]> {
     const queryResult: any = await this._gqls.fetchGraphQL(
@@ -19,12 +21,8 @@ export class SkillsService extends GenericService {
                 { sort_order: new EnumType('asc') },
                 { label: new EnumType('asc') },
               ],
-              where: {
-                Skills: {
-                  highlighted: { _eq: true },
-                },
-              },
             },
+            id: true,
             label: true,
             picture: {
               icon: {
@@ -39,10 +37,11 @@ export class SkillsService extends GenericService {
                   { sort_order: new EnumType('asc') },
                   { label: new EnumType('asc') },
                 ],
-                where: { highlighted: { _eq: true } },
               },
+              id: true,
               label: true,
               acquired_at: true,
+              highlighted: true,
               picture: {
                 icon: {
                   class: true,
@@ -57,12 +56,21 @@ export class SkillsService extends GenericService {
             },
           },
         },
-      }),
+      })
     );
     const classifications: SkillClassification[] =
       queryResult.classifications.map(
-        (classificationRec: any) => new SkillClassification(classificationRec),
+        (classificationRec: any) => new SkillClassification(classificationRec)
       );
+
+    this.skills = [];
+
+    classifications.forEach((classification: SkillClassification) => {
+      classification.skills.forEach((skill: Skill) => {
+        skill.classification = classification;
+        this.skills.push(skill);
+      });
+    });
 
     return classifications;
   }
@@ -70,6 +78,10 @@ export class SkillsService extends GenericService {
   public override async initialize(): Promise<void> {
     this.classifications = await this.fetchSkillClassifications();
     return super.initialize();
+  }
+
+  public getSkill(id: number): Skill | undefined {
+    return this.skills.find((skill: Skill) => skill.id === id);
   }
 
   constructor(private _gqls: GraphQLService) {

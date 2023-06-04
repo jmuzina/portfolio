@@ -2,14 +2,22 @@ import { Injectable } from '@angular/core';
 import { GenericService } from './generic.service';
 import { Employer } from '../classes/Employer';
 import { GraphQLService } from './graphql.service';
-import { jsonToGraphQLQuery } from 'json-to-graphql-query';
+import { EnumType, jsonToGraphQLQuery } from 'json-to-graphql-query';
+import { Job } from '../classes/Job';
+import { SkillsService } from './skills.service';
+import { Skill } from '../classes/Skill';
+import { Duration } from '../classes/Duration';
 
 @Injectable({ providedIn: 'root' })
 export class EmployerService extends GenericService {
   public employers: Employer[] = [];
 
+  public jobs: Job[] = [];
+
   public override async initialize(): Promise<any> {
     this.employers = await this.fetchEmployers();
+    this.jobs = await this.fetchJobs();
+
     return super.initialize();
   }
 
@@ -18,6 +26,7 @@ export class EmployerService extends GenericService {
       jsonToGraphQLQuery({
         query: {
           employers: {
+            __aliasFor: 'jmuzina_Employer',
             __args: {
               where: {
                 Jobs_aggregate: {
@@ -29,7 +38,7 @@ export class EmployerService extends GenericService {
                 },
               },
             },
-            __aliasFor: 'jmuzina_Employer',
+            id: true,
             name: true,
             Image: {
               alt_text: true,
@@ -39,17 +48,85 @@ export class EmployerService extends GenericService {
             },
           },
         },
-      }),
+      })
     );
 
     const employers: Employer[] = employerQueryReturn.employers.map(
-      (employerRecord: any) => new Employer(employerRecord),
+      (employerRecord: any) => new Employer(employerRecord)
     );
 
     return employers;
   }
 
-  constructor(private _gqls: GraphQLService) {
+  public async fetchJobs(): Promise<Job[]> {
+    const jobsQueryReturn = await this._gqls.fetchGraphQL(
+      jsonToGraphQLQuery({
+        query: {
+          jobs: {
+            __aliasFor: 'jmuzina_Job',
+            __args: {
+              order_by: [
+                { started_at: new EnumType('desc') },
+                { ended_at: new EnumType('desc') },
+              ],
+            },
+            id: true,
+            title: true,
+            started_at: true,
+            ended_at: true,
+            employer_id_fk: true,
+            /*  skills: {
+              __aliasFor: 'job_leverages_skills',
+              __args: {
+                order_by: [
+                  { Skill: { sort_order: new EnumType('asc') } },
+                  { Skill: { label: new EnumType('asc') } },
+                ],
+              },
+              skill_id_fk: true,
+            }, */
+            responsibilities: {
+              __aliasFor: 'job_has_responsibilities',
+              __args: {
+                order_by: {
+                  Responsibility: {
+                    sort_order: new EnumType('asc'),
+                  },
+                },
+              },
+              Responsibility: {
+                text: true,
+              },
+            },
+          },
+        },
+      })
+    );
+    const jobs: Job[] = jobsQueryReturn.jobs.map((jobRec: any) => {
+      jobRec.employer = this.getEmployer(jobRec.employer_id_fk);
+      /*  jobRec.skills = jobRec.skills.map((jobSkillMapping: any) =>
+        this._sks.getSkill(jobSkillMapping.skill_id_fk)
+      ); */
+      jobRec.timespan = new Duration(jobRec.started_at, jobRec.ended_at);
+      jobRec.responsibilities = jobRec.responsibilities.map(
+        (mapping: any) => mapping.Responsibility
+      );
+      //delete jobRec.job_leverages_skills;
+      delete jobRec.employer_id_fk;
+      delete jobRec.started_at;
+      delete jobRec.ended_at;
+      const job: Job = new Job(jobRec);
+      job.employer.jobs.push(job);
+      return job;
+    });
+    return jobs;
+  }
+
+  public getEmployer(id: number): Employer | undefined {
+    return this.employers.find((employer: Employer) => employer.id === id);
+  }
+
+  constructor(private _gqls: GraphQLService, private _sks: SkillsService) {
     super();
   }
 }

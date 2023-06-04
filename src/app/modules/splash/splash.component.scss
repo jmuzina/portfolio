@@ -8,11 +8,26 @@
 .splash-sections {
   width: 100%;
 
-  > div.splash-section{
+  > div.splash-section {
     width: 100%;
-    padding: 1em 0 1em 0;
+    padding: 1em 1.5em 1em 1.5em;
   }
   > div.splash-section:nth-child(even) {
     background-color: var(--section-alternate-background);
   }
+}
+
+#resume-and-projects {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  jm-resume {
+    width: 100%;
+  }
+
+  /*   jm-resume,
+  jm-projects {
+    width: 50%;
+  } */
 }

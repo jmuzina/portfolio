@@ -1,0 +1,61 @@
+<div class="job-container">
+  <div class="job-main-details job-flex-item">
+    <span class="job-title">{{ job.title }}</span>
+    <span class="job-employer">{{ job.employer.name }}</span>
+    <span class="job-time-period"
+      >{{ job.timespan.start | date : "MMM y" }} -
+      {{ (job.timespan.end | date : "MMM y") || "Present" }}
+      ({{ job.timespan.lastTimeStr }})</span
+    >
+    <ul *ngIf="job.responsibilities?.length">
+      <ng-container
+        *ngIf="job.responsibilities.length > abbreviatedJobDescriptionMaxLength"
+      >
+        <ng-container *ngIf="!showMore">
+          <li
+            *ngFor="
+              let responsibility of job.responsibilities
+                | slice : 0 : abbreviatedJobDescriptionMaxLength
+            "
+          >
+            {{ responsibility.text }}
+          </li>
+          <span class="job-description-length-toggler" (click)="showMore = true"
+            >Show more</span
+          >
+        </ng-container>
+      </ng-container>
+      <ng-container
+        *ngIf="
+          showMore ||
+          job.responsibilities.length <= abbreviatedJobDescriptionMaxLength
+        "
+      >
+        <li *ngFor="let responsibility of job.responsibilities">
+          {{ responsibility.text }}
+        </li>
+        <span
+          *ngIf="
+            job.responsibilities.length > abbreviatedJobDescriptionMaxLength
+          "
+          class="job-description-length-toggler"
+          (click)="showMore = false"
+          >Show less</span
+        >
+      </ng-container>
+    </ul>
+  </div>
+  <!--  <div class="job-skill-icons job-flex-item">
+    <div class="skill-icons-container">
+      <ng-container *ngFor="let skill of job.skills">
+        <img
+          *ngIf="skill.picture?.image?.file?.address"
+          class="skill-icon"
+          [src]="skill.picture?.image?.file?.address"
+          [alt]="skill.picture?.image?.alt_text"
+          [pTooltip]="skill.label"
+        />
+      </ng-container>
+    </div>
+  </div> -->
+</div>
