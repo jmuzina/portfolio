@@ -1,7 +1,7 @@
 export interface IMaintenanceEventOpts {
   id: number;
   started_at: Date;
-  ended_at: Date;
+  ended_at?: Date;
   message?: string;
 }
 
@@ -10,7 +10,7 @@ export class MaintenanceEvent implements IMaintenanceEventOpts {
 
   public started_at!: Date;
 
-  public ended_at!: Date;
+  public ended_at?: Date;
 
   public message?: string;
 

@@ -45,7 +45,6 @@ export class MaintenanceService extends GenericService {
       (evtRec: any) => new MaintenanceEvent(evtRec)
     );
     const result: MaintenanceEvent = events[0];
-
     return result;
   }
 
