@@ -9,6 +9,11 @@ import { GalleriaModule } from 'primeng/galleria';
 import { SharedModule } from '../shared/shared.module';
 import { SkillClassificationComponent } from './skills/skill-classification/skill-classification.component';
 import { SkillItemComponent } from './skills/skill-classification/skill-item/skill-item.component';
+import { ResumeComponent } from './resume/resume.component';
+import { TimelineModule } from 'primeng/timeline';
+import { CardModule } from 'primeng/card';
+import { ProjectsComponent } from './projects/projects.component';
+import { JobCardComponent } from './resume/job-card/job-card.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +22,15 @@ import { SkillItemComponent } from './skills/skill-classification/skill-item/ski
     SkillsComponent,
     SkillClassificationComponent,
     SkillItemComponent,
+    ResumeComponent,
+    ProjectsComponent,
+    JobCardComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
+    TimelineModule,
+    CardModule,
     SplashRoutingModule,
     ImageModule,
     GalleriaModule,

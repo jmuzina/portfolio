@@ -16,7 +16,7 @@ export class MaintenanceService extends GenericService {
             __aliasFor: 'maint_MaintenanceEvent',
             __args: {
               order_by: {
-                started_at: new EnumType('asc'),
+                started_at: new EnumType('desc'),
               },
               limit: 1,
               where: {
@@ -38,14 +38,13 @@ export class MaintenanceService extends GenericService {
             message: true,
           },
         },
-      }),
+      })
     );
 
     const events: MaintenanceEvent[] = queryResult.maintEvents.map(
-      (evtRec: any) => new MaintenanceEvent(evtRec),
+      (evtRec: any) => new MaintenanceEvent(evtRec)
     );
     const result: MaintenanceEvent = events[0];
-
     return result;
   }
 

@@ -1,0 +1,75 @@
+$job-item-padding: 0.1em;
+
+.job-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  border: 1px solid var(--text-color-secondary);
+  border-radius: 6px;
+  padding: 0.4em;
+  gap: $job-item-padding;
+
+  @media screen and (max-width: 1050px) {
+    flex-flow: column nowrap;
+  }
+
+  .job-main-details {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .job-title {
+      font-size: 1.15em;
+    }
+    .job-employer {
+      font-size: 1.02em;
+    }
+    .job-time-period {
+      font-size: 0.95em;
+      color: var(--text-color-secondary);
+    }
+    .job-employer,
+    .job-time-period {
+      font-style: italic;
+    }
+    .job-description-length-toggler {
+      color: var(--primary-color);
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        color: var(--primary-highlight);
+      }
+    }
+  }
+  .job-skill-icons {
+    @media screen and (min-width: 1051px) {
+      border-left: 1px dashed var(--surface-d);
+      padding-left: $job-item-padding;
+    }
+
+    @media screen and (max-width: 1050px) {
+      border-top: 1px dashed var(--surface-d);
+      padding-top: $job-item-padding;
+    }
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+
+    .skill-icons-container {
+      //height: 100%;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.3em;
+
+      img.skill-icon {
+        width: 25px;
+        height: auto;
+      }
+    }
+  }
+}
