@@ -24,7 +24,7 @@ export class NavigationItem {
 
   public styleClass: ConditionalClassList = new ConditionalClassList();
 
-  public style?: string;
+  public style = {};
 
   public tooltip?: string;
 

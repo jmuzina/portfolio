@@ -20,6 +20,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { AttributionComponent } from './components/attribution/attribution.component';
 import { TableModule } from 'primeng/table';
 import { MaintenanceMessageComponent } from './components/maintenance-message/maintenance-message.component';
+import { HumanizedDurationPipe } from './pipes/humanized-duration.pipe';
 @NgModule({
   declarations: [
     LoadingSpinnerComponent,
@@ -32,6 +33,7 @@ import { MaintenanceMessageComponent } from './components/maintenance-message/ma
     MatomoOptOutComponent,
     AttributionComponent,
     MaintenanceMessageComponent,
+    HumanizedDurationPipe,
   ],
   imports: [
     CommonModule,
@@ -62,6 +64,7 @@ import { MaintenanceMessageComponent } from './components/maintenance-message/ma
     HeaderComponent,
     MaintenanceMessageComponent,
     FooterComponent,
+    HumanizedDurationPipe,
   ],
 })
 export class SharedModule {}

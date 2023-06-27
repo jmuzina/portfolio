@@ -1,4 +1,3 @@
-import { Duration } from './Duration';
 import { Employer } from './Employer';
 import { Skill } from './Skill';
 
@@ -19,7 +18,8 @@ export class Responsibility implements IResponsibilityOpts {
 
 export interface IJobOpts {
   title: string;
-  timespan: Duration;
+  started_at: Date;
+  ended_at?: Date;
   employer: Employer;
   skills: Skill[];
   responsibilities: Responsibility[];
@@ -28,7 +28,9 @@ export interface IJobOpts {
 export class Job implements IJobOpts {
   public title!: string;
 
-  public timespan!: Duration;
+  public started_at!: Date;
+
+  public ended_at?: Date;
 
   public employer!: Employer;
 
