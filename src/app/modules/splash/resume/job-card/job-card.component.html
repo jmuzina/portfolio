@@ -3,9 +3,9 @@
     <span class="job-title">{{ job.title }}</span>
     <span class="job-employer">{{ job.employer.name }}</span>
     <span class="job-time-period"
-      >{{ job.timespan.start | date : "MMM y" }} -
-      {{ (job.timespan.end | date : "MMM y") || "Present" }}
-      ({{ job.timespan.lastTimeStr }})</span
+      >{{ job.started_at | date : "MMM y" }} -
+      {{ (job.ended_at | date : "MMM y") || "Present" }}
+      ({{ job.started_at | humanizedDuration : job.ended_at }})</span
     >
     <ul *ngIf="job.responsibilities?.length">
       <ng-container

@@ -5,8 +5,6 @@ import { GraphQLService } from './graphql.service';
 import { EnumType, jsonToGraphQLQuery } from 'json-to-graphql-query';
 import { Job } from '../classes/Job';
 import { SkillsService } from './skills.service';
-import { Skill } from '../classes/Skill';
-import { Duration } from '../classes/Duration';
 
 @Injectable({ providedIn: 'root' })
 export class EmployerService extends GenericService {
@@ -48,11 +46,11 @@ export class EmployerService extends GenericService {
             },
           },
         },
-      })
+      }),
     );
 
     const employers: Employer[] = employerQueryReturn.employers.map(
-      (employerRecord: any) => new Employer(employerRecord)
+      (employerRecord: any) => new Employer(employerRecord),
     );
 
     return employers;
@@ -100,21 +98,14 @@ export class EmployerService extends GenericService {
             },
           },
         },
-      })
+      }),
     );
     const jobs: Job[] = jobsQueryReturn.jobs.map((jobRec: any) => {
       jobRec.employer = this.getEmployer(jobRec.employer_id_fk);
-      /*  jobRec.skills = jobRec.skills.map((jobSkillMapping: any) =>
-        this._sks.getSkill(jobSkillMapping.skill_id_fk)
-      ); */
-      jobRec.timespan = new Duration(jobRec.started_at, jobRec.ended_at);
       jobRec.responsibilities = jobRec.responsibilities.map(
-        (mapping: any) => mapping.Responsibility
+        (mapping: any) => mapping.Responsibility,
       );
-      //delete jobRec.job_leverages_skills;
       delete jobRec.employer_id_fk;
-      delete jobRec.started_at;
-      delete jobRec.ended_at;
       const job: Job = new Job(jobRec);
       job.employer.jobs.push(job);
       return job;

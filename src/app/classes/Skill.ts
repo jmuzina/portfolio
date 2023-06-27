@@ -1,5 +1,4 @@
 import { IPicture } from '../interfaces/Picture';
-import { Duration } from './Duration';
 
 export interface ISkillOpts {
   id: number;
@@ -43,8 +42,6 @@ export class Skill implements ISkillOpts {
 
   public acquired_at!: Date;
 
-  public duration!: Duration;
-
   public highlighted?: boolean;
 
   public classification!: SkillClassification;
@@ -52,6 +49,5 @@ export class Skill implements ISkillOpts {
   constructor(opts: ISkillOpts) {
     Object.assign(this, opts);
     this.acquired_at = new Date(this.acquired_at);
-    this.duration = new Duration(this.acquired_at, new Date());
   }
 }
