@@ -43,18 +43,18 @@ export class ViewControllerService {
       tooltip: 'Coming soon...',
       shouldDisable: () => false,
     }), */
-    new RouterNavigationItem({
+    /*     new RouterNavigationItem({
       key: 'under-maintenance',
       label: 'Portfolio is still under construction. More to come soon...',
       icon: 'pi pi-cog',
       shouldDisable: () => true,
       routerLink: '/under-maintenance',
-    }),
+    }), */
   ];
 
   public static updateItems(): void {
     ViewControllerService.menuItems = ViewControllerService.navItems.map(
-      (navItem: NavigationItem) => navItem.toMenuItem(),
+      (navItem: NavigationItem) => navItem.toMenuItem()
     );
   }
 
