@@ -4,6 +4,7 @@ export const environment = {
   local: false,
   appTitle: 'Julie Muzina (DEV)',
   matomoSiteID: '2',
+  ignoreMaintenance: true,
   appUrl: 'https://dev.jmuzina.io',
   graphQLEndpoint: 'https://api.jmuzina.io/v1/graphql',
 };

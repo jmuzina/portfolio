@@ -5,14 +5,14 @@
   <div class="page-contents">
     <ng-container *ngIf="!loading; else appLoading">
       <router-outlet
-        *ngIf="!mnts.activeMaintenanceEvent && !inits.initializationError"
+        *ngIf="(!mnts.activeMaintenanceEvent || ignoreMaintenance) && !inits.initializationError"
       ></router-outlet>
       <jm-page-not-found
         *ngIf="inits.initializationError && !mnts.activeMaintenanceEvent"
       ></jm-page-not-found>
 
       <jm-maintenance-message
-        *ngIf="mnts.activeMaintenanceEvent"
+        *ngIf="mnts.activeMaintenanceEvent && !ignoreMaintenance"
         [event]="mnts.activeMaintenanceEvent"
       ></jm-maintenance-message>
     </ng-container>
