@@ -24,7 +24,7 @@ export class EmployerService extends GenericService {
       jsonToGraphQLQuery({
         query: {
           employers: {
-            __aliasFor: 'jmuzina_Employer',
+            __aliasFor: 'portfolio_Employer',
             __args: {
               where: {
                 Jobs_aggregate: {
@@ -61,7 +61,7 @@ export class EmployerService extends GenericService {
       jsonToGraphQLQuery({
         query: {
           jobs: {
-            __aliasFor: 'jmuzina_Job',
+            __aliasFor: 'portfolio_Job',
             __args: {
               order_by: [
                 { started_at: new EnumType('desc') },

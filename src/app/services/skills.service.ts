@@ -15,7 +15,7 @@ export class SkillsService extends GenericService {
       jsonToGraphQLQuery({
         query: {
           classifications: {
-            __aliasFor: 'jmuzina_SkillClassification',
+            __aliasFor: 'portfolio_SkillClassification',
             __args: {
               order_by: [
                 { sort_order: new EnumType('asc') },
@@ -56,11 +56,11 @@ export class SkillsService extends GenericService {
             },
           },
         },
-      })
+      }),
     );
     const classifications: SkillClassification[] =
       queryResult.classifications.map(
-        (classificationRec: any) => new SkillClassification(classificationRec)
+        (classificationRec: any) => new SkillClassification(classificationRec),
       );
 
     this.skills = [];
