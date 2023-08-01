@@ -12,6 +12,10 @@
   justify-content: center;
   align-items: center;
 
+  .maintenance-header, .maintenance-message {
+    text-align: center;
+  }
+
   .maintenance-header {
     font-size: 2.4em;
   }
