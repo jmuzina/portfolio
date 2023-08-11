@@ -8,15 +8,15 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-  public dev = !environment.production;
+  dev = !environment.production;
 
-  public devDisclaimerOpen = false;
+  devDisclaimerOpen = false;
 
-  public trackingPopupOpen = false;
+  trackingPopupOpen = false;
 
-  public attributionVisible = false;
+  attributionVisible = false;
 
-  public shouldShowWIPDisclaimer = true;
+  shouldShowWIPDisclaimer = false;
 
   constructor(public exss: ExternalSitesService) {}
 }
