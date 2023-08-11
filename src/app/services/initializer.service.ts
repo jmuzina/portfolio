@@ -12,19 +12,20 @@ export class InitializerService extends GenericService {
   public initializationError?: Error | null = null;
 
   public override async initialize(): Promise<void> {
-    return this._mnts.initialize()
-      .then(() => Promise.all([this._sks, this._ths].map((svc: GenericService) => svc.initialize())))
-      .then(() => this._emps.initialize())
-      .catch((err) => {
-        console.error(err);
-        this.initializationError = <Error>err;
-        if (!environment.production)
-          this._tsts.error({
-            summary: 'Failed to initialize data',
-            detail: this.initializationError.message,
-          });
-      });
-
+    try {
+      await this._ths.initialize();
+      await this._mnts.initialize();
+      await this._sks.initialize();
+      await this._emps.initialize();
+    } catch (err) {
+      console.error(err);
+      this.initializationError = <Error>err;
+      if (!environment.production)
+        this._tsts.error({
+          summary: 'Failed to initialize data',
+          detail: this.initializationError.message,
+        });
+    }
   }
 
   public override async onInitialized(): Promise<void> {
