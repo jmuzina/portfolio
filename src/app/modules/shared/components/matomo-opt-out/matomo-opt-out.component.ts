@@ -35,6 +35,7 @@ export class MatomoOptOutComponent implements OnInit {
     } else {
       this.tracker.forgetUserOptOut();
     }
+    window.location.reload();
 
     this.refreshState();
   }
