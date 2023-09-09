@@ -31,10 +31,6 @@ export class AppComponent implements OnInit {
     this.initializeApp();
   }
 
-  throw_test(): void {
-    throw new Error('Catch me!!');
-  }
-
   constructor(
     public inits: InitializerService,
     private _tsts: ToastService,
