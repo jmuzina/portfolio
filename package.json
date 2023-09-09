@@ -10,7 +10,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org julie-muzina-a008ebe1f --project javascript-angular ./dist && sentry-cli sourcemaps upload --org julie-muzina-a008ebe1f --project javascript-angular ./dist"
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org julie-muzina-a008ebe1f --project jmuzina-portfolio ./dist && sentry-cli sourcemaps upload --org julie-muzina-a008ebe1f --project jmuzina-portfolio ./dist"
   },
   "private": true,
   "dependencies": {

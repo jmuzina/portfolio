@@ -1,14 +1,13 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { AppModule } from './app/app.module';
-
-
 import { enableProdMode } from '@angular/core';
-// import * as Sentry from "@sentry/angular" // for Angular 10/11 instead
 import * as Sentry from '@sentry/angular-ivy';
+import { environment } from './environments/environment';
 
 Sentry.init({
   dsn: 'https://54337f937505bc23282de73adeb7d72f@o4505848151212032.ingest.sentry.io/4505848152719360',
+  enabled: environment.production || environment.development,
+  environment: environment.production ? 'Production' : 'Development',
   integrations: [
     new Sentry.BrowserTracing({
       // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
