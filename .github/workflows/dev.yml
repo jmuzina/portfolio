@@ -1,5 +1,8 @@
 name: dev.jmuzina.io
 
+env:
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
 on:
   push:
     branches: ['dev']
@@ -19,13 +22,16 @@ jobs:
         run: npm ci
 
       - name: Build Angular
-        run: npx ng build --configuration development
+        run: npm run build:dev
 
-      #- name: Archive build artifact
-      #  uses: actions/upload-artifact@main
-      #  with:
-      #    name: portfolio
-      #    path: ./dist/portfolio
+      - name: Generate sourcemaps
+        run: npm run sentry:sourcemaps
+
+      - name: Archive build artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: portfolio
+          path: ./dist/portfolio
 
       - name: Deploy build files
         uses: appleboy/scp-action@v0.1.4
