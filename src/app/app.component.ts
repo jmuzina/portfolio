@@ -31,9 +31,9 @@ export class AppComponent implements OnInit {
     this.initializeApp();
   }
 
-  throw_test(): void {
-    throw new Error('Catch me!!');
-  }
+  /*   throw_test(): void {
+    throw new Error(new Date().toISOString());
+  } */
 
   constructor(
     public inits: InitializerService,
