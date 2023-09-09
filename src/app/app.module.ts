@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler, APP_INITIALIZER } from '@angular/core';
+import { Router } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { NgxMatomoTrackerModule } from '@ngx-matomo/tracker';
 import { NgxMatomoRouterModule } from '@ngx-matomo/router';
 import { environment } from 'src/environments/environment';
+import * as Sentry from '@sentry/angular-ivy';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,22 @@ import { environment } from 'src/environments/environment';
     NgxMatomoRouterModule,
     NgxMatomoTrackerModule.forRoot({ trackerUrl: 'https://matomo.jmuzina.io', siteId: environment.matomoSiteID || '', scriptUrl: 'https://matomo.jmuzina.io/matomo_env.js' }),
   ],
-  providers: [],
+  providers: [{
+    provide: ErrorHandler,
+    useValue: Sentry.createErrorHandler({
+      showDialog: true,
+    }),
+  }, {
+    provide: Sentry.TraceService,
+    deps: [Router],
+  },
+  {
+    provide: APP_INITIALIZER,
+    useFactory: () => () => {},
+    deps: [Sentry.TraceService],
+    multi: true,
+  },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

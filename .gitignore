@@ -45,3 +45,6 @@ Thumbs.db
 
 .vscode
 .angular
+
+# Sentry Auth Token
+.sentryclirc
