@@ -14,9 +14,12 @@ export class EducationalInstitution {
 
   name!: string;
 
+  type!: IEducationalInstitutionType;
+
   constructor(opts: IEducationalInstitution) {
     this.id = opts.id;
     this.name = opts.name;
+    this.type = opts.institutionType;
   }
 
 }

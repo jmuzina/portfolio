@@ -44,6 +44,9 @@ export const EDUCATION_QUERIES = {
     institutions:portfolio_EducationInstitution(where:{Degrees_aggregate:{count:{predicate:{_neq:0}}}}) {
       id
       name
+      InstitutionType {
+        id
+      }
     }
   }
   `,
