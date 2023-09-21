@@ -14,6 +14,8 @@ import { TimelineModule } from 'primeng/timeline';
 import { CardModule } from 'primeng/card';
 import { ProjectsComponent } from './projects/projects.component';
 import { JobCardComponent } from './resume/job-card/job-card.component';
+import { EducationComponent } from './education/education.component';
+import { DegreeCardComponent } from './education/degree-card/degree-card.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { JobCardComponent } from './resume/job-card/job-card.component';
     ResumeComponent,
     ProjectsComponent,
     JobCardComponent,
+    EducationComponent,
+    DegreeCardComponent,
   ],
   imports: [
     CommonModule,

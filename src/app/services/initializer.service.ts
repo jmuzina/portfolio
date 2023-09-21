@@ -6,6 +6,7 @@ import { MaintenanceService } from './maintenance.service';
 import { ThemeService } from './theme.service';
 import { environment } from 'src/environments/environment';
 import { EmployerService } from './employer.service';
+import { EducationService } from './education.service';
 
 @Injectable({ providedIn: 'root' })
 export class InitializerService extends GenericService {
@@ -16,7 +17,7 @@ export class InitializerService extends GenericService {
       await this._ths.initialize();
       await this._mnts.initialize();
       await this._sks.initialize();
-      await this._emps.initialize();
+      await Promise.all([this._emps, this._edus].map((s) => s.initialize()));
     } catch (err) {
       console.error(err);
       this.initializationError = <Error>err;
@@ -38,6 +39,7 @@ export class InitializerService extends GenericService {
     private _mnts: MaintenanceService,
     private _ths: ThemeService,
     private _emps: EmployerService,
+    private _edus: EducationService,
   ) {
     super();
   }

@@ -1,10 +1,7 @@
+import { IResponsibilityOpts } from 'src/app/interfaces/employment/Responsibility';
+import { Skill } from '../Skill';
 import { Employer } from './Employer';
-import { Skill } from './Skill';
-
-export interface IResponsibilityOpts {
-  id: number;
-  text: string;
-}
+import { IJobOpts } from 'src/app/interfaces/employment/Job';
 
 export class Responsibility implements IResponsibilityOpts {
   public id!: number;
@@ -16,14 +13,6 @@ export class Responsibility implements IResponsibilityOpts {
   }
 }
 
-export interface IJobOpts {
-  title: string;
-  started_at: Date;
-  ended_at?: Date;
-  employer: Employer;
-  skills: Skill[];
-  responsibilities: Responsibility[];
-}
 
 export class Job implements IJobOpts {
   public title!: string;

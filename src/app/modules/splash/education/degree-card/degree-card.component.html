@@ -1,0 +1,29 @@
+<div class="degree-detail flex flex-row">
+  <!-- <span class="primary-text">{{degree.type.prefix}}{{degree.type.usesSuffixInline ? degree.field.suffix : ''}}, {{degree.major.label}}</span> -->
+  <span class="secondary-text">Degree: </span>
+  <span class="primary-text">{{degree.type.label}} of {{degree.field.label}}, {{degree.major.label}}</span>
+</div>
+<div class="institution-detail flex flex-row">
+  <span class="secondary-text institution-type">{{degree.institution.type.label}}: </span>
+  <span class="primary-text institution-name">{{degree.institution.name}}</span>
+  <!-- <ng-container>
+    <span class="degree-status secondary-text"> (<span *ngIf="degree.awardedOn; else currentlyEnrolled" class="secondary-text">Class of {{degree.awardedOn | date : "y"}}</span><ng-template #currentlyEnrolled><span class="degree-currently-enrolled secondary-text">Currently enrolled</span></ng-template>)</span>
+  </ng-container> -->
+</div>
+<div class="graduation-status flex flex-row">
+  <span class="secondary-text">Graduation status: </span>
+  <span *ngIf="degree.awardedOn; else currentlyEnrolled" class="primary-text class-of-year">Class of {{degree.awardedOn | date : "y"}}</span>
+  <ng-template #currentlyEnrolled>
+    <span class="primary-text currently-enrolled">Currently enrolled</span>
+  </ng-template>
+</div>
+<!-- <span class="degree-timeline">{{ degree.startedOn| date : "MMM y" }} -
+  {{ (degree.awardedOn| date : "MMM y") || "Present" }}</span> -->
+  <div class="degree-timeline">
+    <span *ngIf="degree.awardedOn" class="degree-c-o"></span>
+  </div>
+<div *ngIf="degree.gpa" class="degree-gpa flex flex-row">
+  <span class="secondary-text degree-gpa-label">GPA: </span>
+  <span class="primary-text degree-gpa-value">{{degree.gpa}}</span>
+  <span *ngIf="degree.honor" class="primary-text degree-honor"> ({{degree.honor.label}})</span>
+</div>

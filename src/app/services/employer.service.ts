@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { GenericService } from './generic.service';
-import { Employer } from '../classes/Employer';
+import { Employer } from '../classes/employment/Employer';
 import { GraphQLService } from './graphql.service';
 import { EnumType, jsonToGraphQLQuery } from 'json-to-graphql-query';
-import { Job } from '../classes/Job';
 import { SkillsService } from './skills.service';
+import { Job } from '../classes/employment/Job';
 
 @Injectable({ providedIn: 'root' })
 export class EmployerService extends GenericService {

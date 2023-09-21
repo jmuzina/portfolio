@@ -6,8 +6,8 @@ $job-item-padding: 0.1em;
   justify-content: space-between;
   align-items: stretch;
   border: 1px solid var(--text-color-secondary);
-  border-radius: 6px;
-  padding: 0.4em;
+  border-radius: var(--border-radius-a);
+  padding: var(--content-padding);
   gap: $job-item-padding;
 
   @media screen and (max-width: 1050px) {

@@ -1,4 +1,4 @@
-export interface ColorTheme {
+export interface IColorTheme {
   code: string;
   supportingCode: string;
   label: string;

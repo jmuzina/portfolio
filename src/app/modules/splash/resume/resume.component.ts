@@ -7,5 +7,7 @@ import { EmployerService } from 'src/app/services/employer.service';
   styleUrls: ['./resume.component.scss'],
 })
 export class ResumeComponent {
-  constructor(public emps: EmployerService) {}
+  constructor(
+    public emps: EmployerService,
+  ) {}
 }

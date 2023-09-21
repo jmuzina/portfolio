@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { ColorTheme } from 'src/app/classes/ColorTheme';
 import { GenericService } from './generic.service';
+import { IColorTheme } from '../interfaces/ColorTheme';
 
 const COLOR_THEME_COOKIE_KEY = 'jmuzina-portfolio-color-theme';
 
@@ -9,31 +9,31 @@ const COLOR_THEME_COOKIE_KEY = 'jmuzina-portfolio-color-theme';
   providedIn: 'root',
 })
 export class ThemeService extends GenericService {
-  public lightTheme: ColorTheme = {
+  public lightTheme: IColorTheme = {
     code: 'light-purple',
     supportingCode: 'primeng-lara-light-purple',
     label: 'Light Purple',
     icon: 'pi pi-sun',
   };
 
-  public darkTheme: ColorTheme = {
+  public darkTheme: IColorTheme = {
     code: 'dark-purple',
     supportingCode: 'primeng-lara-dark-purple',
     label: 'Dark Purple',
     icon: 'pi pi-moon',
   };
 
-  public get themes(): ColorTheme[] {
+  public get themes(): IColorTheme[] {
     return [this.lightTheme, this.darkTheme];
   }
 
-  private _activeTheme!: ColorTheme;
+  private _activeTheme!: IColorTheme;
 
-  public get activeTheme(): ColorTheme {
+  public get activeTheme(): IColorTheme {
     return this._activeTheme;
   }
 
-  private set activeTheme(theme: ColorTheme) {
+  private set activeTheme(theme: IColorTheme) {
     if (this._activeTheme && theme && this._activeTheme.code === theme.code)
       return;
 
@@ -73,8 +73,8 @@ export class ThemeService extends GenericService {
 
     const cookieVal = localStorage.getItem(COLOR_THEME_COOKIE_KEY);
 
-    const themeToSet: ColorTheme =
-      this.themes.find((theme: ColorTheme) => theme.code === cookieVal) ||
+    const themeToSet: IColorTheme =
+      this.themes.find((theme: IColorTheme) => theme.code === cookieVal) ||
       this.lightTheme;
 
     if (!themeToSet) throw new Error('Could not find a color theme to use.');
