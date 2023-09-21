@@ -1,12 +1,5 @@
+import { IEmployerOpts } from '../../interfaces/employment/Employer';
 import { Job } from './Job';
-
-export interface IEmployerOpts {
-  id: number;
-  name: string;
-  website?: string;
-  photoUrl?: string;
-  jobs: Job[];
-}
 
 export class Employer implements IEmployerOpts {
   public id!: number;

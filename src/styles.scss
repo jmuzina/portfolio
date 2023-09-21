@@ -3,6 +3,11 @@ html {
   width: 100svw;
   overflow: hidden;
 }
+:root {
+  --content-padding : 4px;
+  --border-radius-a: 6px;
+  --border-radius-b: 10px;
+}
 
 .dark-purple-theme {
   --highlighted-nav-item-background: #a17bf8;
@@ -54,5 +59,13 @@ body {
   font-size: 1.4em;
   text-align: center;
   font-weight: 300;
+  color: var(--text-color-secondary);
+}
+
+.primary-text {
+  color: var(--text-color)
+}
+
+.secondary-text {
   color: var(--text-color-secondary);
 }

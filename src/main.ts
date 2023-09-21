@@ -39,8 +39,6 @@ if (!trackDetailedSentryData) {
   (sentryOpts.integrations as any[]).push(new Sentry.Replay());
 }
 
-console.info(sentryOpts);
-
 enableProdMode();
 
 Sentry.init(sentryOpts);
