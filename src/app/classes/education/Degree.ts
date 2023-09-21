@@ -1,9 +1,18 @@
-import { IDegreeOpts, IDegreeTypeOpts, IDegreeTypeQryOpts } from 'src/app/interfaces/education/Degree';
+import { IDegreeHonorOpts, IDegreeOpts, IDegreeTypeOpts } from 'src/app/interfaces/education/Degree';
 import { EducationalInstitution } from './EducationalInstitution';
 import { Major } from './Major';
 import { IEducationalField } from 'src/app/interfaces/education/EducationalField';
 import { EducationalLevel } from './EducationalLevel';
 
+export class DegreeHonor implements IDegreeHonorOpts {
+  id!: number;
+
+  label!: string;
+
+  constructor(opts: IDegreeHonorOpts) {
+    Object.assign(this, opts);
+  }
+}
 export class DegreeType implements IDegreeTypeOpts {
   id!: number;
 
@@ -12,6 +21,8 @@ export class DegreeType implements IDegreeTypeOpts {
   usesSuffixInline!: boolean;
 
   level!: EducationalLevel;
+
+  label!: string;
 
   constructor(opts: IDegreeTypeOpts) {
     Object.assign(this, opts);
@@ -34,6 +45,8 @@ export class Degree {
   field!: IEducationalField;
 
   type!: DegreeType;
+
+  honor?: DegreeHonor;
 
   static Sort(a: Degree, b: Degree) {
     const degreeTimestamps = {
@@ -84,5 +97,6 @@ export class Degree {
     this.major = opts.major;
     this.field = opts.field;
     this.type = opts.type;
+    this.honor = opts.honor;
   }
 }

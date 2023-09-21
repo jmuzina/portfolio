@@ -6,6 +6,11 @@ export const EDUCATION_QUERIES = {
         prefix
         usesSuffixInline: uses_suffix_inline
         education_level_fk
+        label
+      }
+      degreeHonors:portfolio_zlookup_degree_honors(where:{Degrees_aggregate:{count:{filter:{started_on:{_lte:"now()"}}, predicate:{_neq:0}}}}) {
+        id
+        label
       }
       educationLevels: portfolio_zlookup_education_level(where: {DegreeTypes_aggregate: {count: {filter: {Degrees_aggregate: {count: {filter: {started_on: {_lte: "now()"}}, predicate: {_neq: 0}}}}, predicate: {_neq: 0}}}}) {
         id
@@ -40,6 +45,7 @@ export const EDUCATION_QUERIES = {
         major_fk
         degree_field_fk
         degree_type_fk
+        honor_fk
       }
     }
   `,

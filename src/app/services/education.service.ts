@@ -8,8 +8,8 @@ import { IMajorOpts } from '../interfaces/education/Major';
 import { Major } from '../classes/education/Major';
 import { EducationalLevel } from '../classes/education/EducationalLevel';
 import { IEducationalLevelOpts } from '../interfaces/education/EducationLevel';
-import { IDegreeQryOpts, IDegreeTypeQryOpts } from '../interfaces/education/Degree';
-import { Degree, DegreeType } from '../classes/education/Degree';
+import { IDegreeHonorOpts, IDegreeQryOpts, IDegreeTypeQryOpts } from '../interfaces/education/Degree';
+import { Degree, DegreeHonor, DegreeType } from '../classes/education/Degree';
 import { IEducationalInstitutionQryOpts } from '../interfaces/education/EducationalInstitution';
 
 interface IEducationalMappings {
@@ -19,7 +19,8 @@ interface IEducationalMappings {
   educationalLevels: Map<number, EducationalLevel>,
   degreeTypes: Map<number, DegreeType>,
   degrees: Map<number, Degree>,
-  majors: Map<number, Major>
+  majors: Map<number, Major>,
+  honors: Map<number, DegreeHonor>
 }
 
 @Injectable({ providedIn: 'root' })
@@ -29,7 +30,6 @@ export class EducationService extends GenericService {
   override async initialize() {
     const mappings = await this.getMappings();
     this.degrees = [...mappings.degrees].map((d) => d[1]).sort(Degree.Sort);
-    console.log(this.degrees);
     return super.initialize();
   }
 
@@ -42,6 +42,7 @@ export class EducationService extends GenericService {
       degreeTypes: new Map<number, DegreeType>(),
       degrees: new Map<number, Degree>(),
       majors: new Map<number, Major>(),
+      honors: new Map<number, DegreeHonor>(),
     };
     const mappingResponse = await this._gqls.fetchGraphQL(EDUCATION_QUERIES.GET_MAPPINGS);
 
@@ -61,6 +62,10 @@ export class EducationService extends GenericService {
       result.educationalLevels.set(el.id, new EducationalLevel(el));
     });
 
+    mappingResponse.degreeHonors.forEach((hn: IDegreeHonorOpts) => {
+      result.honors.set(hn.id, new DegreeHonor(hn));
+    });
+
     const institutions: EducationalInstitution[] = mappingResponse.institutions.map((ins: IEducationalInstitutionQryOpts) => new EducationalInstitution(
       {
         id: ins.id,
@@ -77,6 +82,7 @@ export class EducationService extends GenericService {
       result.degreeTypes.set(dgt.id, new DegreeType({
         id: dgt.id,
         prefix: dgt.prefix,
+        label: dgt.label,
         usesSuffixInline: dgt.usesSuffixInline,
         level: result.educationalLevels.get(dgt.education_level_fk) as EducationalLevel,
       }));
@@ -92,6 +98,7 @@ export class EducationService extends GenericService {
         major: result.majors.get(dg.major_fk) as Major,
         field: result.educationalFields.get(dg.degree_field_fk) as IEducationalField,
         type: result.degreeTypes.get(dg.degree_type_fk) as DegreeType,
+        honor: (dg.honor_fk || dg.honor_fk === 0) ? result.honors.get(dg.honor_fk) as DegreeHonor : undefined,
       }));
     });
 

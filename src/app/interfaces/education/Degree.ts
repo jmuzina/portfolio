@@ -1,7 +1,7 @@
 import { EducationalInstitution } from 'src/app/classes/education/EducationalInstitution';
 import { Major } from 'src/app/classes/education/Major';
 import { IEducationalField } from './EducationalField';
-import { DegreeType } from 'src/app/classes/education/Degree';
+import { DegreeHonor, DegreeType } from 'src/app/classes/education/Degree';
 import { EducationalLevel } from 'src/app/classes/education/EducationalLevel';
 
 export interface IDegreeTypeOpts {
@@ -9,6 +9,12 @@ export interface IDegreeTypeOpts {
   prefix: string;
   usesSuffixInline: boolean;
   level: EducationalLevel;
+  label: string;
+}
+
+export interface IDegreeHonorOpts {
+  id: number;
+  label: string;
 }
 
 export interface IDegreeTypeQryOpts {
@@ -16,6 +22,7 @@ export interface IDegreeTypeQryOpts {
   prefix: string;
   usesSuffixInline: boolean;
   education_level_fk: number;
+  label: string;
 }
 
 export interface IDegreeQryOpts {
@@ -27,6 +34,7 @@ export interface IDegreeQryOpts {
   major_fk: number;
   degree_field_fk: number;
   degree_type_fk: number;
+  honor_fk?: number;
 }
 
 export interface IDegreeOpts {
@@ -38,4 +46,5 @@ export interface IDegreeOpts {
   major: Major;
   field: IEducationalField;
   type: DegreeType;
+  honor?: DegreeHonor;
 }
