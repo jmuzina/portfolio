@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { EducationService } from 'src/app/services/education.service';
 import { EmployerService } from 'src/app/services/employer.service';
 
 @Component({
@@ -10,6 +9,5 @@ import { EmployerService } from 'src/app/services/employer.service';
 export class ResumeComponent {
   constructor(
     public emps: EmployerService,
-    public edus: EducationService,
   ) {}
 }

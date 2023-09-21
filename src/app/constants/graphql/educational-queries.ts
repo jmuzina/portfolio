@@ -4,11 +4,13 @@ export const EDUCATION_QUERIES = {
     degreeTypes:portfolio_zlookup_degree_type(where:{Degrees_aggregate:{count:{predicate:{_neq:0}}}}) {
       id
       prefix
-      uses_suffix_inline
+      usesSuffixInline:uses_suffix_inline
+      education_level_fk
     }
-    educationLevels:portfolio_zlookup_education_level(where:{DegreeTypes_aggregate:{count:{predicate:{_neq:0}}}}) {
+   educationLevels: portfolio_zlookup_education_level(where: {DegreeTypes_aggregate: {count: {filter:{Degrees_aggregate:{count:{predicate:{_neq:0}}}}, predicate: {_neq: 0}}}}) {
       id
       label
+      priority
     }
     institutionTypes:portfolio_zlookup_education_institution_type(where:{
       EducationInstitutions_aggregate:{
@@ -47,6 +49,16 @@ export const EDUCATION_QUERIES = {
       InstitutionType {
         id
       }
+    }
+    degrees: portfolio_Degree {
+      id
+      gpa
+      startedOn:started_on
+      awardedOn:awarded_on
+      institution_fk
+      major_fk
+      degree_field_fk
+      degree_type_fk
     }
   }
   `,
