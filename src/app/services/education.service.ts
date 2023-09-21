@@ -8,8 +8,9 @@ import { IMajorOpts } from '../interfaces/education/Major';
 import { Major } from '../classes/education/Major';
 import { EducationalLevel } from '../classes/education/EducationalLevel';
 import { IEducationalLevelOpts } from '../interfaces/education/EducationLevel';
-import { IDegreeOpts, IDegreeQryOpts, IDegreeTypeOpts, IDegreeTypeQryOpts } from '../interfaces/education/Degree';
+import { IDegreeQryOpts, IDegreeTypeQryOpts } from '../interfaces/education/Degree';
 import { Degree, DegreeType } from '../classes/education/Degree';
+import { IEducationalInstitutionQryOpts } from '../interfaces/education/EducationalInstitution';
 
 interface IEducationalMappings {
   institutions: Map<number, EducationalInstitution>,
@@ -27,8 +28,7 @@ export class EducationService extends GenericService {
 
   override async initialize() {
     const mappings = await this.getMappings();
-    const degrees = [...mappings.degrees].map((d) => d[1]);
-    this.degrees = degrees.sort(Degree.Sort);
+    this.degrees = [...mappings.degrees].map((d) => d[1]).sort(Degree.Sort);
     console.log(this.degrees);
     return super.initialize();
   }
@@ -61,11 +61,11 @@ export class EducationService extends GenericService {
       result.educationalLevels.set(el.id, new EducationalLevel(el));
     });
 
-    const institutions: EducationalInstitution[] = mappingResponse.institutions.map((ins: { id: number, name: string, InstitutionType: { id: number } }) => new EducationalInstitution(
+    const institutions: EducationalInstitution[] = mappingResponse.institutions.map((ins: IEducationalInstitutionQryOpts) => new EducationalInstitution(
       {
         id: ins.id,
         name: ins.name,
-        institutionType: result.institutionTypes.get(ins.InstitutionType.id) as IEducationalInstitutionType,
+        institutionType: result.institutionTypes.get(ins.type_id_fk) as IEducationalInstitutionType,
       },
     ));
 
