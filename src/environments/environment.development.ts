@@ -6,5 +6,5 @@ export const environment = {
   matomoSiteID: '2',
   ignoreMaintenance: true,
   appUrl: 'https://dev.jmuzina.io',
-  graphQLEndpoint: 'https://api.jmuzina.io/v1/graphql',
+  graphQLEndpoint: 'https://api.dev.jmuzina.io/v1/graphql',
 };
