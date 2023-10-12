@@ -2,7 +2,7 @@
 <p-confirmDialog></p-confirmDialog>
 <div class="app-container">
   <jm-header></jm-header>
-  <div class="page-contents">
+  <main class="page-contents" id="main" #main>
     <ng-container *ngIf="!loading; else appLoading">
       <router-outlet
         *ngIf="(!mnts.activeMaintenanceEvent || ignoreMaintenance) && !inits.initializationError"
@@ -24,5 +24,5 @@
       ></jm-loading-spinner>
     </ng-template>
     <jm-footer></jm-footer>
-  </div>
+  </main>
 </div>

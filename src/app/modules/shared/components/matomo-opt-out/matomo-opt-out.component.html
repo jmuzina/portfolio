@@ -1,5 +1,18 @@
-<p-dialog class="matomo-opt-out-dialog" [(visible)]="popupOpen" header="Data collection opt-out">
-  <div *ngIf="!loading; else optStateLoading" class="opt-out-container">
+<p-dialog
+  class="matomo-opt-out-dialog"
+  [(visible)]="popupOpen"
+  header="Data collection opt-out"
+  aria-live="polite"
+  aria-atomic="false"
+  aria-relevant="additions"
+>
+  <div
+    *ngIf="!loading; else optStateLoading"
+    class="opt-out-container"
+    aria-live="polite"
+    aria-atomic="false"
+    aria-relevant="additions"
+  >
     <div class="opt-btn-row">
       <label class="opt-out-label" for="opt-out">Usage metrics:</label>
       <p-selectButton name="opt-out" id="opt-out" [options]="stateOptions" [ngModel]="selected.value"
@@ -13,4 +26,4 @@
   </ng-template>
 </p-dialog>
 
-<button pButton class="p-button p-button-text" icon="pi pi-eye-slash" (click)="popupOpen=true" [disabled]="popupOpen" pTooltip="Review privacy settings"></button>
+<button pButton class="p-button p-button-text" icon="pi pi-eye-slash" (click)="popupOpen=true" [disabled]="popupOpen" pTooltip="Review privacy settings" [attr.aria-label]="'Review privacy settings'"></button>

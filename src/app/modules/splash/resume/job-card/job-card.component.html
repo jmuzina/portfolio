@@ -1,48 +1,30 @@
 <div class="job-container">
   <div class="job-main-details job-flex-item">
-    <span class="job-title">{{ job.title }}</span>
-    <span class="job-employer">{{ job.employer.name }}</span>
-    <span class="job-time-period"
+    <span class="job-title" aria-description="Job title">{{ job.title }}</span>
+    <span class="job-employer" aria-description="Employer name">{{ job.employer.name }}</span>
+    <span class="job-time-period" aria-description="Employment time period"
       >{{ job.started_at | date : "MMM y" }} -
       {{ (job.ended_at | date : "MMM y") || "Present" }}
       ({{ job.started_at | humanizedDuration : job.ended_at }})</span
     >
-    <ul *ngIf="job.responsibilities?.length">
-      <ng-container
-        *ngIf="job.responsibilities.length > abbreviatedJobDescriptionMaxLength"
-      >
-        <ng-container *ngIf="!showMore">
-          <li
-            *ngFor="
-              let responsibility of job.responsibilities
-                | slice : 0 : abbreviatedJobDescriptionMaxLength
-            "
-          >
-            {{ responsibility.text }}
-          </li>
-          <span class="job-description-length-toggler" (click)="showMore = true"
-            >Show more</span
-          >
-        </ng-container>
-      </ng-container>
-      <ng-container
-        *ngIf="
-          showMore ||
-          job.responsibilities.length <= abbreviatedJobDescriptionMaxLength
+    <ul
+      *ngIf="job.responsibilities?.length"
+      aria-description="Job responsibilities"
+      aria-live="polite"
+      aria-atomic="false"
+      aria-relevant="all"
+    >
+      <li
+        *ngFor="
+          let responsibility of job.responsibilities
+            | slice : 0 : (showMore ? job.responsibilities.length : abbreviatedJobDescriptionMaxLength)
         "
       >
-        <li *ngFor="let responsibility of job.responsibilities">
-          {{ responsibility.text }}
-        </li>
-        <span
-          *ngIf="
-            job.responsibilities.length > abbreviatedJobDescriptionMaxLength
-          "
-          class="job-description-length-toggler"
-          (click)="showMore = false"
-          >Show less</span
-        >
-      </ng-container>
+        {{ responsibility.text }}
+      </li>
+      <span *ngIf="job.responsibilities.length > abbreviatedJobDescriptionMaxLength" class="job-description-length-toggler" (click)="showMore = !showMore" [attr.aria-description]="(job.responsibilities.length - abbreviatedJobDescriptionMaxLength) + 'responsibilities are hidden for brevit. Click to show them.'" role="link"
+        >Show {{showMore ? 'less' : 'more'}}</span
+      >
     </ul>
   </div>
   <!--  <div class="job-skill-icons job-flex-item">

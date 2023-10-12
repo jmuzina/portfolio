@@ -7,5 +7,7 @@
     [pTooltip]="site.label"
     (click)="exss.onClickSocialIcon(site)"
     [href]="site.address"
+    role="link"
+    [attr.aria-label]="site.alt"
   ></a>
 </div>

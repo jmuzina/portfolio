@@ -13,9 +13,18 @@
     <meta name="description" content="I'm an experienced full-stack engineer from Cleveland, Ohio with a passion for creating useful, user-focused applications!" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link id="app-theme-supporting" rel="stylesheet" type="text/css" />
+    <script>
+      const doSkipNav = () => {
+        const main = document.getElementById('main');
+        if (!main) return;
+        main.setAttribute('tabIndex', -1);
+        main.focus();
+      }
+    </script>
   </head>
 
   <body>
+    <a id="skipnav" role="link" onclick="doSkipNav()">Skip to main content</a>
     <jm-root></jm-root>
   </body>
 </html>

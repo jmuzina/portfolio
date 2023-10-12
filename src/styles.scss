@@ -3,6 +3,7 @@ html {
   width: 100svw;
   overflow: hidden;
 }
+
 :root {
   --content-padding : 4px;
   --border-radius-a: 6px;
@@ -31,6 +32,23 @@ body {
 
 * {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+#skipnav {
+  background: var(--primary-color);
+  height: 30px;
+  z-index: 500;
+  left: 50%;
+  padding: 8px;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+  text-decoration: underline;
+  cursor: pointer;
+  &:focus {
+    transform: translateY(0%);
+  }
 }
 
 .fade {

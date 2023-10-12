@@ -1,4 +1,12 @@
-<button *ngIf="ths.activeTheme; else themeNotLoadedYet" pButton class="p-button p-button-text p-button-outline" [icon]="ths.activeTheme.icon" (click)="ths.toggleLightDark()" [pTooltip]="ths.darkMode ? 'Switch to light mode' : 'Switch to dark mode'"></button>
+<button
+  *ngIf="ths.activeTheme; else themeNotLoadedYet"
+  pButton
+  class="p-button p-button-text p-button-outline"
+  [icon]="ths.activeTheme.icon"
+  (click)="ths.toggleLightDark()"
+  [pTooltip]="ths.darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
+  [attr.aria-label]="ths.darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
+></button>
 <ng-template #themeNotLoadedYet>
   <jm-loading-spinner [showMessage]="false" [useDots]="false"></jm-loading-spinner>
 </ng-template>
