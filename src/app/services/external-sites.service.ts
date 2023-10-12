@@ -10,6 +10,7 @@ export class ExternalSitesService {
     label: 'Portfolio (Development build)',
     address: 'https://dev.jmuzina.io',
     icon: 'pi pi-wrench',
+    alt: 'Link to development portfolio site',
     confirmNavigation: {
       header: 'Open development build?',
       message:
@@ -23,6 +24,7 @@ export class ExternalSitesService {
     label: 'Main site',
     address: 'https://jmuzina.io',
     icon: 'pi pi-server',
+    alt: 'Link to production portfolio site',
   });
 
   public externalSites: ExternalSitePresence[] = [
@@ -30,11 +32,13 @@ export class ExternalSitesService {
       label: 'GitHub',
       address: 'https://github.com/jmuzina',
       icon: 'pi pi-github',
+      alt: 'Link to Julie\'s GitHub profile',
     }),
     new ExternalSitePresence({
       label: 'LinkedIn',
       address: 'https://www.linkedin.com/in/julie-muzina-7b0603164',
       icon: 'pi pi-linkedin',
+      alt: 'Link to Julie\'s LinkedIn profile',
     }),
   ];
 

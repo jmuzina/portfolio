@@ -14,6 +14,8 @@ export class ExternalSitePresence {
 
   address!: string;
 
+  alt!: string;
+
   icon?: string;
 
   styleClass?: string;

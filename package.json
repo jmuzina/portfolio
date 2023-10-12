@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "1.05",
+  "version": "1.06",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
