@@ -39,7 +39,7 @@ if (!trackDetailedSentryData) {
   (sentryOpts.integrations as any[]).push(new Sentry.Replay());
 }
 
-enableProdMode();
+if (environment.production) enableProdMode();
 
 Sentry.init(sentryOpts);
 
