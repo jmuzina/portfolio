@@ -3,9 +3,9 @@
     <span class="job-title" aria-description="Job title">{{ job.title }}</span>
     <span class="job-employer" aria-description="Employer name">{{ job.employer.name }}</span>
     <span class="job-time-period" aria-description="Employment time period"
-      >{{ job.started_at | date : "MMM y" }} -
-      {{ (job.ended_at | date : "MMM y") || "Present" }}
-      ({{ job.started_at | humanizedDuration : job.ended_at }})</span
+      >{{ job.started_at | momentToDate | date : "MMM y" }} -
+      {{ job.ends_in_future ? futureDateText : ((job.ended_at | momentToDate | date : "MMM y") || futureDateText) }}
+      ({{ job.started_at | humanizedDuration : {endDate: job.ended_at} }})</span
     >
     <ul
       *ngIf="job.responsibilities?.length"

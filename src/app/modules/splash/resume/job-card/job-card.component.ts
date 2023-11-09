@@ -9,6 +9,8 @@ import { Job } from 'src/app/classes/employment/Job';
 export class JobCardComponent {
   @Input({ required: true }) job!: Job;
 
+  @Input() futureDateText = 'Present';
+
   public abbreviatedJobDescriptionMaxLength = 3;
 
   public showMore = false;

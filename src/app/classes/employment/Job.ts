@@ -2,11 +2,12 @@ import { IResponsibilityOpts } from 'src/app/interfaces/employment/Responsibilit
 import { Skill } from '../Skill';
 import { Employer } from './Employer';
 import { IJobOpts } from 'src/app/interfaces/employment/Job';
+import moment from 'moment';
 
 export class Responsibility implements IResponsibilityOpts {
-  public id!: number;
+  id!: number;
 
-  public text!: string;
+  text!: string;
 
   constructor(opts: IResponsibilityOpts) {
     Object.assign(this, opts);
@@ -14,20 +15,26 @@ export class Responsibility implements IResponsibilityOpts {
 }
 
 
-export class Job implements IJobOpts {
-  public title!: string;
+export class Job {
+  title!: string;
 
-  public started_at!: Date;
+  started_at!: moment.Moment;
 
-  public ended_at?: Date;
+  ended_at?: moment.Moment;
 
-  public employer!: Employer;
+  ends_in_future!: boolean;
 
-  public skills: Skill[] = [];
+  employer!: Employer;
 
-  public responsibilities: Responsibility[] = [];
+  skills: Skill[] = [];
+
+  responsibilities: Responsibility[] = [];
 
   constructor(opts: IJobOpts) {
     Object.assign(this, opts);
+    if (opts.started_at) this.started_at = moment(opts.started_at);
+    if (opts.ended_at) this.ended_at = moment(opts.ended_at);
+    // If ended_at is in the future, clear ended_at (show it in future)
+    this.ends_in_future = !!(this.ended_at && this.ended_at.isAfter(moment.now()));
   }
 }
