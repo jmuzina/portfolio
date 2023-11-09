@@ -67,6 +67,11 @@ export class EmployerService extends GenericService {
                 { started_at: new EnumType('desc') },
                 { ended_at: new EnumType('desc') },
               ],
+              where: {
+                started_at: {
+                  _lte: 'now()',
+                },
+              },
             },
             id: true,
             title: true,

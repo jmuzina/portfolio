@@ -20,7 +20,9 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { AttributionComponent } from './components/attribution/attribution.component';
 import { TableModule } from 'primeng/table';
 import { MaintenanceMessageComponent } from './components/maintenance-message/maintenance-message.component';
-import { HumanizedDurationPipe } from './pipes/humanized-duration.pipe';
+import { HumanizedDurationPipe } from './pipes/moment/humanized-duration.pipe';
+import { MomentToDatePipe } from './pipes/moment/date-conversion.pipe';
+import { PluralPipe } from './pipes/plural.pipe';
 @NgModule({
   declarations: [
     LoadingSpinnerComponent,
@@ -34,6 +36,8 @@ import { HumanizedDurationPipe } from './pipes/humanized-duration.pipe';
     AttributionComponent,
     MaintenanceMessageComponent,
     HumanizedDurationPipe,
+    MomentToDatePipe,
+    PluralPipe,
   ],
   imports: [
     CommonModule,
@@ -65,6 +69,8 @@ import { HumanizedDurationPipe } from './pipes/humanized-duration.pipe';
     MaintenanceMessageComponent,
     FooterComponent,
     HumanizedDurationPipe,
+    MomentToDatePipe,
+    PluralPipe,
   ],
 })
 export class SharedModule {}
