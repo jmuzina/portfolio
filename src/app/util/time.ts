@@ -20,10 +20,9 @@ export const getFormattedDateDiff = (date1: Date, date2: Date) : string => {
   intervals
     .forEach((interval) => {
       const diff = a.diff(b, interval);
-      //if (diff <= 0) return;
-
       b.add(diff, interval);
       if (!diff) return;
+      
       out.push(`${Math.abs(diff)} ${
         pluralString(
           // remove the trailing s from the unit

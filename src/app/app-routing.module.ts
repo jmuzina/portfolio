@@ -6,18 +6,13 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home',
-  },
-  {
-    path: 'home',
     loadChildren: () =>
       import('./modules/splash/splash.module').then((m) => m.SplashModule),
   },
-  /*   {
-    path: 'resume',
-    loadChildren: () =>
-      import('./modules/resume/resume.module').then((m) => m.ResumeModule),
-  }, */
+  {
+    path: 'home',
+    redirectTo: '',
+  },
   {
     path: '**',
     component: PageNotFoundComponent,
