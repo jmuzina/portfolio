@@ -1,7 +1,7 @@
 import { ConditionalClasses } from '../types/conditional-classes.type';
 
 export class ConditionalClassList {
-  public enabledClasses(): string[] {
+  enabledClasses(): string[] {
     return Object.entries(this.list)
       .filter((conditionalClassPairing) => conditionalClassPairing[1]())
       .map(
@@ -9,7 +9,7 @@ export class ConditionalClassList {
       );
   }
 
-  public classesAsString(delim = ' '): string {
+  classesAsString(delim = ' '): string {
     return this.enabledClasses().join(delim);
   }
 

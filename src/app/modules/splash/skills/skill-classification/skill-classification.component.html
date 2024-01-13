@@ -8,7 +8,7 @@
   </div>
   <div class="related-skills-container">
     <ng-container *ngFor="let skill of classification.skills">
-      <jm-skill-item *ngIf="skill.highlighted" [skill]="skill"></jm-skill-item
-    ></ng-container>
+      <jm-skill-item [skill]="skill"/>
+    </ng-container>
   </div>
 </div>

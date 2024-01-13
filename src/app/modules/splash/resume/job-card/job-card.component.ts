@@ -11,7 +11,7 @@ export class JobCardComponent {
 
   @Input() futureDateText = 'Present';
 
-  public abbreviatedJobDescriptionMaxLength = 3;
+  abbreviatedJobDescriptionMaxLength = 3;
 
-  public showMore = false;
+  showMore = false;
 }

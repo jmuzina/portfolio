@@ -6,7 +6,7 @@ import { ConfirmationService } from 'primeng/api';
 
 @Injectable({ providedIn: 'root' })
 export class ExternalSitesService {
-  public devSite: ExternalSitePresence = new ExternalSitePresence({
+  devSite: ExternalSitePresence = new ExternalSitePresence({
     label: 'Portfolio (Development build)',
     address: 'https://dev.jmuzina.io',
     icon: 'pi pi-wrench',
@@ -20,25 +20,25 @@ export class ExternalSitesService {
     },
   });
 
-  public prodSite: ExternalSitePresence = new ExternalSitePresence({
+  prodSite: ExternalSitePresence = new ExternalSitePresence({
     label: 'Main site',
     address: 'https://jmuzina.io',
     icon: 'pi pi-server',
     alt: 'Link to production portfolio site',
   });
 
-  public externalSites: ExternalSitePresence[] = [
+  externalSites: ExternalSitePresence[] = [
     new ExternalSitePresence({
       label: 'GitHub',
       address: 'https://github.com/jmuzina',
       icon: 'pi pi-github',
-      alt: 'Link to Julie\'s GitHub profile',
+      alt: "Link to Julie's GitHub profile",
     }),
     new ExternalSitePresence({
       label: 'LinkedIn',
       address: 'https://www.linkedin.com/in/julie-muzina-7b0603164',
       icon: 'pi pi-linkedin',
-      alt: 'Link to Julie\'s LinkedIn profile',
+      alt: "Link to Julie's LinkedIn profile",
     }),
   ];
 
@@ -54,15 +54,18 @@ export class ExternalSitesService {
     this.externalSites.unshift(otherEnv);
   }
 
-  public goHome(): void {
+  goHome(): void {
     this._router.navigateByUrl('');
   }
 
-  public onClickSocialIcon(site: ExternalSitePresence): boolean {
+  onClickSocialIcon(site: ExternalSitePresence): boolean {
     return ExternalSitePresence.PresenceNavigate(site, this._cfs);
   }
 
-  constructor(private _router: Router, private _cfs: ConfirmationService) {
+  constructor(
+    private _router: Router,
+    private _cfs: ConfirmationService,
+  ) {
     if (environment.development) this.addEnvironmentSwitcher();
   }
 }

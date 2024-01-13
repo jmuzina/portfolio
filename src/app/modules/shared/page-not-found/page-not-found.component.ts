@@ -16,7 +16,7 @@ interface PNFErrOpts {
   styleUrls: ['./page-not-found.component.scss'],
 })
 export class PageNotFoundComponent {
-  public pnf: PNFErrOpts = {
+  pnf: PNFErrOpts = {
     headerMessage: 'Page not found',
     image: {
       file: {
@@ -27,7 +27,7 @@ export class PageNotFoundComponent {
     },
   };
 
-  public err: PNFErrOpts = {
+  err: PNFErrOpts = {
     headerMessage: 'Page not found',
     image: {
       file: {

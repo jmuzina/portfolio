@@ -15,19 +15,19 @@ interface IOptOutState {
   styleUrls: ['./matomo-opt-out.component.scss'],
 })
 export class MatomoOptOutComponent implements OnInit {
-  public popupOpen = false;
+  popupOpen = false;
 
   private _on: IOptOutState = { label: 'Enabled', value: 'on' };
 
   private _off: IOptOutState = { label: 'Disabled', value: 'off' };
 
-  public selected: IOptOutState = this._on;
+  selected: IOptOutState = this._on;
 
-  public loading = false;
+  loading = false;
 
-  public optedOut = false;
+  optedOut = false;
 
-  public stateOptions: IOptOutState[] = [this._on, this._off];
+  stateOptions: IOptOutState[] = [this._on, this._off];
 
   handleChange(state: TOnOff) {
     if (state === 'off') {
@@ -53,7 +53,7 @@ export class MatomoOptOutComponent implements OnInit {
     }
   }
 
-  public get optStateMessage(): string {
+  get optStateMessage(): string {
     if (this.optedOut) {
       return 'You are currently opted out of usage metrics tracking. I will not receive or store any of your usage data.';
     }

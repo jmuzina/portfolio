@@ -14,14 +14,17 @@ export class RepeatingDotsComponent implements OnInit, OnDestroy {
 
   private _numDots = 0;
 
-  public dotsToDisplay = '';
+  dotsToDisplay = '';
 
   private _timer: number | undefined = undefined;
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this._timer = window.setInterval(() => this.progressDots(), this.dotInterval);
+    this._timer = window.setInterval(
+      () => this.progressDots(),
+      this.dotInterval,
+    );
   }
 
   ngOnDestroy(): void {

@@ -6,13 +6,13 @@ export interface IMaintenanceEventOpts {
 }
 
 export class MaintenanceEvent implements IMaintenanceEventOpts {
-  public id!: number;
+  id!: number;
 
-  public started_at!: Date;
+  started_at!: Date;
 
-  public ended_at?: Date;
+  ended_at?: Date;
 
-  public message?: string;
+  message?: string;
 
   constructor(opts: IMaintenanceEventOpts) {
     Object.assign(this, opts);

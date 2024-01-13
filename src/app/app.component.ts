@@ -12,9 +12,19 @@ import { environment } from 'src/environments/environment';
 export class AppComponent implements OnInit {
   @ViewChild('main') main!: ElementRef;
 
-  public loading = true;
+  loading = true;
 
-  public ignoreMaintenance = environment.ignoreMaintenance;
+  ignoreMaintenance = environment.ignoreMaintenance;
+
+  constructor(
+    public inits: InitializerService,
+    private _tsts: ToastService,
+    public mnts: MaintenanceService,
+  ) {}
+
+  ngOnInit(): void {
+    this.initializeApp();
+  }
 
   private async initializeApp() {
     this.inits.initialize().finally(() => {
@@ -22,24 +32,12 @@ export class AppComponent implements OnInit {
       if (this.mnts.activeMaintenanceEvent && this.ignoreMaintenance) {
         this._tsts.info({
           summary: 'Maintenance in progress',
-          detail: this.mnts.activeMaintenanceEvent.message || 'Maintenance in progress.',
+          detail:
+            this.mnts.activeMaintenanceEvent.message ||
+            'Maintenance in progress.',
           life: 60000,
         });
       }
     });
   }
-
-  ngOnInit(): void {
-    this.initializeApp();
-  }
-
-  /*   throw_test(): void {
-    throw new Error(new Date().toISOString());
-  } */
-
-  constructor(
-    public inits: InitializerService,
-    private _tsts: ToastService,
-    public mnts: MaintenanceService,
-  ) {}
 }
