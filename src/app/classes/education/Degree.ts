@@ -1,27 +1,21 @@
-import { IDegreeHonorOpts, IDegreeOpts, IDegreeTypeOpts } from 'src/app/interfaces/education/Degree';
+import {
+  IDegreeHonorOpts,
+  IDegreeOpts,
+  IDegreeTypeOpts,
+} from 'src/app/interfaces/education/Degree';
 import { EducationalInstitution } from './EducationalInstitution';
 import { Major } from './Major';
 import { IEducationalField } from 'src/app/interfaces/education/EducationalField';
-import { EducationalLevel } from './EducationalLevel';
 
 export class DegreeHonor implements IDegreeHonorOpts {
-  id!: number;
-
   label!: string;
 
   constructor(opts: IDegreeHonorOpts) {
     Object.assign(this, opts);
   }
 }
-export class DegreeType implements IDegreeTypeOpts {
-  id!: number;
 
-  prefix!: string;
-
-  usesSuffixInline!: boolean;
-
-  level!: EducationalLevel;
-
+export class DegreeType {
   label!: string;
 
   constructor(opts: IDegreeTypeOpts) {
@@ -48,6 +42,17 @@ export class Degree {
 
   honor?: DegreeHonor;
 
+  constructor(opts: IDegreeOpts) {
+    this.gpa = opts.gpa;
+    this.startedOn = new Date(opts.started_on);
+    this.awardedOn = opts.awarded_on ? new Date(opts.awarded_on) : undefined;
+    this.institution = new EducationalInstitution(opts.institution);
+    this.major = opts.major;
+    this.honor = opts.honor;
+    this.type = new DegreeType(opts.type);
+    this.field = opts.field;
+  }
+
   static Sort(a: Degree, b: Degree) {
     const degreeTimestamps = {
       a: {
@@ -68,11 +73,7 @@ export class Degree {
       if (degreeTimestamps.a.start > degreeTimestamps.b.start) return -1;
       if (degreeTimestamps.a.start < degreeTimestamps.b.start) return 1;
 
-      // award and start dates are identical, defer to educational level sort
-      const educationalLevelSortResult = EducationalLevel.Sort(a.type.level, b.type.level);
-      if (educationalLevelSortResult) return educationalLevelSortResult;
-
-      // Educational levels are also the same. Defer to educational institution sort.
+      // Defer to educational institution sort.
       return EducationalInstitution.Sort(a.institution, b.institution);
     }
 
@@ -86,17 +87,5 @@ export class Degree {
     // The one that was completed more recently should appear first.
     if (degreeTimestamps.a.end > degreeTimestamps.b.end) return -1;
     return 1;
-  }
-
-  constructor(opts: IDegreeOpts) {
-    this.id = opts.id;
-    this.gpa = opts.gpa;
-    this.startedOn = new Date(opts.startedOn);
-    this.awardedOn = opts.awardedOn ? new Date(opts.awardedOn) : undefined;
-    this.institution = opts.institution;
-    this.major = opts.major;
-    this.field = opts.field;
-    this.type = opts.type;
-    this.honor = opts.honor;
   }
 }

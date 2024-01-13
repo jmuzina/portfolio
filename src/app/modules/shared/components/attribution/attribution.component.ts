@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IAttributedResource } from 'src/app/interfaces/AttributedResource';
+import { IAttributedResource } from '../../../../interfaces/AttributedResource';
 
 @Component({
   selector: 'jm-attribution',

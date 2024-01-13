@@ -5,8 +5,6 @@ import { IJobOpts } from 'src/app/interfaces/employment/Job';
 import moment from 'moment';
 
 export class Responsibility implements IResponsibilityOpts {
-  id!: number;
-
   text!: string;
 
   constructor(opts: IResponsibilityOpts) {
