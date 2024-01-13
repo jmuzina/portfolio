@@ -11,6 +11,5 @@ export class EducationService extends GenericService {
 
   constructor() {
     super();
-    console.log(this.degrees);
   }
 }

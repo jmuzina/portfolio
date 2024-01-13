@@ -2,8 +2,9 @@
   <span class="skill-name">{{ skill.label }}</span>
   <p-image
     *ngIf="skill.picture?.image?.file?.address"
-    imageClass="skill-image"
-    [src]="skill.picture?.image?.file?.address || ''"
     [alt]="skill.picture?.image?.alt_text || ''"
+    [src]="skill.picture?.image?.file?.address || ''"
+    class="skill-image-wrapper"
+    imageClass="skill-image"
   ></p-image>
 </div>

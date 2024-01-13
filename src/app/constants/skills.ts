@@ -22,13 +22,13 @@ export const skillClassificationMappings: ISkillClassificationOpts[] = [
         },
       },
       {
-        label: 'MS SQL Server',
-        acquired_at: '2022-05-20',
+        label: 'Spring',
+        acquired_at: '2023-11-25',
         picture: {
           image: {
-            alt_text: 'MS SQL Server Logo',
+            alt_text: 'Spring Boot Logo',
             file: {
-              address: '/assets/images/skills/ms_sql_server_logo.png',
+              address: '/assets/images/skills/springboot_logo.png',
             },
           },
         },
