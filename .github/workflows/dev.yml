@@ -33,16 +33,22 @@ jobs:
           name: portfolio
           path: ./dist/portfolio
 
-      - name: Deploy build files
-        uses: appleboy/scp-action@v0.1.4
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@v0.5.1
         with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
-          port: ${{ secrets.DEPLOY_PORT }}
-          source: ./dist/portfolio
-          target: ${{ secrets.DEPLOY_PATH }}/development
-          tar_tmp_path: /home/${{ secrets.DEPLOY_USERNAME }}/tmp/development
-          rm: true
-          timeout: 60s
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.DEV_AWS_S3_BUCKET_NAME }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          SOURCE_DIR: 'dist/portfolio'
+
+      - name: Invalidate CloudFront Distribution
+        uses: chetan/invalidate-cloudfront-action@v1
+        env:
+          DISTRIBUTION: ${{ secrets.DEV_AWS_CLOUDFRONT_DISTRIBUTION_ID }}
+          PATHS: '/*'
+          AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
