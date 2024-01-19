@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IAttributedResource } from 'src/app/interfaces/AttributedResource';
-
+import { IAttributedResource } from '../../../../interfaces/AttributedResource';
 
 @Component({
   selector: 'jm-attribution',
@@ -8,7 +7,7 @@ import { IAttributedResource } from 'src/app/interfaces/AttributedResource';
   styleUrls: ['./attribution.component.scss'],
 })
 export class AttributionComponent {
-  public attributedResources: IAttributedResource[] = [
+  attributedResources: IAttributedResource[] = [
     {
       label: {
         text: 'Cog Icon',

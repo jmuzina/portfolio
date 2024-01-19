@@ -10,11 +10,11 @@ import { MenuItem } from 'primeng/api';
 
 @Injectable({ providedIn: 'root' })
 export class ViewControllerService {
-  public static menuItems: MenuItem[] = [];
+  static menuItems: MenuItem[] = [];
 
-  public static router: Router;
+  static router: Router;
 
-  public static navItems: NavigationItem[] = [
+  static navItems: NavigationItem[] = [
     new RouterNavigationItem({
       key: 'home',
       label: environment.appTitle,
@@ -52,13 +52,13 @@ export class ViewControllerService {
     }), */
   ];
 
-  public static updateItems(): void {
+  static updateItems(): void {
     ViewControllerService.menuItems = ViewControllerService.navItems.map(
-      (navItem: NavigationItem) => navItem.toMenuItem()
+      (navItem: NavigationItem) => navItem.toMenuItem(),
     );
   }
 
-  public static selectItem(itemToSelect: NavigationItem): void {
+  static selectItem(itemToSelect: NavigationItem): void {
     itemToSelect.updateDisabled();
     if (itemToSelect.disabled) return;
     ViewControllerService.navItems
@@ -70,7 +70,7 @@ export class ViewControllerService {
     ViewControllerService.updateItems();
   }
 
-  public refresh(): void {
+  refresh(): void {
     window.location.reload();
   }
 

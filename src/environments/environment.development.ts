@@ -3,7 +3,6 @@ export const environment = {
   development: true,
   local: false,
   appTitle: 'Julie Muzina (DEV)',
-  matomoSiteID: '2',
   ignoreMaintenance: true,
   appUrl: 'https://dev.jmuzina.io',
   graphQLEndpoint: 'https://api.dev.jmuzina.io/v1/graphql',

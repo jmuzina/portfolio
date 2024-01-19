@@ -10,29 +10,29 @@ import { ViewControllerService } from '../services/view-controller.service';
 import { assignEntriesToObject } from '../util/ctor';
 
 export class NavigationItem {
-  public key!: string;
+  key!: string;
 
-  public label!: string;
+  label!: string;
 
-  public withPadding = false;
+  withPadding = false;
 
-  public children: NavigationItem[] = [];
+  children: NavigationItem[] = [];
 
-  public disabled = false;
+  disabled = false;
 
-  public active = false;
+  active = false;
 
-  public styleClass: ConditionalClassList = new ConditionalClassList();
+  styleClass: ConditionalClassList = new ConditionalClassList();
 
-  public style = {};
+  style = {};
 
-  public tooltip?: string;
+  tooltip?: string;
 
-  public icon?: string;
+  icon?: string;
 
-  public shouldDisable: () => boolean = () => false;
+  shouldDisable: () => boolean = () => false;
 
-  public updateDisabled() {
+  updateDisabled() {
     this.disabled = this.shouldDisable();
     if (this.disabled) {
       this.active = false;

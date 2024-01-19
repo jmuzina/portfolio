@@ -7,7 +7,7 @@ import { ViewControllerService } from 'src/app/services/view-controller.service'
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  public get items() {
+  get items() {
     return ViewControllerService.menuItems;
   }
 

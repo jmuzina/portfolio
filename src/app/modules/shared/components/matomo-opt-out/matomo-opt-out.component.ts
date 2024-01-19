@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatomoTracker } from '@ngx-matomo/tracker';
 import { ToastService } from 'src/app/services/toast.service';
+import { CookiesService } from '../../../../services/cookies.service';
+import moment from 'moment';
 
 type TOnOff = 'on' | 'off';
 
@@ -15,35 +16,50 @@ interface IOptOutState {
   styleUrls: ['./matomo-opt-out.component.scss'],
 })
 export class MatomoOptOutComponent implements OnInit {
-  public popupOpen = false;
+  popupOpen = false;
+
+  loading = false;
+
+  optedOut = false;
 
   private _on: IOptOutState = { label: 'Enabled', value: 'on' };
 
+  selected: IOptOutState = this._on;
+
   private _off: IOptOutState = { label: 'Disabled', value: 'off' };
 
-  public selected: IOptOutState = this._on;
+  stateOptions: IOptOutState[] = [this._on, this._off];
 
-  public loading = false;
+  constructor(
+    private _tsts: ToastService,
+    private _cks: CookiesService,
+  ) {}
 
-  public optedOut = false;
-
-  public stateOptions: IOptOutState[] = [this._on, this._off];
+  get optStateMessage(): string {
+    if (this.optedOut) {
+      return 'You are currently opted out of usage metrics tracking. I will not receive or store any of your usage data.';
+    }
+    return 'You are currently sharing usage data with me. I will use this data to make this site more intuitive and featured!';
+  }
 
   handleChange(state: TOnOff) {
     if (state === 'off') {
-      this.tracker.optUserOut();
+      this._cks.trackerOptOut = moment(moment.now());
     } else {
-      this.tracker.forgetUserOptOut();
+      this._cks.trackerOptOut = null;
     }
-    window.location.reload();
 
+    this.refreshState();
+  }
+
+  ngOnInit(): void {
     this.refreshState();
   }
 
   private async refreshState() {
     try {
       this.loading = true;
-      this.optedOut = await this.tracker.isUserOptedOut();
+      this.optedOut = this._cks.isUserOptedOutOfTracking();
       this.selected = this.optedOut ? this._off : this._on;
     } catch (err: any) {
       console.error(err);
@@ -52,20 +68,4 @@ export class MatomoOptOutComponent implements OnInit {
       this.loading = false;
     }
   }
-
-  public get optStateMessage(): string {
-    if (this.optedOut) {
-      return 'You are currently opted out of usage metrics tracking. I will not receive or store any of your usage data.';
-    }
-    return 'You are currently sharing usage data with me. I will use this data to make this site more intuitive and featured!';
-  }
-
-  ngOnInit(): void {
-    this.refreshState();
-  }
-
-  constructor(
-    private readonly tracker: MatomoTracker,
-    private _tsts: ToastService,
-  ) {}
 }

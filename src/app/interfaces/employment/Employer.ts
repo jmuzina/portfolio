@@ -1,9 +1,8 @@
-import { Job } from 'src/app/classes/employment/Job';
+import { IJobOpts } from './Job';
 
 export interface IEmployerOpts {
-  id: number;
   name: string;
   website?: string;
   photoUrl?: string;
-  jobs: Job[];
+  jobs: IJobOpts[];
 }

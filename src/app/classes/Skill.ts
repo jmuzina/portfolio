@@ -1,32 +1,35 @@
 import { IPicture } from '../interfaces/Picture';
-import { ISkillClassificationOpts, ISkillOpts } from '../interfaces/employment/Skill';
+import {
+  ISkillClassificationOpts,
+  ISkillOpts,
+} from '../interfaces/employment/Skill';
 
-export class SkillClassification implements ISkillClassificationOpts {
-  public id!: number;
+export class SkillClassification {
+  id!: number;
 
-  public label!: string;
+  label!: string;
 
-  public picture?: IPicture;
+  picture?: IPicture;
 
-  public skills: Skill[] = [];
+  skills: Skill[] = [];
 
   constructor(opts: ISkillClassificationOpts) {
     Object.assign(this, opts);
   }
 }
 
-export class Skill implements ISkillOpts {
-  public id!: number;
+export class Skill {
+  id!: number;
 
-  public label!: string;
+  label!: string;
 
-  public picture?: IPicture;
+  picture?: IPicture;
 
-  public description?: string;
+  description?: string;
 
-  public acquired_at!: Date;
+  acquired_at!: Date;
 
-  public highlighted?: boolean;
+  highlighted?: boolean;
 
   public classification!: SkillClassification;
 

@@ -22,20 +22,29 @@ export class ExternalSitePresence {
 
   confirmNavigation?: IConfirmNavigation;
 
-  public open() {
+  open() {
     window.open(this.address);
     return false;
   }
 
-  public static PresenceNavigate(presence: ExternalSitePresence, cs: ConfirmationService) : boolean {
+  static PresenceNavigate(
+    presence: ExternalSitePresence,
+    cs: ConfirmationService,
+  ): boolean {
     if (presence.confirmNavigation) {
       cs.confirm({
         header: presence.confirmNavigation.header,
         message: presence.confirmNavigation.message,
-        acceptLabel: presence.confirmNavigation.acceptLabel || `Yes, open ${presence.label}`,
+        acceptLabel:
+          presence.confirmNavigation.acceptLabel ||
+          `Yes, open ${presence.label}`,
         rejectLabel: presence.confirmNavigation.rejectLabel || 'No',
-        acceptButtonStyleClass: presence.confirmNavigation.acceptButtonStyleClass || 'p-button-warning',
-        rejectButtonStyleClass: presence.confirmNavigation.rejectButtonStyleClass || 'p-button-secondary',
+        acceptButtonStyleClass:
+          presence.confirmNavigation.acceptButtonStyleClass ||
+          'p-button-warning',
+        rejectButtonStyleClass:
+          presence.confirmNavigation.rejectButtonStyleClass ||
+          'p-button-secondary',
         accept: () => presence.open(),
       });
       return false;

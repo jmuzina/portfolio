@@ -9,27 +9,27 @@ const COLOR_THEME_COOKIE_KEY = 'jmuzina-portfolio-color-theme';
   providedIn: 'root',
 })
 export class ThemeService extends GenericService {
-  public lightTheme: IColorTheme = {
+  lightTheme: IColorTheme = {
     code: 'light-purple',
     supportingCode: 'primeng-lara-light-purple',
     label: 'Light Purple',
     icon: 'pi pi-sun',
   };
 
-  public darkTheme: IColorTheme = {
+  darkTheme: IColorTheme = {
     code: 'dark-purple',
     supportingCode: 'primeng-lara-dark-purple',
     label: 'Dark Purple',
     icon: 'pi pi-moon',
   };
 
-  public get themes(): IColorTheme[] {
+  get themes(): IColorTheme[] {
     return [this.lightTheme, this.darkTheme];
   }
 
   private _activeTheme!: IColorTheme;
 
-  public get activeTheme(): IColorTheme {
+  get activeTheme(): IColorTheme {
     return this._activeTheme;
   }
 
@@ -53,11 +53,11 @@ export class ThemeService extends GenericService {
     return this.document.getElementById(id) as HTMLLinkElement;
   }
 
-  public get darkMode(): boolean {
+  get darkMode(): boolean {
     return this._activeTheme && this._activeTheme.code === this.darkTheme.code;
   }
 
-  public toggleLightDark(): void {
+  toggleLightDark(): void {
     if (!this._activeTheme)
       throw new Error('No theme was found while trying to toggle themes.');
 
@@ -82,7 +82,7 @@ export class ThemeService extends GenericService {
     this.activeTheme = themeToSet;
   }
 
-  public override initialize(): Promise<any> {
+  override initialize(): Promise<any> {
     this.loadInitialColorTheme();
     return super.initialize();
   }

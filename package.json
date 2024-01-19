@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "1.06",
+  "version": "1.10",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -23,11 +23,8 @@
     "@angular/platform-browser-dynamic": "^16.2.4",
     "@angular/router": "^16.2.4",
     "@fortawesome/fontawesome-free": "^6.4.2",
-    "@ngx-matomo/router": "^4.1.2",
-    "@ngx-matomo/tracker": "^4.1.2",
     "@sentry/angular-ivy": "^7.68.0",
     "js-cookie": "^3.0.5",
-    "json-to-graphql-query": "^2.2.5",
     "moment": "^2.29.4",
     "primeicons": "^6.0.1",
     "primeng": "^16.3.1",

@@ -10,9 +10,9 @@ import { EducationService } from './education.service';
 
 @Injectable({ providedIn: 'root' })
 export class InitializerService extends GenericService {
-  public initializationError?: Error | null = null;
+  initializationError?: Error | null = null;
 
-  public override async initialize(): Promise<void> {
+  override async initialize(): Promise<void> {
     try {
       await this._ths.initialize();
       await this._mnts.initialize();
@@ -29,7 +29,7 @@ export class InitializerService extends GenericService {
     }
   }
 
-  public override async onInitialized(): Promise<void> {
+  override async onInitialized(): Promise<void> {
     return super.initialize();
   }
 
