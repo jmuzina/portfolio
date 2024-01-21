@@ -35,21 +35,15 @@ export class ViewControllerService {
         }),
       ],
     }),
-    /*     new RouterNavigationItem({
+    new ExternalLinkNavigationItem({
       key: 'resume',
       label: 'Resume',
       icon: 'pi pi-file',
-      routerLink: '/resume',
-      tooltip: 'Coming soon...',
+      href: `${environment.appUrl}/assets/resume.pdf`,
+      openInNewTab: true,
+      tooltip: 'Resume',
       shouldDisable: () => false,
-    }), */
-    /*     new RouterNavigationItem({
-      key: 'under-maintenance',
-      label: 'Portfolio is still under construction. More to come soon...',
-      icon: 'pi pi-cog',
-      shouldDisable: () => true,
-      routerLink: '/under-maintenance',
-    }), */
+    })
   ];
 
   static updateItems(): void {
