@@ -116,6 +116,10 @@ export class ExternalLinkNavigationItem extends NavigationItem {
 
   public openInNewTab = false;
 
+  override toMenuItem(): MenuItem {
+    return { ...super.toMenuItem(), url: this.href, target: this.href };
+  }
+
   public override activate(): void {
     window.open(this.href, this.openInNewTab ? '_blank' : undefined);
   }
