@@ -36,7 +36,7 @@ export class ExternalSitesService {
     }),
     new ExternalSitePresence({
       label: 'LinkedIn',
-      address: 'https://www.linkedin.com/in/julie-muzina-7b0603164',
+      address: 'https://www.linkedin.com/in/jmuzina',
       icon: 'pi pi-linkedin',
       alt: "Link to Julie's LinkedIn profile",
     }),
