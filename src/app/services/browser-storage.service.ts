@@ -71,14 +71,6 @@ export class BrowserStorageService {
     }
   }
 
-  // private storageRetrievalFn(key: StorageKey) {
-  //   return this.usesLocalStorage(key) ? localStorage.getItem : Cookies.get;
-  // }
-  //
-  // private storageRemovalFn(key: StorageKey) {
-  //   return this.usesLocalStorage(key) ? localStorage.removeItem : Cookies.remove;
-  // }
-
   private usesLocalStorage(key: StorageKey) {
     return this._STORAGE_DISPOSITIONS[key] === StorageDisposition.LOCALSTORAGE;
   }
