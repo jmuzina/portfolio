@@ -2,8 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { GenericService } from './generic.service';
 import { IColorTheme } from '../interfaces/ColorTheme';
-
-const COLOR_THEME_COOKIE_KEY = 'jmuzina-portfolio-color-theme';
+import { BrowserStorageService } from './browser-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +21,13 @@ export class ThemeService extends GenericService {
     label: 'Dark Purple',
     icon: 'pi pi-moon',
   };
+
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private _bss: BrowserStorageService,
+  ) {
+    super();
+  }
 
   get themes(): IColorTheme[] {
     return [this.lightTheme, this.darkTheme];
@@ -45,12 +51,8 @@ export class ThemeService extends GenericService {
 
     supportingLink.href = `${theme.supportingCode}.css`;
 
-    localStorage.setItem(COLOR_THEME_COOKIE_KEY, theme.code);
+    this._bss.set('COLOR_THEME', theme.code);
     this._activeTheme = theme;
-  }
-
-  private themeLink(id = 'app-theme-secondary'): HTMLLinkElement {
-    return this.document.getElementById(id) as HTMLLinkElement;
   }
 
   get darkMode(): boolean {
@@ -65,13 +67,22 @@ export class ThemeService extends GenericService {
     else this.activeTheme = this.darkTheme;
   }
 
+  override initialize(): Promise<any> {
+    this.loadInitialColorTheme();
+    return super.initialize();
+  }
+
+  private themeLink(id = 'app-theme-secondary'): HTMLLinkElement {
+    return this.document.getElementById(id) as HTMLLinkElement;
+  }
+
   private loadInitialColorTheme(): void {
     if (this._activeTheme)
       throw new Error(
         'Cannot load color theme from cookie after it has already been loaded.',
       );
 
-    const cookieVal = localStorage.getItem(COLOR_THEME_COOKIE_KEY);
+    const cookieVal = this._bss.get('COLOR_THEME');
 
     const themeToSet: IColorTheme =
       this.themes.find((theme: IColorTheme) => theme.code === cookieVal) ||
@@ -80,14 +91,5 @@ export class ThemeService extends GenericService {
     if (!themeToSet) throw new Error('Could not find a color theme to use.');
 
     this.activeTheme = themeToSet;
-  }
-
-  override initialize(): Promise<any> {
-    this.loadInitialColorTheme();
-    return super.initialize();
-  }
-
-  constructor(@Inject(DOCUMENT) private document: Document) {
-    super();
   }
 }
