@@ -15,7 +15,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { FooterComponent } from './components/footer/footer.component';
 import { SocialIconsComponent } from './components/social-icons/social-icons.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { MatomoOptOutComponent } from './components/matomo-opt-out/matomo-opt-out.component';
+import { TrackingOptInComponent } from './components/tracking-opt-in/tracking-opt-in.component';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { AttributionComponent } from './components/attribution/attribution.component';
 import { TableModule } from 'primeng/table';
@@ -23,6 +23,7 @@ import { MaintenanceMessageComponent } from './components/maintenance-message/ma
 import { HumanizedDurationPipe } from './pipes/moment/humanized-duration.pipe';
 import { MomentToDatePipe } from './pipes/moment/date-conversion.pipe';
 import { PluralPipe } from './pipes/plural.pipe';
+
 @NgModule({
   declarations: [
     LoadingSpinnerComponent,
@@ -32,7 +33,7 @@ import { PluralPipe } from './pipes/plural.pipe';
     FooterComponent,
     SocialIconsComponent,
     PageNotFoundComponent,
-    MatomoOptOutComponent,
+    TrackingOptInComponent,
     AttributionComponent,
     MaintenanceMessageComponent,
     HumanizedDurationPipe,
@@ -58,7 +59,7 @@ import { PluralPipe } from './pipes/plural.pipe';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatomoOptOutComponent,
+    TrackingOptInComponent,
     ToastModule,
     TooltipModule,
     LoadingSpinnerComponent,

@@ -1,0 +1,32 @@
+<p-dialog
+  [(visible)]="popupOpen"
+  aria-atomic="false"
+  aria-live="polite"
+  aria-relevant="additions"
+  class="tracking-opt-in-dialogue"
+  header="Data collection opt-in"
+>
+  <div
+    *ngIf="!loading; else optStateLoading"
+    aria-atomic="false"
+    aria-live="polite"
+    aria-relevant="additions"
+    class="opt-in-container"
+  >
+    <div class="opt-btn-row">
+      <label class="opt-in-label" for="opt-in">Usage metrics:</label>
+      <p-selectButton (onChange)="handleChange($event.value)" [disabled]="loading" [ngModel]="selected.value"
+                      [options]="stateOptions"
+                      id="opt-in" name="opt-in" optionLabel="label"
+                      optionValue="value"></p-selectButton>
+    </div>
+    <span [innerHTML]="selected.message" class="opt-state-message"></span>
+  </div>
+  <ng-template #optStateLoading>
+    <jm-loading-spinner/>
+  </ng-template>
+</p-dialog>
+
+<button (click)="popupOpen=true" [attr.aria-label]="'Review privacy settings'" [disabled]="popupOpen"
+        class="p-button p-button-text" icon="pi pi-eye-slash"
+        pButton pTooltip="Review privacy settings"></button>

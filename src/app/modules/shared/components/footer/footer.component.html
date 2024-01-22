@@ -9,25 +9,25 @@
   <div class="dev-disclaimer-nav-content">
     <div
       *ngIf="dev; else prodWIPDisclaimer"
-      id="dev-disclaimer"
       class="disclaimer-content"
+      id="dev-disclaimer"
     >
       <span class="disclaimer-message"
-        >You are currently viewing the development build, which may be
+      >You are currently viewing the development build, which may be
         unfinished or buggy.</span
       >
       <a
-        pButton
-        class="prod-nav-btn p-button p-button-raised p-button-primary"
-        [href]="exss.prodSite.address"
         (click)="exss.prodSite.open()"
+        [href]="exss.prodSite.address"
+        class="prod-nav-btn p-button p-button-raised p-button-primary"
         label="Return to production site"
+        pButton
       ></a>
     </div>
     <ng-template #prodWIPDisclaimer>
-      <div id="prod-disclaimer" class="disclaimer-content">
+      <div class="disclaimer-content" id="prod-disclaimer">
         <span class="disclaimer-message"
-          >This portfolio is a work in progress. Come back later to see what
+        >This portfolio is a work in progress. Come back later to see what
           changes!</span
         >
       </div>
@@ -37,21 +37,19 @@
 
 <div class="footer-container">
   <div class="footer-left">
-    <div class="dev-build-disclaimer-container" *ngIf="shouldShowWIPDisclaimer">
+    <div *ngIf="shouldShowWIPDisclaimer" class="dev-build-disclaimer-container">
       <button
-        pButton
-        class="disclaimer-icon p-button p-button-text"
-        icon="pi pi-exclamation-triangle"
         (click)="devDisclaimerOpen = true"
         [disabled]="devDisclaimerOpen"
+        class="disclaimer-icon p-button p-button-text"
+        icon="pi pi-exclamation-triangle"
         label="WIP"
+        pButton
       ></button>
     </div>
-    <!--  <button pButton class="attribution-button p-button p-button-text" icon="pi pi-info-circle" pTooltip="Attribution"
-      [disabled]="attributionVisible" (click)="attributionVisible = true"></button> -->
-    <jm-matomo-opt-out></jm-matomo-opt-out>
+    <jm-tracking-opt-in/>
   </div>
   <div class="social-icons-wrapper">
-    <jm-social-icons></jm-social-icons>
+    <jm-social-icons/>
   </div>
 </div>
