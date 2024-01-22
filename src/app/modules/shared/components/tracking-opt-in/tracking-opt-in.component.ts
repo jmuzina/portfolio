@@ -12,11 +12,11 @@ interface IOptInState {
 }
 
 @Component({
-  selector: 'jm-matomo-opt-out',
-  templateUrl: './matomo-opt-out.component.html',
-  styleUrls: ['./matomo-opt-out.component.scss'],
+  selector: 'jm-tracking-opt-in',
+  templateUrl: './tracking-opt-in.component.html',
+  styleUrls: ['./tracking-opt-in.component.scss'],
 })
-export class MatomoOptOutComponent implements OnInit {
+export class TrackingOptInComponent implements OnInit {
   popupOpen = false;
 
   loading = false;
