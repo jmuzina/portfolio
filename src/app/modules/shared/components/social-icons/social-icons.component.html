@@ -1,13 +1,14 @@
 <div class="social-icons-container">
   <a
+    (click)="exss.onClickSocialIcon(site)"
     *ngFor="let site of exss.externalSites"
-    pButton
-    class="site-link p-button p-button-text {{ site.styleClass }}"
+    [attr.aria-label]="site.alt"
+    [href]="site.address"
     [icon]="site.icon || ''"
     [pTooltip]="site.label"
-    (click)="exss.onClickSocialIcon(site)"
-    [href]="site.address"
+    [target]="site.openInNewTab ? '_blank' : '_self'"
+    class="site-link p-button p-button-text {{ site.styleClass }}"
+    pButton
     role="link"
-    [attr.aria-label]="site.alt"
   ></a>
 </div>
