@@ -33,14 +33,31 @@ export class ExternalSitesService {
       address: 'https://github.com/jmuzina',
       icon: 'pi pi-github',
       alt: "Link to Julie's GitHub profile",
+      openInNewTab: true,
     }),
     new ExternalSitePresence({
       label: 'LinkedIn',
       address: 'https://www.linkedin.com/in/jmuzina',
       icon: 'pi pi-linkedin',
       alt: "Link to Julie's LinkedIn profile",
+      openInNewTab: true,
     }),
   ];
+
+  constructor(
+    private _router: Router,
+    private _cfs: ConfirmationService,
+  ) {
+    if (environment.development) this.addEnvironmentSwitcher();
+  }
+
+  goHome(): void {
+    this._router.navigateByUrl('');
+  }
+
+  onClickSocialIcon(site: ExternalSitePresence): boolean {
+    return ExternalSitePresence.PresenceNavigate(site, this._cfs);
+  }
 
   private getOtherEnvironment(): ExternalSitePresence {
     if (!environment.production) return this.prodSite;
@@ -52,20 +69,5 @@ export class ExternalSitesService {
     if (!otherEnv) throw new Error('Could not detect alternate environment!');
 
     this.externalSites.unshift(otherEnv);
-  }
-
-  goHome(): void {
-    this._router.navigateByUrl('');
-  }
-
-  onClickSocialIcon(site: ExternalSitePresence): boolean {
-    return ExternalSitePresence.PresenceNavigate(site, this._cfs);
-  }
-
-  constructor(
-    private _router: Router,
-    private _cfs: ConfirmationService,
-  ) {
-    if (environment.development) this.addEnvironmentSwitcher();
   }
 }

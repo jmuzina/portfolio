@@ -22,9 +22,10 @@ export class ExternalSitePresence {
 
   confirmNavigation?: IConfirmNavigation;
 
-  open() {
-    window.open(this.address);
-    return false;
+  openInNewTab?: boolean;
+
+  constructor(public options: Partial<ExternalSitePresence>) {
+    Object.assign(this, options);
   }
 
   static PresenceNavigate(
@@ -49,11 +50,12 @@ export class ExternalSitePresence {
       });
       return false;
     }
-
     return true;
   }
 
-  constructor(public options: Partial<ExternalSitePresence>) {
-    Object.assign(this, options);
+  open() {
+    if (this.openInNewTab) window.open(this.address, '_blank');
+    else window.open(this.address);
+    return false;
   }
 }

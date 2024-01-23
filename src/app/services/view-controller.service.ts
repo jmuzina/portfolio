@@ -39,12 +39,17 @@ export class ViewControllerService {
       key: 'resume',
       label: 'Resume',
       icon: 'pi pi-file',
-      href: `${environment.appUrl}/assets/resume.pdf`,
+      href: `${environment.appUrl}/assets/muzina_julie_resume.pdf`,
       openInNewTab: true,
       tooltip: 'Resume',
       shouldDisable: () => false,
-    })
+    }),
   ];
+
+  constructor(public routerRef: Router) {
+    ViewControllerService.router = routerRef;
+    ViewControllerService.updateItems();
+  }
 
   static updateItems(): void {
     ViewControllerService.menuItems = ViewControllerService.navItems.map(
@@ -66,10 +71,5 @@ export class ViewControllerService {
 
   refresh(): void {
     window.location.reload();
-  }
-
-  constructor(public routerRef: Router) {
-    ViewControllerService.router = routerRef;
-    ViewControllerService.updateItems();
   }
 }

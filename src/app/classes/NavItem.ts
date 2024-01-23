@@ -30,6 +30,11 @@ export class NavigationItem {
 
   icon?: string;
 
+  constructor(opts: NavigationItemOpts) {
+    assignEntriesToObject(this, opts);
+    this.updateDisabled();
+  }
+
   shouldDisable: () => boolean = () => false;
 
   updateDisabled() {
@@ -64,15 +69,15 @@ export class NavigationItem {
 
     return result;
   }
-
-  constructor(opts: NavigationItemOpts) {
-    assignEntriesToObject(this, opts);
-    this.updateDisabled();
-  }
 }
 
 export class RouterNavigationItem extends NavigationItem {
   public routerLink!: string;
+
+  constructor(opts: RouterNavigationItemOpts) {
+    super(opts);
+    assignEntriesToObject(this, opts);
+  }
 
   public override activate(): void {
     super.activate();
@@ -86,15 +91,15 @@ export class RouterNavigationItem extends NavigationItem {
 
     return item;
   }
-
-  constructor(opts: RouterNavigationItemOpts) {
-    super(opts);
-    assignEntriesToObject(this, opts);
-  }
 }
 
 export class CommandNavigationItem extends NavigationItem {
   public activationFn!: () => void;
+
+  constructor(opts: CommandNavigationItemOpts) {
+    super(opts);
+    assignEntriesToObject(this, opts);
+  }
 
   public override activate(): void {
     if (!this.activationFn)
@@ -104,11 +109,6 @@ export class CommandNavigationItem extends NavigationItem {
     this.activationFn();
     super.activate();
   }
-
-  constructor(opts: CommandNavigationItemOpts) {
-    super(opts);
-    assignEntriesToObject(this, opts);
-  }
 }
 
 export class ExternalLinkNavigationItem extends NavigationItem {
@@ -116,16 +116,16 @@ export class ExternalLinkNavigationItem extends NavigationItem {
 
   public openInNewTab = false;
 
-  override toMenuItem(): MenuItem {
-    return { ...super.toMenuItem(), url: this.href, target: this.href };
-  }
-
-  public override activate(): void {
-    window.open(this.href, this.openInNewTab ? '_blank' : undefined);
-  }
-
   constructor(opts: ExternalLinkNavigationItemOpts) {
     super(opts);
     assignEntriesToObject(this, opts);
+  }
+
+  // public override activate(): void {
+  //   window.open(this.href, this.openInNewTab ? '_blank' : undefined);
+  // }
+
+  override toMenuItem(): MenuItem {
+    return { ...super.toMenuItem(), url: this.href, target: this.href };
   }
 }
