@@ -34,19 +34,19 @@ export const skillClassificationMappings: ISkillClassificationOpts[] = [
         },
       },
       {
-        label: 'MySQL',
-        acquired_at: '2017-06-01',
+        label: 'MongoDB',
+        acquired_at: '2020-12-01',
         picture: {
           image: {
-            alt_text: 'MYSQL Logo',
+            alt_text: 'MongoDB Logo',
             file: {
-              address: '/assets/images/skills/mysql_logo.png',
+              address: '/assets/images/skills/mongo_logo.png',
             },
           },
         },
       },
       {
-        label: 'PostgreSQL',
+        label: 'SQL',
         acquired_at: '2022-07-25',
         picture: {
           image: {
