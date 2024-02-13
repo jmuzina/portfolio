@@ -104,13 +104,13 @@ export const skillClassificationMappings: ISkillClassificationOpts[] = [
         },
       },
       {
-        label: 'jQuery',
+        label: 'SCSS',
         acquired_at: '2020-12-01',
         picture: {
           image: {
-            alt_text: 'jQuery logo',
+            alt_text: 'SCSS logo',
             file: {
-              address: '/assets/images/skills/jquery_logo.png',
+              address: '/assets/images/skills/scss_logo.png',
             },
           },
         },
@@ -150,7 +150,7 @@ export const skillClassificationMappings: ISkillClassificationOpts[] = [
         },
       },
       {
-        label: 'GitHub',
+        label: 'Git',
         acquired_at: '2018-01-01',
         picture: {
           image: {
@@ -162,13 +162,13 @@ export const skillClassificationMappings: ISkillClassificationOpts[] = [
         },
       },
       {
-        label: 'GitLab',
-        acquired_at: '2020-06-01',
+        label: 'Kubernetes',
+        acquired_at: '2022-11-27',
         picture: {
           image: {
-            alt_text: 'GitLab Logo',
+            alt_text: 'Kubernetes Logo',
             file: {
-              address: '/assets/images/skills/gitlab_logo.png',
+              address: '/assets/images/skills/k8s_logo.png',
             },
           },
         },
