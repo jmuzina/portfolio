@@ -5,9 +5,17 @@ on:
     branches: [ 'dev' ]
 
 jobs:
+  build-portfolio:
+    name: Build Development portfolio
+    uses: 'jmuzina/portfolio/.github/workflows/ci.yml@dev'
+    with:
+      environment: dev
+    secrets:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
   deploy-portfolio:
+    needs: build-portfolio
     name: Deploy Portfolio to Dev environment
-    uses: 'jmuzina/portfolio/.github/workflows/deploy-portfolio.yml@dev'
+    uses: 'jmuzina/portfolio/.github/workflows/cd.yml@dev'
     with:
       environment: dev
     secrets:
@@ -15,4 +23,4 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
       AWS_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.DEV_AWS_CLOUDFRONT_DISTRIBUTION_ID }}
-      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}

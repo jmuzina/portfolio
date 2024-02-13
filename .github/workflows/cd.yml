@@ -18,34 +18,19 @@ on:
       AWS_CLOUDFRONT_DISTRIBUTION_ID:
         required: true
         description: ID of the Cloudfront Distribution used by this portfolio artifact
-      SENTRY_AUTH_TOKEN:
+      AWS_REGION:
         required: true
-        description: Sentry authentication token used for uploading sourcemaps for Sentry
+        description: AWS deployment region
 jobs:
   deploy:
     name: Build
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-
-      - name: Install Angular dependencies
-        run: npm ci
-
-      - name: Build Angular
-        run: npm run build:${{ inputs.environment }}
-
-      - name: Generate sourcemaps
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-        run: npm run sentry:sourcemaps
-
-      - name: Archive build artifact
-        uses: actions/upload-artifact@main
+      - name: Download artifact from last successful CI run
+        uses: actions/download-artifact@v4
         with:
-          name: portfolio
-          path: ./dist/portfolio
+          name: jmuzina-portfolio-${{ inputs.environment }}-${{ github.run_number }}
 
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@v0.5.1
@@ -56,7 +41,6 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_DIR: 'dist/portfolio'
 
       - name: Invalidate CloudFront Distribution
         uses: chetan/invalidate-cloudfront-action@v1
