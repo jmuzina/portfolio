@@ -17,7 +17,7 @@ jobs:
     name: Deploy Portfolio to Prod environment
     uses: 'jmuzina/portfolio/.github/workflows/cd.yml@main'
     with:
-      environment: dev
+      environment: prod
     secrets:
       AWS_S3_BUCKET_NAME: ${{ secrets.PROD_AWS_S3_BUCKET_NAME }}
       AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
