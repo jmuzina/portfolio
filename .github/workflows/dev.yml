@@ -1,54 +1,26 @@
 name: dev.jmuzina.io
 
-env:
-  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-
 on:
   push:
-    branches: ['dev']
+    branches: [ 'dev' ]
 
 jobs:
-  deploy:
-
-    name: Build
-    runs-on: ubuntu-latest
-    environment: development
-
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-
-      - name: Install Angular dependencies
-        run: npm ci
-
-      - name: Build Angular
-        run: npm run build:dev
-
-      - name: Generate sourcemaps
-        run: npm run sentry:sourcemaps
-
-      - name: Archive build artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: portfolio
-          path: ./dist/portfolio
-
-      - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@v0.5.1
-        with:
-          args: --acl public-read --follow-symlinks --delete
-        env:
-          AWS_S3_BUCKET: ${{ secrets.DEV_AWS_S3_BUCKET_NAME }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_DIR: 'dist/portfolio'
-
-      - name: Invalidate CloudFront Distribution
-        uses: chetan/invalidate-cloudfront-action@v1
-        env:
-          DISTRIBUTION: ${{ secrets.DEV_AWS_CLOUDFRONT_DISTRIBUTION_ID }}
-          PATHS: '/*'
-          AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+  build-portfolio:
+    name: Build Development portfolio
+    uses: 'jmuzina/portfolio/.github/workflows/ci.yml@dev'
+    with:
+      environment: dev
+    secrets:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  deploy-portfolio:
+    needs: build-portfolio
+    name: Deploy Portfolio to Dev environment
+    uses: 'jmuzina/portfolio/.github/workflows/cd.yml@dev'
+    with:
+      environment: dev
+    secrets:
+      AWS_S3_BUCKET_NAME: ${{ secrets.DEV_AWS_S3_BUCKET_NAME }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+      AWS_CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.DEV_AWS_CLOUDFRONT_DISTRIBUTION_ID }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}

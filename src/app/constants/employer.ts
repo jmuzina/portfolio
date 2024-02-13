@@ -13,10 +13,10 @@ export const employerMappings: IEmployerOpts[] = [
             text: 'Empowered NASA personnel with intuitive applications easing mission planning, data visualization, and rapid analysis.',
           },
           {
-            text: 'Improved application reliability with robust end-to-end testing suites.',
+            text: 'Developed full-stack spacecraft mission design & analysis applications, providing engineers powerful, collaborative tools for designing mission payloads, communications, power systems, & more.',
           },
           {
-            text: 'Facilitated spacecraft mission design with internal tooling applications.',
+            text: 'Mentored & supervised junior developers, emphasizing rapidly enabling effective contribution.',
           },
         ],
       },
@@ -31,13 +31,13 @@ export const employerMappings: IEmployerOpts[] = [
         ended_at: '2022-07-22',
         responsibilities: [
           {
-            text: 'Developed and maintained ETL packages to support a robust medical data warehouse',
+            text: 'Extracted key data from data lakes into data warehouses using Microsoft SSIS.',
           },
           {
-            text: 'Sped up the development and deployment processes by creating automation scripts',
+            text: 'Delivered actionable intelligence streams to business analysts using Microsoft SQL Server.',
           },
           {
-            text: 'Designed and implement changes to company database design to deliver timely and actionable business intelligence',
+            text: 'Simplified developer workflow by creating shell scripts to automate repetitive tasks.',
           },
         ],
       },
@@ -47,37 +47,18 @@ export const employerMappings: IEmployerOpts[] = [
     name: 'Reworld Inc',
     jobs: [
       {
-        title: 'ETL Developer Intern',
-        started_at: '2022-05-20',
+        title: 'Game Developer Intern',
+        started_at: '2020-11-25',
         ended_at: '2022-07-22',
         responsibilities: [
           {
-            text: 'Developed and maintained ETL packages to support a robust medical data warehouse',
+            text: 'Provided Lua lectures, programming advice, and answered technical questions for new game developer interns.',
           },
           {
-            text: 'Sped up the development and deployment processes by creating automation scripts',
+            text: 'Closely advised two game development teams as a consultant.',
           },
           {
-            text: 'Designed and implement changes to company database design to deliver timely and actionable business intelligence',
-          },
-        ],
-      },
-      {
-        title: 'Game Developer Intern, Developer Mentor',
-        started_at: '2020-11-25',
-        ended_at: '2021-07-25',
-        responsibilities: [
-          {
-            text: 'Worked within small micro-studios of fellow interns to design, develop, & deliver games built on the Reworld game engine.',
-          },
-          {
-            text: 'Assisted developer interns program by providing Lua lectures, programming advice, and answering technical questions.',
-          },
-          {
-            text: "Collaborated closely with teams of fellow developers, as well as testers, designers, sound designers, and an artist to create 'Zero Gravity Racer', a high-intensity space racing game, and 'Happy Miner', a resource-gathering and base improvement game.",
-          },
-          {
-            text: 'Closely advised two game development teams as a consultant',
+            text: 'Worked within small cross-functional team of fellow interns to design, develop, & deliver games built on the Reworld game engine.',
           },
         ],
       },
@@ -92,13 +73,10 @@ export const employerMappings: IEmployerOpts[] = [
         ended_at: '2020-09-15',
         responsibilities: [
           {
-            text: 'Participated in a regular seminar with CS department members, discussing recent developments in distributed computing',
+            text: 'Analyzed & reported on efficacy of distributed network consensus algorithms.',
           },
           {
-            text: 'Reviewed newly-published academic research papers',
-          },
-          {
-            text: 'Write and conduct software tests for use in research',
+            text: 'Designed and implemented testing applications to measure key network metrics.',
           },
         ],
       },
@@ -139,14 +117,20 @@ export const employerMappings: IEmployerOpts[] = [
     ],
   },
   {
-    name: 'Sherwin-Williams',
+    name: 'Brooksource (Contractor for Sherwin-Williams)',
     jobs: [
       {
-        title: 'Web Developer I (Contractor)',
+        title: 'Software Developer',
         started_at: '2023-11-29',
         responsibilities: [
           {
-            text: 'Enhancing and expanding capabilities related to sales & operations with high-quality web applications',
+            text: 'Modernized and enhanced product inventory web applications used by salespeople throughout the world.',
+          },
+          {
+            text: 'Maintained and upgraded full-stack web applications, from the database layer to SPA interface.',
+          },
+          {
+            text: 'Leveraged Agile methodologies – Jira Kanban boards & issue tracking.',
           },
         ],
       },

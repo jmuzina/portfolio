@@ -1,0 +1,36 @@
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        description: Portfolio environment
+        type: string
+    secrets:
+      SENTRY_AUTH_TOKEN:
+        required: true
+        description: Sentry authentication token used for uploading sourcemaps for Sentry
+jobs:
+  deploy:
+    name: Build
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: Install Angular dependencies
+        run: npm ci
+
+      - name: Build Angular
+        run: npm run build:${{ inputs.environment }}
+
+      - name: Generate sourcemaps
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: npm run sentry:sourcemaps
+
+      - name: Archive build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jmuzina-portfolio-${{ inputs.environment }}-${{ github.run_number }}
+          path: ./dist/portfolio
