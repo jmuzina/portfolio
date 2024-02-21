@@ -3,6 +3,8 @@ name: dev.jmuzina.io
 on:
   push:
     branches: [ 'dev' ]
+  workflow_dispatch:
+
 
 jobs:
   build-portfolio:
@@ -15,7 +17,7 @@ jobs:
   deploy-portfolio:
     needs: build-portfolio
     name: Deploy Portfolio to Dev environment
-    uses: 'jmuzina/portfolio/.github/workflows/cd.yml@dev'
+    uses: 'jmuzina/deploy_s3_with_cloudfront_invalidation/.github/workflows/deploy_s3_cloudfront.yml@1.0.0'
     with:
       environment: dev
     secrets:

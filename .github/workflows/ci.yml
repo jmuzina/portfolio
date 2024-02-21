@@ -10,7 +10,7 @@ on:
         required: true
         description: Sentry authentication token used for uploading sourcemaps for Sentry
 jobs:
-  deploy:
+  build:
     name: Build
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
@@ -32,5 +32,5 @@ jobs:
       - name: Archive build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: jmuzina-portfolio-${{ inputs.environment }}-${{ github.run_number }}
+          name: ${{ github.event.repository.name }}-${{ inputs.environment }}-${{ github.run_number }}
           path: ./dist/portfolio
