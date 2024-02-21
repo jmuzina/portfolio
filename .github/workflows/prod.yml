@@ -15,7 +15,7 @@ jobs:
   deploy-portfolio:
     needs: build-portfolio
     name: Deploy Portfolio to Prod environment
-    uses: 'jmuzina/portfolio/.github/workflows/cd.yml@main'
+    uses: 'jmuzina/deploy_s3_with_cloudfront_invalidation/.github/workflows/deploy_s3_cloudfront.yml@main'
     with:
       environment: prod
     secrets:
