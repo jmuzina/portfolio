@@ -10,7 +10,7 @@ on:
         required: true
         description: Sentry authentication token used for uploading sourcemaps for Sentry
 jobs:
-  deploy:
+  build:
     name: Build
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
