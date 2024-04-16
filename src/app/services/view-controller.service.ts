@@ -36,6 +36,18 @@ export class ViewControllerService {
     //   ],
     // }),
     new ExternalLinkNavigationItem({
+      key: 'linkedin',
+      label: 'LinkedIn',
+      icon: 'pi pi-linkedin',
+      href: 'https://linkedin.com/in/jmuzina',
+    }),
+    new ExternalLinkNavigationItem({
+      key: 'github',
+      label: 'Github',
+      icon: 'pi pi-github',
+      href: 'https://github.com/jmuzina',
+    }),
+    new ExternalLinkNavigationItem({
       key: 'resume',
       label: 'Resume',
       icon: 'pi pi-file',

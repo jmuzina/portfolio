@@ -27,7 +27,7 @@ export class EmployerService extends GenericService {
       .sort(Employer.Sort);
     this.jobs = this.employers.reduce(
       (acc, employer) => [...acc, ...employer.jobs], new Array<Job>()
-    )
+    );
   }
 }
 

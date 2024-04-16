@@ -28,20 +28,20 @@ export class ExternalSitesService {
   });
 
   externalSites: ExternalSitePresence[] = [
-    new ExternalSitePresence({
-      label: 'GitHub',
-      address: 'https://github.com/jmuzina',
-      icon: 'pi pi-github',
-      alt: "Link to Julie's GitHub profile",
-      openInNewTab: true,
-    }),
-    new ExternalSitePresence({
-      label: 'LinkedIn',
-      address: 'https://www.linkedin.com/in/jmuzina',
-      icon: 'pi pi-linkedin',
-      alt: "Link to Julie's LinkedIn profile",
-      openInNewTab: true,
-    }),
+    // new ExternalSitePresence({
+    //   label: 'GitHub',
+    //   address: 'https://github.com/jmuzina',
+    //   icon: 'pi pi-github',
+    //   alt: "Link to Julie's GitHub profile",
+    //   openInNewTab: true,
+    // }),
+    // new ExternalSitePresence({
+    //   label: 'LinkedIn',
+    //   address: 'https://www.linkedin.com/in/jmuzina',
+    //   icon: 'pi pi-linkedin',
+    //   alt: "Link to Julie's LinkedIn profile",
+    //   openInNewTab: true,
+    // }),
   ];
 
   constructor(
