@@ -122,6 +122,7 @@ export const employerMappings: IEmployerOpts[] = [
       {
         title: 'Software Developer',
         started_at: '2023-11-29',
+        ended_at: '2024-04-29',
         responsibilities: [
           {
             text: 'Modernized and enhanced product inventory web applications used by salespeople throughout the world.',
@@ -136,4 +137,24 @@ export const employerMappings: IEmployerOpts[] = [
       },
     ],
   },
+  {
+    name: 'Canonical',
+    jobs: [
+      {
+        title: 'Software Engineer',
+        started_at: '2024-04-29',
+        responsibilities: [
+          {
+            text: 'Implement visual design and accessibility enhancements on canonical.com, ubuntu.com, snapcraft.io, and other platforms, focusing on user experience and adherence to design standards.',
+          },
+          {
+            text: 'Collaborate with design teams to integrate UI improvements and accessibility features into web projects, ensuring a seamless user experience for diverse audiences.'
+          },
+          {
+            text: 'Support the maintenance and development of the React-Components library within the Vanilla Framework, contributing to its usability and accessibility'
+          }
+        ]
+      }
+    ]
+  }
 ];

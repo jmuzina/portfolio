@@ -38,8 +38,8 @@ export class Job {
   }
 
   static Sort(a: Job, b: Job): number {
-    if (a.ends_in_future && !b.ends_in_future) return -1;
-    if (b.ends_in_future && !a.ends_in_future) return 1;
+    if (a.ends_in_future && !b.ends_in_future && b.started_at.unix() <= a.started_at.unix()) return -1;
+    if (b.ends_in_future && !a.ends_in_future && a.started_at.unix() <= b.started_at.unix()) return 1;
 
     return b.started_at.unix() - a.started_at.unix();
   }
