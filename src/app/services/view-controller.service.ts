@@ -21,19 +21,31 @@ export class ViewControllerService {
       routerLink: '/home',
       icon: 'pi pi-home',
     }),
-    new NavigationItem({
-      key: 'apps',
-      label: 'Apps',
-      icon: 'item-right-side fa fa-light fa-circle-nodes',
-      children: [
-        new ExternalLinkNavigationItem({
-          key: 'gpxvis',
-          label: 'GPX Visualizer',
-          icon: 'fa fa-light fa-bicycle',
-          tooltip: 'View and save visualizations of your Strava exercises',
-          href: 'https://gpxvis.com',
-        }),
-      ],
+    // new NavigationItem({
+    //   key: 'apps',
+    //   label: 'Apps',
+    //   icon: 'item-right-side fa fa-light fa-circle-nodes',
+    //   children: [
+    //     new ExternalLinkNavigationItem({
+    //       key: 'gpxvis',
+    //       label: 'GPX Visualizer',
+    //       icon: 'fa fa-light fa-bicycle',
+    //       tooltip: 'View and save visualizations of your Strava exercises',
+    //       href: 'https://gpxvis.com',
+    //     }),
+    //   ],
+    // }),
+    new ExternalLinkNavigationItem({
+      key: 'linkedin',
+      label: 'LinkedIn',
+      icon: 'pi pi-linkedin',
+      href: 'https://linkedin.com/in/jmuzina',
+    }),
+    new ExternalLinkNavigationItem({
+      key: 'github',
+      label: 'Github',
+      icon: 'pi pi-github',
+      href: 'https://github.com/jmuzina',
     }),
     new ExternalLinkNavigationItem({
       key: 'resume',
