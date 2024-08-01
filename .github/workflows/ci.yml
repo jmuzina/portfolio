@@ -21,6 +21,9 @@ jobs:
       - name: Install Angular dependencies
         run: npm ci
 
+      - name: Lint
+        run: npm run lint
+
       - name: Build Angular
         run: npm run build:${{ inputs.environment }}
 

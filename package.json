@@ -5,11 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:dev": "ng build --configuration development",
+    "build:dev": "npx ng build --configuration development",
     "build:prod": "npx ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
+    "clean": "rm -rf dist node_modules",
     "sentry:sourcemaps": "sentry-cli sourcemaps inject --org julie-muzina-a008ebe1f --project jmuzina-portfolio ./dist && sentry-cli sourcemaps upload --org julie-muzina-a008ebe1f --project jmuzina-portfolio ./dist"
   },
   "private": true,
