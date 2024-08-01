@@ -2,9 +2,9 @@ name: dev.jmuzina.io
 
 on:
   push:
-    branches: [ 'dev' ]
+    branches:
+      - main
   workflow_dispatch:
-
 
 jobs:
   build-portfolio:
