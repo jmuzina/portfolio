@@ -9,7 +9,7 @@ on:
 jobs:
   build-portfolio:
     name: Build Development portfolio
-    uses: 'jmuzina/portfolio/.github/workflows/ci.yml@dev'
+    uses: 'jmuzina/portfolio/.github/workflows/ci.yml@main'
     with:
       environment: dev
     secrets:
