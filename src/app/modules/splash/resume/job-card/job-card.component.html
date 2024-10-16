@@ -19,9 +19,8 @@
           let responsibility of job.responsibilities
             | slice : 0 : (showMore ? job.responsibilities.length : abbreviatedJobDescriptionMaxLength)
         "
-      >
-        {{ responsibility.text }}
-      </li>
+        [innerHTML]="responsibility.text"
+      ></li>
       <span *ngIf="job.responsibilities.length > abbreviatedJobDescriptionMaxLength" class="job-description-length-toggler" (click)="showMore = !showMore" [attr.aria-description]="(job.responsibilities.length - abbreviatedJobDescriptionMaxLength) + 'responsibilities are hidden for brevit. Click to show them.'" role="link"
         >Show {{showMore ? 'less' : 'more'}}</span
       >

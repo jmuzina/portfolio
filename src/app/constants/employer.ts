@@ -145,13 +145,10 @@ export const employerMappings: IEmployerOpts[] = [
         started_at: '2024-04-29',
         responsibilities: [
           {
-            text: 'Implement visual design and accessibility enhancements on canonical.com, ubuntu.com, snapcraft.io, and other platforms, focusing on user experience and adherence to design standards.',
+            text: 'Support the maintenance and development of the <a href="https://vanillaframework.io" rel="noreferrer" target="_blank">Vanilla design system</a> and its <a href="https://canonical.github.io/react-components" rel="noreferrer" target="_blank">React implementation</a>.'
           },
           {
             text: 'Collaborate with design teams to integrate UI improvements and accessibility features into web projects, ensuring a seamless user experience for diverse audiences.'
-          },
-          {
-            text: 'Support the maintenance and development of the React-Components library within the Vanilla Framework, contributing to its usability and accessibility'
           }
         ]
       }
