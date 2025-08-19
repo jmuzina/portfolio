@@ -10,10 +10,7 @@ export const employerMappings: IEmployerOpts[] = [
         ended_at: '2023-11-22',
         responsibilities: [
           {
-            text: 'Empowered NASA personnel with intuitive applications easing mission planning, data visualization, and rapid analysis.',
-          },
-          {
-            text: 'Developed full-stack spacecraft mission design & analysis applications, providing engineers powerful, collaborative tools for designing mission payloads, communications, power systems, & more.',
+            text: 'Developed intuitive mission planning and data visualization applications for NASA, translating complex scientific requirements into user-friendly interfaces.',
           },
           {
             text: 'Mentored & supervised junior developers, emphasizing rapidly enabling effective contribution.',
@@ -117,7 +114,7 @@ export const employerMappings: IEmployerOpts[] = [
     ],
   },
   {
-    name: 'Brooksource (Contractor for Sherwin-Williams)',
+    name: 'Brooksource (B2B for Sherwin-Williams)',
     jobs: [
       {
         title: 'Software Developer',
@@ -125,14 +122,11 @@ export const employerMappings: IEmployerOpts[] = [
         ended_at: '2024-04-29',
         responsibilities: [
           {
-            text: 'Modernized and enhanced product inventory web applications used by salespeople throughout the world.',
+            text: 'Supported a full-stack product inventory application used by a global salesforce. Architected & maintained cloud deployments & infrastructure.',
           },
           {
-            text: 'Maintained and upgraded full-stack web applications, from the database layer to SPA interface.',
-          },
-          {
-            text: 'Leveraged Agile methodologies – Jira Kanban boards & issue tracking.',
-          },
+            text: 'Led an overhaul of the CI/CD pipeline, increasing deployment reliability & velocity for a global sales application'
+          }
         ],
       },
     ],
@@ -145,10 +139,13 @@ export const employerMappings: IEmployerOpts[] = [
         started_at: '2024-04-29',
         responsibilities: [
           {
-            text: 'Support the maintenance and development of the <a href="https://vanillaframework.io" rel="noreferrer" target="_blank">Vanilla design system</a> and its <a href="https://canonical.github.io/react-components" rel="noreferrer" target="_blank">React implementation</a>.'
+            text: 'Maintain and enhance <a href="https://vanillaframework.io">Vanilla Framework</a>, supporting sites like <a href="https://ubuntu.com">ubuntu.com</a>, used by millions of users globally.'
           },
           {
-            text: 'Collaborate with design teams to integrate UI improvements and accessibility features into web projects, ensuring a seamless user experience for diverse audiences.'
+            text: 'Architected and implemented design system testing suites, ensuring reliable deployments.'
+          },
+          {
+            text: 'Collaborate with cross-functional teams (Engineering, UX, Brand) to build consensus, solve problems, and drive user success.'
           }
         ]
       }
